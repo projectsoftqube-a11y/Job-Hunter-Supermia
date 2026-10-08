@@ -19,7 +19,7 @@ function Logo({ light }) {
           width={2172}
           height={724}
           preload
-          className="h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] sm:h-12"
+          className="h-12 w-auto transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04] sm:h-14 lg:h-[60px]"
         />
       ) : (
         <span className="flex items-center gap-3">

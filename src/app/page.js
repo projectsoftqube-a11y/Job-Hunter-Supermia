@@ -1,6 +1,7 @@
 import Preloader from '@/components/Preloader';
 import Nav from '@/components/Nav';
 import StickyCta from '@/components/StickyCta';
+import DemoPopup from '@/components/DemoPopup';
 import Hero from '@/sections/Hero';
 import Problem from '@/sections/Problem';
 import Demo from '@/sections/Demo';
@@ -45,6 +46,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyCta />
+      <DemoPopup />
       <JsonLd data={homeSchema} />
     </>
   );
