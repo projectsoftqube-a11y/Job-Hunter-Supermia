@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Job Hunter brand tokens (same palette as the portal)
+   Indigo/purple ramp anchored on brand-600 #4B2E83 + Gold #F4B400
+   ------------------------------------------------------------------ */
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ded5f5;
+  --color-brand-300: #c4b3ea;
+  --color-brand-400: #9b7fd4;
+  --color-brand-500: #6d4cb0;
+  --color-brand-600: #4b2e83;
+  --color-brand-700: #3e2670;
+  --color-brand-800: #311e59;
+  --color-brand-900: #271749;
+  --color-brand-950: #1a0f33;
+
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fff3c4;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #f9c320;
+  --color-gold-500: #f4b400;
+  --color-gold-600: #d99a00;
+  --color-gold-700: #b37c00;
+  --color-gold-800: #8a5a00;
+
+  --color-ink-800: #1e293b;
+  --color-ink-900: #1e1b2e;
+  --color-ink-950: #15121f;
+  --color-hairline: #e8e1f5;
+  --color-lavender: #ede9fe;
+  --color-light-lavender: #f5f3ff;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-lexend), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -14px, 0); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+}
+
+/* One container for every section: fluid from 320px phones up to a 1920px cap */
+@utility container-x {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4.2vw, 96px);
+}
+
+/* Fluid type scale (min at 320px, max at 1920px) */
+@utility text-hero {
+  font-size: clamp(2.25rem, 1.2rem + 4vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+@utility text-display {
+  font-size: clamp(1.9rem, 1.2rem + 2.8vw, 4.75rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+@utility text-title {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+@utility text-lead {
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.5rem);
+  line-height: 1.55;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-brand-950);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-gold-400);
+    color: var(--color-ink-900);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-gold-400);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  img {
+    user-select: none;
+  }
+}
+
+/* Lines produced by SplitText clip their words for the slide-up reveal */
+.split-line {
+  overflow: clip;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+/* Film grain over dark sections */
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.09 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.35;
+  z-index: 1;
+}
+
+/* Equaliser bars for small live-audio indicators */
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+
+/* Scroll cue: a short line that drops through its track */
+@keyframes scrollcue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* Paper grain over light sections (ink-tinted, multiplied so it never greys the colours) */
+.grain-ink::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.09  0 0 0 0 0.29  0 0 0 0.07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* Hide the custom cursor on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
