@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import { PROBLEM, APP_URL, OFFER } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 /*
  * Pinned scroll story with a single focal point: one card at a time in the centre. Each card carries
@@ -186,9 +187,11 @@ export default function Problem() {
             <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
             {PROBLEM.label}
           </p>
-          <h2 id="problem-title" className="mt-3 font-display text-[clamp(1.4rem,1rem+1.4vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink-950">
-            Most job hunts look like this.
-          </h2>
+          <CreativeHeading
+            id="problem-title"
+            className="mt-3 font-display text-[clamp(1.4rem,1rem+1.4vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink-950"
+            lines={[['Most ', { mark: 'job hunts' }, ' look like ', { chip: 'search' }, ' ', { grad: 'this.', swoosh: true }]]}
+          />
 
           {/* The stack: one card in focus at a time */}
           <div className="relative mt-9 h-[min(660px,calc(100svh-260px))] min-h-[420px] w-full max-w-[1240px] text-left lg:mt-12">

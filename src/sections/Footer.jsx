@@ -69,7 +69,7 @@ export default function Footer() {
                 →
               </span>
             </a>
-            <a href={PDF} download="Job-Hunter-brochure.pdf" className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-6 font-semibold text-white transition-colors hover:bg-white/10">
+            <a href={PDF} download="JobHunter-AI-by-SuperMIA-brochure.pdf" className="inline-flex h-14 items-center gap-2 rounded-full border border-white/20 px-6 font-semibold text-white transition-colors hover:bg-white/10">
               Brochure (PDF)
             </a>
           </div>

@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
+import CreativeHeading from '@/components/CreativeHeading';
 
 /*
  * The group photo is cut into one slice per person. The slices start apart at different heights and
@@ -44,9 +44,14 @@ export default function Community() {
               <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
               Who it is for
             </p>
-            <SplitHeading id="community-title" className="font-display text-display font-extrabold text-ink-950">
-              Built for people who want the job, not just more applications.
-            </SplitHeading>
+            <CreativeHeading
+            id="community-title"
+            className="font-display text-display font-extrabold text-ink-950"
+            lines={[
+              ['Built for ', { chip: 'users' }, ' people who want ', { mark: 'the job,' }],
+              ['not just ', { outline: 'more applications.' }],
+            ]}
+          />
           </div>
           <p className="text-lead font-medium text-ink-900/65 lg:col-span-4">Whether it is your first role or your next one, you get the same plan: find the right jobs, tailor every application, and practise until you are ready.</p>
         </div>

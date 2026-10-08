@@ -3,9 +3,9 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
 import { JobsMock, AtsMock, MailMock, VoiceMock, ReportMock } from '@/components/mocks';
 import { FEATURES } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 const MOCKS = { jobs: JobsMock, ats: AtsMock, mail: MailMock, voice: VoiceMock, report: ReportMock };
 
@@ -109,9 +109,15 @@ export default function Features() {
     <section id="features" ref={root} aria-labelledby="features-title" className="grain relative bg-brand-950 text-white">
       <div className="container-x relative z-[2] pb-10 pt-[60px] sm:pb-12 sm:pt-32 lg:pb-16">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SplitHeading id="features-title" className="font-display text-display font-extrabold lg:col-span-8">
-            Everything between <span className="text-gold-400">applying</span> and <span className="text-gold-400">getting hired.</span>
-          </SplitHeading>
+          <CreativeHeading
+            id="features-title"
+            tone="dark"
+            className="font-display text-display font-extrabold lg:col-span-8"
+            lines={[
+              ['Everything between ', { mark: 'applying' }],
+              ['and ', { chip: 'spark' }, ' ', { grad: 'getting hired.', swoosh: true }],
+            ]}
+          />
           <p className="text-lead font-medium text-brand-100 lg:col-span-4">
             Five tools that work together, so every application is better than the last one.
           </p>

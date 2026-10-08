@@ -3,6 +3,7 @@ import Nav from '@/components/Nav';
 import StickyCta from '@/components/StickyCta';
 import Hero from '@/sections/Hero';
 import Problem from '@/sections/Problem';
+import Demo from '@/sections/Demo';
 import Features from '@/sections/Features';
 import HowItWorks from '@/sections/HowItWorks';
 import Interview from '@/sections/Interview';
@@ -13,6 +14,12 @@ import Brochure from '@/sections/Brochure';
 import Faq from '@/sections/Faq';
 import FinalCta from '@/sections/FinalCta';
 import Footer from '@/sections/Footer';
+import JsonLd from '@/components/JsonLd';
+import { homeSchema } from '@/lib/schema';
+
+export const metadata = {
+  alternates: { canonical: '/' },
+};
 
 export default function Home() {
   return (
@@ -25,6 +32,7 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Problem />
+        <Demo />
         <Features />
         <HowItWorks />
         <Interview />
@@ -37,6 +45,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyCta />
+      <JsonLd data={homeSchema} />
     </>
   );
 }

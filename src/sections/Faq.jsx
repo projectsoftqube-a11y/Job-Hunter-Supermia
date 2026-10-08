@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { SplitHeading, FadeUp } from '@/components/Reveal';
+import { FadeUp } from '@/components/Reveal';
 import Button from '@/components/Button';
 import { FAQS, APP_URL, OFFER } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -17,9 +18,14 @@ export default function Faq() {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <p className="mb-5 text-sm font-bold text-brand-600">Questions</p>
-            <SplitHeading id="faq-title" className="font-display text-display font-extrabold text-ink-900">
-              Good to know.
-            </SplitHeading>
+            <CreativeHeading
+            id="faq-title"
+            className="font-display text-display font-extrabold text-ink-900"
+            lines={[
+              [{ mark: 'Good' }, ' to'],
+              [{ grad: 'know.', swoosh: true }, ' ', { chip: 'chat' }],
+            ]}
+          />
             <p className="mt-6 text-lead font-medium text-ink-800">Still deciding? Start with one search and one practice round.</p>
             <div className="mt-8">
               <Button href={APP_URL} variant="ink">

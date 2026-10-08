@@ -1,0 +1,24 @@
+# Job Hunter (JobHunter AI) by SuperMIA
+
+> Job Hunter, also written JobHunter AI, is the AI job search and interview assistant from SuperMIA (operated by Botfinity Inc., Grapevine, Texas). It searches LinkedIn, Indeed and Dice in one go, scores your resume against every job, drafts the application email and runs live voice mock interviews with a scorecard. It never applies or sends anything without you.
+
+## Product
+
+- [Job Hunter home](https://jobhunter.supermia.ai/): what it does, a 47-second demo video, features, how it works and FAQ
+- [Sign up / app](https://app.jobhunter.supermia.ai): the Job Hunter web app
+- [Brochure (PDF)](https://jobhunter.supermia.ai/brochure/job-hunter-brochure.pdf): eight-page product overview
+
+## What it does
+
+- Job discovery: one search across LinkedIn, Indeed and Dice, each role ranked by fit with your resume
+- Resume and ATS score: match score per job, missing skills and what to fix first
+- Application email: a short, specific email written for that role and recruiter
+- AI mock interviews: four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, Managerial & Final) in two modes (AI Guided Practice, Real Interview Simulation)
+- Scorecard: a 0-10 readiness score, clarity and confidence scores, strengths, gaps and topics to practise
+
+## Company
+
+- [SuperMIA](https://supermia.ai): the company behind Job Hunter
+- Contact: hello@supermia.ai
+- [Privacy Policy](https://jobhunter.supermia.ai/privacy-policy)
+- [Terms & Conditions](https://jobhunter.supermia.ai/terms-and-conditions)

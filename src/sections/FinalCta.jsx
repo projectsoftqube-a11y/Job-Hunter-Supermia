@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
+import CreativeHeading from '@/components/CreativeHeading';
 import { APP_URL, OFFER } from '@/content/site';
 
 /*
@@ -111,7 +111,8 @@ export default function FinalCta() {
           .timeline({ scrollTrigger: { trigger: q('[data-board]')[0], start: 'top 65%', end: 'top 15%', scrub: 0.6 } })
           .to(q('[data-ticket]'), { yPercent: 0, rotation: -1.5, ease: 'power1.out' })
           .fromTo(q('[data-stub-cta]'), { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(2)', duration: 0.3 }, 0.65);
-        gsap.from(q('[data-head] > *'), { y: 36, opacity: 0, stagger: 0.08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: root.current, start: 'top 80%', once: true } });
+        gsap.from(q('[data-head] > :not(h2)'), { y: 36, opacity: 0, stagger: 0.08, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: root.current, start: 'top 80%', once: true } });
+
       });
     },
     { scope: root }
@@ -123,14 +124,19 @@ export default function FinalCta() {
 
       <div className="container-x relative">
         {/* Heading */}
-        <div data-head className="mx-auto max-w-4xl text-center">
+        <div data-head className="mx-auto max-w-7xl text-center">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-brand-600">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold-500" />
             Your next step
           </p>
-          <SplitHeading id="cta-title" className="font-display text-hero font-extrabold text-ink-950">
-            Your next offer starts with practice.
-          </SplitHeading>
+          <CreativeHeading
+            id="cta-title"
+            className="font-display text-hero font-extrabold text-ink-950"
+            lines={[
+              ['Your next ', { mark: 'offer' }],
+              ['starts with ', { chip: 'mic', eq: true }, ' ', { grad: 'practice.', swoosh: true }],
+            ]}
+          />
           <p className="mx-auto mt-6 max-w-xl text-lead font-medium text-ink-900/65">Search smarter, apply with a resume that fits, and rehearse until the real interview feels familiar.</p>
         </div>
 

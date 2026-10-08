@@ -11,6 +11,25 @@ export const APP_URL = 'https://app.jobhunter.supermia.ai';
 export const PRIVACY_URL = '/privacy-policy';
 export const TERMS_URL = '/terms-and-conditions';
 export const PARENT_URL = 'https://supermia.ai';
+export const SITE_URL = 'https://jobhunter.supermia.ai';
+
+// How search engines should name the product. The logo spells it "JobHunter"; the copy uses "Job Hunter".
+export const BRAND = {
+  name: 'Job Hunter',
+  alternateNames: ['JobHunter', 'JobHunter AI', 'Job Hunter AI', 'SuperMIA Job Hunter'],
+  parent: 'SuperMIA',
+  company: 'Botfinity Inc.',
+  email: 'hello@supermia.ai',
+  address: { street: '2451 W Grapevine Mills Cir #547', city: 'Grapevine', region: 'TX', postalCode: '76051', country: 'US' },
+};
+
+export const SEO = {
+  title: 'JobHunter AI by SuperMIA | AI Job Search & Mock Interviews',
+  titleTemplate: '%s | JobHunter AI by SuperMIA',
+  description:
+    'Job Hunter (JobHunter AI) by SuperMIA searches LinkedIn, Indeed and Dice in one go, scores your resume for every job, drafts the email and runs live AI mock interviews.',
+  keywords: ['Job Hunter', 'JobHunter', 'JobHunter AI', 'SuperMIA', 'SuperMIA Job Hunter', 'AI job search assistant', 'AI mock interview', 'resume ATS score', 'AI application email'],
+};
 
 // Single source for offer wording. Only switch a flag on when it is really true.
 export const OFFER = {
@@ -21,6 +40,7 @@ export const OFFER = {
 };
 
 export const NAV = [
+  { label: 'Demo', href: '#demo' },
   { label: 'Features', href: '#features' },
   { label: 'How it works', href: '#how' },
   { label: 'Mock interviews', href: '#interview' },
@@ -30,7 +50,7 @@ export const NAV = [
 export const HERO = {
   eyebrow: 'AI career platform',
   lines: ['Find the role.', 'Practice the interview.', 'Land the offer.'],
-  sub: 'Job Hunter searches LinkedIn, Indeed and Dice for you, scores your resume against every job, writes the application email, and lets you rehearse the real interview out loud with an AI interviewer.',
+  sub: 'Job Hunter, the AI job search assistant from SuperMIA, searches LinkedIn, Indeed and Dice for you, scores your resume against every job, writes the application email, and lets you rehearse the real interview out loud with an AI interviewer.',
 };
 
 export const CHANNELS = [
@@ -92,6 +112,29 @@ export const FEATURES = [
     mock: 'report',
   },
 ];
+
+// The product reel. Chapter times match the video; captions are burned into the picture.
+export const DEMO = {
+  label: 'Watch the demo',
+  sub: 'One resume, one search, a fit score for every role and an email ready to send. You stay in control the whole way.',
+  src: '/video/jobhunter-ai-demo.mp4',
+  poster: '/video/jobhunter-ai-demo-poster.jpg',
+  name: 'JobHunter AI by SuperMIA: product demo',
+  description:
+    'A 47-second walkthrough of JobHunter AI, the AI job search assistant from SuperMIA: upload your resume once, search LinkedIn, Indeed and Dice at once, see a fit score out of 100 for each role and get the application email drafted. You review and you apply.',
+  uploadDate: '2026-10-08T16:30:00+05:30',
+  duration: 'PT47S',
+  seconds: 47.6,
+  chapters: [
+    { start: 0, title: 'Three tabs, a hundred listings', body: 'Reading every listing and guessing your fit by hand.' },
+    { start: 12, title: 'Meet JobHunter AI', body: 'The AI job search assistant from SuperMIA.' },
+    { start: 17, title: 'Upload once', body: 'It reads your role, skills and experience.' },
+    { start: 21, title: 'Search once', body: 'Live jobs from LinkedIn, Indeed and Dice in a single run.' },
+    { start: 27, title: 'Your fit, scored', body: 'A score out of 100, the reasoning and the skills you are missing.' },
+    { start: 33, title: 'Your email, drafted', body: 'Outreach written from your resume for that exact role.' },
+    { start: 37, title: 'You review. You apply.', body: 'It never applies or sends anything without you.' },
+  ],
+};
 
 export const STEPS = [
   { n: '1', title: 'Upload your resume', body: 'Add one or more versions. Job Hunter reads your skills, experience and level.' },
@@ -155,6 +198,14 @@ export const FAQS = [
   {
     q: 'What is Job Hunter?',
     a: 'An AI career platform that brings your job search into one place: it finds matching roles, scores your resume for each one, drafts application emails, and runs live voice mock interviews with a scorecard after each session.',
+  },
+  {
+    q: 'Is Job Hunter the same as JobHunter AI from SuperMIA?',
+    a: 'Yes. Job Hunter, also written JobHunter AI, is built by SuperMIA (operated by Botfinity Inc.). You sign up and use it at app.jobhunter.supermia.ai.',
+  },
+  {
+    q: 'Does Job Hunter apply to jobs for me?',
+    a: 'No. It never applies or sends anything without you. It finds and scores roles and drafts the email; you review everything and choose what to send.',
   },
   {
     q: 'Which job boards does it search?',

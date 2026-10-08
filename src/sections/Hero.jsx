@@ -291,6 +291,7 @@ export default function Hero() {
         </p>
 
         <h1 className="mx-auto font-display text-[clamp(2.25rem,1rem+4vw,6rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
+          <span className="sr-only">Job Hunter (JobHunter AI) by SuperMIA: </span>
           <span className="block">
             {words(l1.replace('.', ','))}
             <Pill src="/images/hero-pill-search.jpg" />

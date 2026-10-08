@@ -2,7 +2,7 @@ import LegalPage from '@/components/LegalPage';
 import { TERMS, LEGAL_UPDATED } from '@/content/legal';
 
 export const metadata = {
-  title: 'Terms & Conditions | Job Hunter',
+  title: 'Terms & Conditions',
   description: 'The terms that apply when you use Job Hunter.',
   alternates: { canonical: '/terms-and-conditions' },
 };

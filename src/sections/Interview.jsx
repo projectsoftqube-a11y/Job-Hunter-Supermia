@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { LayoutGroup, motion } from 'framer-motion';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
 import { Waveform } from '@/components/mocks';
 import { ROUNDS, MODES } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 /*
  * One video-call window with everything layered on it. Picking a round or a mode replays a short
@@ -141,9 +141,15 @@ export default function Interview() {
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" />
             AI mock interviews
           </p>
-          <SplitHeading id="interview-title" className="font-display text-display font-extrabold">
-            Rehearse the real interview, out loud.
-          </SplitHeading>
+          <CreativeHeading
+            id="interview-title"
+            tone="dark"
+            className="font-display text-display font-extrabold"
+            lines={[
+              ['Rehearse the ', { mark: 'real interview,' }],
+              [{ grad: 'out loud.', swoosh: true }, ' ', { chip: 'mic', eq: true }],
+            ]}
+          />
           <p className="mx-auto mt-5 max-w-[34rem] text-lead font-medium text-brand-100">Pick a round, answer out loud, and the AI follows up and scores you.</p>
         </div>
 

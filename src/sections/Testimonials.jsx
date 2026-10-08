@@ -3,8 +3,8 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
 import { TESTIMONIALS } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 /*
  * Stories as voice notes. One plays at a time: the waveform fills, the clock counts and the quote
@@ -115,9 +115,14 @@ export default function Testimonials() {
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" />
               From job seekers
             </p>
-            <SplitHeading id="voices-title" className="font-display text-display font-extrabold text-ink-950">
-              Practice first. <span className="text-brand-600">Then show up ready.</span>
-            </SplitHeading>
+            <CreativeHeading
+            id="voices-title"
+            className="font-display text-display font-extrabold text-ink-950"
+            lines={[
+              [{ mark: 'Practice' }, ' first.'],
+              ['Then show up ', { chip: 'check' }, ' ', { grad: 'ready.', swoosh: true }],
+            ]}
+          />
           </div>
           <p className="text-lead font-medium text-ink-900/65 lg:col-span-4">In their own words: what changed once they practised out loud.</p>
         </div>

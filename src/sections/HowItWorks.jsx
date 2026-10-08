@@ -3,8 +3,8 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { SplitHeading } from '@/components/Reveal';
 import { STEPS } from '@/content/site';
+import CreativeHeading from '@/components/CreativeHeading';
 
 /*
  * Scroll journey: a curved gold path is drawn through the three step markers (built from their real
@@ -257,9 +257,14 @@ export default function HowItWorks() {
             <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
             How it works
           </p>
-          <SplitHeading id="how-title" className="font-display text-display font-extrabold text-ink-950">
-            From resume to offer in three steps.
-          </SplitHeading>
+          <CreativeHeading
+            id="how-title"
+            className="font-display text-display font-extrabold text-ink-950"
+            lines={[
+              ['From ', { chip: 'doc' }, ' ', { mark: 'resume' }, ' to offer'],
+              ['in ', { grad: 'three steps.', swoosh: true }],
+            ]}
+          />
           <p className="mx-auto mt-6 max-w-[38rem] text-lead font-medium text-ink-900/65">Set up once, then go from search to interview in one place.</p>
         </div>
 

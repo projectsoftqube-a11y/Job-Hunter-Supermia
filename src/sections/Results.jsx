@@ -58,6 +58,8 @@ export default function Results() {
         gsap.set(q('[data-photo]'), { scale: 1.35 });
         gsap.set(q('[data-shade]'), { opacity: 0 });
         gsap.set(q('[data-final-word]'), { yPercent: 110 });
+        gsap.set(q('[data-final-mark]'), { scaleX: 0 });
+        gsap.set(q('[data-final-swoosh]'), { strokeDasharray: 1, strokeDashoffset: 1 });
         gsap.set(q('[data-final-sub]'), { y: 30, opacity: 0 });
         gsap.set(q('[data-card]'), { y: 120, opacity: 0, rotate: (i) => [-4, 3, -2, 4][i] });
         q('[data-count]').forEach((el) => (el.textContent = '0'));
@@ -83,6 +85,8 @@ export default function Results() {
           .set(q('[data-overlay]'), { autoAlpha: 0 }, 1.22)
           .to(q('[data-shade]'), { opacity: 1, duration: 0.4 }, 1.1)
           .to(q('[data-final-word]'), { yPercent: 0, stagger: 0.06, duration: 0.45, ease: 'power3.out' }, 1.3)
+          .to(q('[data-final-mark]'), { scaleX: 1, duration: 0.35, ease: 'power2.inOut' }, 1.45)
+          .to(q('[data-final-swoosh]'), { strokeDashoffset: 0, duration: 0.4, ease: 'power2.inOut' }, 1.55)
           .to(q('[data-final-sub]'), { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' }, 1.5)
           .to(q('[data-card]'), { y: 0, opacity: 1, rotate: 0, stagger: 0.08, duration: 0.55, ease: 'back.out(1.4)' }, 1.6);
 
@@ -95,8 +99,6 @@ export default function Results() {
     },
     { scope: root }
   );
-
-  const finalWords = 'Confidence shows in the room.'.split(' ');
 
   return (
     <section ref={root} aria-labelledby="results-title" className="relative bg-[#faf9ff]">
@@ -141,13 +143,25 @@ export default function Results() {
         <div className="container-x relative flex h-full flex-col justify-end pb-28 text-white sm:pb-[clamp(2.5rem,7vh,5rem)]">
           <h2 id="results-title" className="max-w-[16ch] font-display text-[clamp(2.2rem,1.2rem+3.6vw,5.5rem)] font-extrabold leading-[1.02] tracking-[-0.04em]">
             <span className="sr-only">Practice builds confidence. </span>
-            {finalWords.map((w, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-[0.06em] align-bottom">
-                <span data-final-word className={`inline-block ${i >= finalWords.length - 2 ? 'text-gold-400' : ''}`}>
-                  {w}&nbsp;
-                </span>
+            <span className="inline-block overflow-hidden pb-[0.06em] align-bottom">
+              <span data-final-word className="relative isolate inline-block">
+                Confidence
+                <span data-final-mark aria-hidden="true" className="absolute inset-x-[-0.06em] bottom-[0.1em] -z-[1] h-[0.3em] origin-left -skew-x-6 rounded-[0.06em] bg-brand-500" />
+              </span>
+            </span>{' '}
+            {['shows', 'in'].map((w) => (
+              <span key={w} className="inline-block overflow-hidden pb-[0.06em] align-bottom">
+                <span data-final-word className="inline-block">{w}&nbsp;</span>
               </span>
             ))}
+            <span className="-mb-[0.22em] inline-block overflow-hidden pb-[0.3em] align-bottom">
+              <span data-final-word className="relative inline-block bg-gradient-to-r from-gold-300 via-gold-400 to-brand-300 bg-clip-text pr-[0.04em] text-transparent">
+                the room.
+                <svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" className="absolute left-0 top-[88%] h-[0.2em] w-[92%] overflow-visible text-gold-400">
+                  <path data-final-swoosh d="M4 17C70 7 160 4 296 13" pathLength="1" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" />
+                </svg>
+              </span>
+            </span>
           </h2>
           <p data-final-sub className="mt-4 max-w-[38rem] text-lead font-medium text-white/80">
             You walk in having already answered the questions out loud, with a resume tuned to the job and a clear list of what to brush up on.
