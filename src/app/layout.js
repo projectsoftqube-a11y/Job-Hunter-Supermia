@@ -2,7 +2,6 @@ import { Inter, Lexend } from 'next/font/google';
 import 'lenis/dist/lenis.css';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
-import Cursor from '@/components/Cursor';
 import JsonLd from '@/components/JsonLd';
 import { siteSchema } from '@/lib/schema';
 import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO } from '@/content/site';
@@ -51,7 +50,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${lexend.variable}`}>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
-        <Cursor />
         <JsonLd data={siteSchema} />
       </body>
     </html>

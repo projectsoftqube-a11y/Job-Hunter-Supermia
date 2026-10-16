@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
+import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import { NAV, APP_URL, OFFER, PRIVACY_URL, TERMS_URL, PARENT_URL } from '@/content/site';
 
 const PDF = '/brochure/job-hunter-brochure.pdf';
@@ -13,11 +13,38 @@ const OFFICE = {
   site: 'supermia.ai',
   email: 'hello@supermia.ai',
 };
-const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${OFFICE.street}, ${OFFICE.city}`)}`;
+// Job boards searched, drawn as simple one-colour marks
+const BOARDS = [
+  {
+    name: 'LinkedIn',
+    icon: (
+      <path
+        fill="currentColor"
+        d="M4 9h3.6v11H4zM5.8 3.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM9.8 9h3.4v1.6c.5-.9 1.7-1.9 3.5-1.9 3.6 0 4.3 2.4 4.3 5.4V20h-3.6v-5.3c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V20H9.8z"
+      />
+    ),
+  },
+  {
+    name: 'Indeed',
+    icon: (
+      <>
+        <path d="M5.5 9.5C8.5 5 13.5 3.2 18.5 4.6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+        <circle cx="12" cy="10.6" r="2.2" fill="currentColor" />
+        <rect x="10.4" y="14" width="3.2" height="7" rx="1.6" fill="currentColor" />
+      </>
+    ),
+  },
+  {
+    name: 'Dice',
+    icon: <path fill="currentColor" fillRule="evenodd" d="M5 4h6.5a8 8 0 0 1 0 16H5zm3.6 3.5v9h2.8a4.5 4.5 0 0 0 0-9z" />,
+  },
+];
+
+const MAPS =`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${OFFICE.street}, ${OFFICE.city}`)}`;
 
 /*
- * Dark footer that rises over the light final section with a rounded top. A giant outlined wordmark
- * fills with gold from the bottom as you reach the end of the page.
+ * Dark footer that rises over the light final section with a rounded top, closing on a giant faint
+ * wordmark.
  */
 export default function Footer() {
   const root = useRef(null);
@@ -27,9 +54,6 @@ export default function Footer() {
       const q = gsap.utils.selector(root);
       const mm = gsap.matchMedia();
       mm.add(MOTION_OK, () => {
-        // Fills once the wordmark is in view, so it always completes even at the very end of the page
-        const fill = gsap.fromTo(q('[data-fill]'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut', paused: true });
-        ScrollTrigger.create({ trigger: q('[data-wordmark]')[0], start: 'top 98%', onEnter: () => fill.play(), onLeaveBack: () => fill.reverse() });
         gsap.from(q('[data-col]'), { y: 30, opacity: 0, stagger: 0.08, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: root.current, start: 'top 85%', once: true } });
       });
     },
@@ -108,12 +132,14 @@ export default function Footer() {
           <div data-col>
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold-300">Searches</p>
             <ul className="space-y-3">
-              {['LinkedIn', 'Indeed', 'Dice'].map((c) => (
-                <li key={c} className="flex items-center gap-2.5 text-[15px] font-medium text-white/80">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-[5px] bg-white">
-                    <Image src={`/logos/${c.toLowerCase()}.png`} alt="" width={14} height={14} className="h-3.5 w-3.5 object-contain" />
+              {BOARDS.map(({ name, icon }) => (
+                <li key={name} className="flex items-center gap-3 text-[15px] font-medium text-white/80">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-white/[0.07] text-gold-300 ring-1 ring-white/10" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4">
+                      {icon}
+                    </svg>
                   </span>
-                  {c}
+                  {name}
                 </li>
               ))}
             </ul>
@@ -196,12 +222,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Wordmark: outline, filled with gold from the bottom on scroll */}
-      <div data-wordmark aria-hidden="true" className="relative select-none overflow-hidden whitespace-nowrap text-center font-display text-[min(17.5vw,19rem)] font-extrabold leading-[0.8] tracking-[-0.055em]">
+      {/* Wordmark: a quiet, unfilled backdrop to close the page */}
+      <div aria-hidden="true" className="relative select-none overflow-hidden whitespace-nowrap text-center font-display text-[min(17.5vw,19rem)] font-extrabold leading-[0.8] tracking-[-0.055em]">
         <span className="block text-white/[0.06]">JobHunter</span>
-        <span data-fill className="absolute inset-0 block bg-gradient-to-b from-gold-300 via-gold-400 to-brand-500 bg-clip-text text-transparent">
-          JobHunter
-        </span>
       </div>
     </footer>
   );

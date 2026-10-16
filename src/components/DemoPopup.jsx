@@ -10,8 +10,7 @@ import { DEMO, APP_URL, OFFER } from '@/content/site';
  * Demo video popup. A few seconds after the intro it opens on tablets and desktops; on phones a small
  * playing preview slides in above the sticky button instead (a full-screen popup on phones gets in the way
  * and search engines penalise it), and tapping it opens the full popup. It shows once per visit and is
- * skipped while the demo section itself is on screen. Built as a fixed layer (not <dialog>) so the
- * custom cursor stays above it; focus stays inside while open and Escape closes it.
+ * skipped while the demo section itself is on screen. Focus stays inside while open and Escape closes it.
  */
 
 const KEY = 'jh:demo-popup-seen';

@@ -106,10 +106,12 @@ export default function CreativeHeading({ as: Tag = 'h2', id, lines, tone = 'lig
       mm.add(MOTION_OK, () => {
         gsap
           .timeline({ scrollTrigger: { trigger: ref.current, start, once: true } })
-          .from(q('[data-ch-line]'), { yPercent: 110, rotation: 2, stagger: 0.12, duration: 1.2, ease: 'expo.out' })
+          // 140% clears the extra padding that underlined lines keep for their underline
+          .from(q('[data-ch-line]'), { yPercent: 140, rotation: 2, stagger: 0.12, duration: 1.2, ease: 'expo.out' })
           .from(q('[data-ch-mark]'), { scaleX: 0, stagger: 0.1, duration: 0.8, ease: 'expo.inOut' }, 0.55)
           .from(q('[data-ch-chip]'), { scale: 0, rotation: -40, stagger: 0.1, duration: 0.8, ease: 'back.out(2.2)' }, 0.7)
-          .fromTo(q('[data-ch-swoosh]'), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, stagger: 0.1, duration: 0.9, ease: 'power2.inOut' }, 0.9);
+          // The dash starts fully before the path, so the round caps leave no dot while hidden
+          .fromTo(q('[data-ch-swoosh]'), { strokeDasharray: '1 2', strokeDashoffset: 1.05 }, { strokeDashoffset: 0, stagger: 0.1, duration: 0.9, ease: 'power2.inOut' }, 0.9);
       });
     },
     { scope: ref }

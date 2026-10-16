@@ -156,13 +156,6 @@
   z-index: 1;
 }
 
-/* Hide the custom cursor on touch devices */
-@media (hover: none), (pointer: coarse) {
-  .cursor-dot {
-    display: none !important;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

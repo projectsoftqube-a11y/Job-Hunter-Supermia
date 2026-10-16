@@ -7,8 +7,9 @@ import { PRODUCT_FACTS } from '@/content/site';
 
 /*
  * Knockout zoom. The page colour covers a full-screen photo except where the word CONFIDENCE is cut
- * out of it. While the section is pinned the cut-out zooms through the "I" until the photo fills the
- * screen, then the closing line and the product facts land on top as glass cards.
+ * out of it, the photo seen through the letters in a brand-purple tint. While the section is
+ * pinned the cut-out zooms through the "I", the tint fades and the photo fills the screen, then the
+ * closing line and the product facts land on top as glass cards.
  * The markup renders the final state; the intro state is only set when motion is allowed.
  */
 
@@ -55,11 +56,16 @@ export default function Results() {
           knock.setAttribute('transform', `translate(${ox} ${oy}) scale(${zoom.s}) translate(${-ox} ${-oy})`);
         };
         applyZoom();
-        gsap.set(q('[data-photo]'), { scale: 1.35 });
+        // The photo is laid out 35% larger and shrinks to fit, instead of being stretched up from screen
+        // size: browsers (Safari especially) blur a layer that is scaled past its rendered size
+        gsap.set(q('[data-photo]'), { top: '-17.5%', right: '-17.5%', bottom: '-17.5%', left: '-17.5%', scale: 1 });
+        gsap.set(q('[data-tint]'), { opacity: 1 });
         gsap.set(q('[data-shade]'), { opacity: 0 });
-        gsap.set(q('[data-final-word]'), { yPercent: 110 });
+        // Far enough below the mask that the underline padding under "the room." shows none of it
+        gsap.set(q('[data-final-word]'), { yPercent: 140 });
         gsap.set(q('[data-final-mark]'), { scaleX: 0 });
-        gsap.set(q('[data-final-swoosh]'), { strokeDasharray: 1, strokeDashoffset: 1 });
+        // Dash sits fully before the path start, so the round caps leave no dot while hidden
+        gsap.set(q('[data-final-swoosh]'), { strokeDasharray: '1 2', strokeDashoffset: 1.05 });
         gsap.set(q('[data-final-sub]'), { y: 30, opacity: 0 });
         gsap.set(q('[data-card]'), { y: 120, opacity: 0, rotate: (i) => [-4, 3, -2, 4][i] });
         q('[data-count]').forEach((el) => (el.textContent = '0'));
@@ -81,7 +87,8 @@ export default function Results() {
           .to(q('[data-intro-bottom]'), { y: 60, opacity: 0, duration: 0.35, ease: 'power2.in' }, 0.05)
           .to(zoom, { s: 95, duration: 1.1, ease: 'power3.in', onUpdate: applyZoom }, 0.1)
           .to(q('[data-cover]'), { opacity: 0, duration: 0.35, ease: 'power1.in' }, 0.8)
-          .to(q('[data-photo]'), { scale: 1, duration: 1.3, ease: 'power2.out' }, 0.1)
+          .to(q('[data-photo]'), { scale: 1 / 1.35, duration: 1.3, ease: 'power2.out' }, 0.1)
+          .to(q('[data-tint]'), { opacity: 0, duration: 0.45, ease: 'power1.inOut' }, 0.75)
           .set(q('[data-overlay]'), { autoAlpha: 0 }, 1.22)
           .to(q('[data-shade]'), { opacity: 1, duration: 0.4 }, 1.1)
           .to(q('[data-final-word]'), { yPercent: 0, stagger: 0.06, duration: 0.45, ease: 'power3.out' }, 1.3)
@@ -105,8 +112,10 @@ export default function Results() {
       <div data-pin className="relative h-[100svh] min-h-[600px] overflow-hidden">
         {/* Photo under everything */}
         <div data-photo className="absolute inset-0">
-          <Image src="/images/real-interview-success.jpg" alt="Candidate shaking hands with a hiring manager after a successful interview" fill sizes="100vw" className="object-cover object-[40%_center]" />
+          <Image src="/images/real-interview-success.jpg" alt="Candidate shaking hands with a hiring manager after a successful interview" fill sizes="135vw" className="object-cover object-[40%_center]" />
         </div>
+        {/* Brand tint seen through the letters; fades to the true photo as it fills the screen (motion only) */}
+        <div data-tint aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(110deg,#6d4cb0_0%,#4b2e83_50%,#7c5cc4_100%)] opacity-0 mix-blend-color" />
         <div data-shade aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,15,51,0.35)_0%,rgba(26,15,51,0.55)_45%,rgba(26,15,51,0.92)_100%)]" />
 
         {/* Page-coloured cover with the word cut out of it (motion only) */}
