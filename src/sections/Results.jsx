@@ -7,8 +7,8 @@ import { PRODUCT_FACTS } from '@/content/site';
 
 /*
  * Knockout zoom. The page colour covers a full-screen photo except where the word CONFIDENCE is cut
- * out of it, the photo seen through the letters in a brand-purple tint. While the section is
- * pinned the cut-out zooms through the "I", the tint fades and the photo fills the screen, then the
+ * out of it; through the letters you first see a deep brand-ink field with a sweep of gold light. While the section is
+ * pinned the cut-out zooms through the "I", the field fades and the photo fills the screen, then the
  * closing line and the product facts land on top as glass cards.
  * The markup renders the final state; the intro state is only set when motion is allowed.
  */
@@ -115,7 +115,12 @@ export default function Results() {
           <Image src="/images/real-interview-success.jpg" alt="Candidate shaking hands with a hiring manager after a successful interview" fill sizes="135vw" className="object-cover object-[40%_center]" />
         </div>
         {/* Brand tint seen through the letters; fades to the true photo as it fills the screen (motion only) */}
-        <div data-tint aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(110deg,#6d4cb0_0%,#4b2e83_50%,#7c5cc4_100%)] opacity-0 mix-blend-color" />
+        <div data-tint aria-hidden="true" className="absolute inset-0 overflow-hidden bg-[linear-gradient(120deg,#1a0f33_0%,#2a1650_45%,#3e2670_100%)] opacity-0">
+          <div className="absolute inset-0 bg-[radial-gradient(38%_55%_at_22%_45%,rgba(155,127,212,0.55),transparent),radial-gradient(30%_50%_at_82%_60%,rgba(109,76,176,0.6),transparent)]" />
+          {/* A slow band of gold light sweeping across the letters */}
+          <div className="absolute inset-y-0 -left-1/2 w-1/2 animate-[sweep_7s_ease-in-out_infinite] bg-[linear-gradient(100deg,transparent_0%,rgba(244,180,0,0.0)_20%,rgba(249,195,32,0.75)_50%,rgba(244,180,0,0.0)_80%,transparent_100%)]" />
+          <div className="grain absolute inset-0" />
+        </div>
         <div data-shade aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,15,51,0.35)_0%,rgba(26,15,51,0.55)_45%,rgba(26,15,51,0.92)_100%)]" />
 
         {/* Page-coloured cover with the word cut out of it (motion only) */}

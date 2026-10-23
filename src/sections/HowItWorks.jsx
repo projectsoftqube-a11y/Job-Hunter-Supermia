@@ -3,7 +3,8 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { STEPS } from '@/content/site';
+import { STEPS, HOW, APP_URL, OFFER } from '@/content/site';
+import Button from '@/components/Button';
 import CreativeHeading from '@/components/CreativeHeading';
 
 /*
@@ -20,8 +21,8 @@ const BULLETS = [
 ];
 
 const PHOTOS = [
-  { src: '/images/how-upload.jpg', alt: 'Job seeker uploading a resume file to a laptop' },
-  { src: '/images/how-find.jpg', alt: 'Job seeker browsing matched roles on a laptop at home' },
+  { src: '/images/how-upload.jpg', alt: 'Uploading a resume to JobHunter' },
+  { src: '/images/how-find.jpg', alt: 'Matched job list with a match score for each role' },
   { src: '/images/how-practice.jpg', alt: 'Job seeker rehearsing an interview answer with a headset on' },
 ];
 
@@ -252,7 +253,7 @@ export default function HowItWorks() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(40%_30%_at_15%_20%,rgba(196,179,234,0.35),transparent),radial-gradient(40%_30%_at_85%_60%,rgba(252,211,77,0.16),transparent),radial-gradient(40%_30%_at_20%_95%,rgba(196,179,234,0.3),transparent)]" />
 
       <div className="container-x relative">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-[80rem] text-center">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-brand-600">
             <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
             How it works
@@ -261,11 +262,11 @@ export default function HowItWorks() {
             id="how-title"
             className="font-display text-display font-extrabold text-ink-950"
             lines={[
-              ['From ', { chip: 'doc' }, ' ', { mark: 'resume' }, ' to offer'],
-              ['in ', { grad: 'three steps.', swoosh: true }],
+              ['How ', { chip: 'doc' }, ' ', { mark: 'JobHunter' }, ' Works'],
+              ['in ', { grad: 'Three Steps', swoosh: true }],
             ]}
           />
-          <p className="mx-auto mt-6 max-w-[38rem] text-lead font-medium text-ink-900/65">Set up once, then go from search to interview in one place.</p>
+          <p className="mx-auto mt-6 max-w-[44rem] text-lead font-medium text-ink-900/65">{HOW.sub}</p>
         </div>
 
         <div data-track className="relative mx-auto mt-10 max-w-[1320px] sm:mt-24">
@@ -336,6 +337,19 @@ export default function HowItWorks() {
               );
             })}
           </ol>
+        </div>
+
+        {/* Lead-in and CTA after the steps (Home v2) */}
+        <div className="mx-auto mt-16 flex max-w-3xl flex-col items-center text-center sm:mt-24">
+          <p className="font-display text-[clamp(1.4rem,1rem+1.4vw,2.2rem)] font-bold leading-tight tracking-[-0.03em] text-ink-950">{HOW.leadIn}</p>
+          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
+            <Button href={APP_URL} magnetic={false}>
+              {OFFER.ctaLong}
+            </Button>
+            <Button href="#demo" variant="outline-dark" arrow={false} magnetic={false}>
+              Watch the 47-second demo first
+            </Button>
+          </div>
         </div>
       </div>
     </section>

@@ -152,7 +152,7 @@ export default function DemoPopup() {
             transition={{ duration: 0.6, ease }}
             className="fixed bottom-[92px] right-3 z-[45] w-[108px] md:hidden"
           >
-            <button type="button" onClick={expand} aria-label="Watch the 47-second JobHunter AI demo" className="block w-full overflow-hidden rounded-[20px] bg-brand-950 p-1 shadow-[0_24px_50px_-16px_rgba(26,15,51,0.8)] ring-1 ring-white/10">
+            <button type="button" onClick={expand} aria-label="Watch the 47-second JobHunter demo" className="block w-full overflow-hidden rounded-[20px] bg-brand-950 p-1 shadow-[0_24px_50px_-16px_rgba(26,15,51,0.8)] ring-1 ring-white/10">
               <span className="relative block aspect-[9/16] overflow-hidden rounded-[16px]">
                 <video className="absolute inset-0 h-full w-full object-cover" src={DEMO.src} poster={DEMO.poster} muted loop playsInline autoPlay preload="metadata" aria-hidden="true" />
                 <span className="absolute inset-x-0 bottom-0 flex items-center gap-1.5 bg-gradient-to-t from-brand-950/90 to-transparent px-2 pb-2 pt-6 text-left text-[11px] font-bold text-white">
@@ -274,7 +274,7 @@ export default function DemoPopup() {
                 <h2 id="demo-popup-title" className="mt-4 font-display text-[clamp(1.6rem,1.1rem+1.8vw,2.75rem)] font-extrabold leading-[1.06] tracking-[-0.035em]">
                   See{' '}
                   <span className="relative isolate inline-block">
-                    JobHunter AI
+                    JobHunter
                     <span aria-hidden="true" className="absolute inset-x-[-0.06em] bottom-[0.1em] -z-[1] h-[0.3em] -skew-x-6 rounded-[0.06em] bg-brand-500" />
                   </span>{' '}
                   find your next{' '}

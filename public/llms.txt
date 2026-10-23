@@ -1,24 +1,57 @@
-# Job Hunter (JobHunter AI) by SuperMIA
+# JobHunter by SuperMIA
 
-> Job Hunter, also written JobHunter AI, is the AI job search and interview assistant from SuperMIA (operated by Botfinity Inc., Grapevine, Texas). It searches LinkedIn, Indeed and Dice in one go, scores your resume against every job, drafts the application email and runs live voice mock interviews with a scorecard. It never applies or sends anything without you.
+> JobHunter (also called Job Hunter) is an AI job search and interview practice app from SuperMIA, operated by Botfinity Inc. in Grapevine, Texas. It searches LinkedIn, Indeed and Dice in one search, scores your resume for each job out of 100 with the reasoning and missing skills, drafts an application email for the role, and runs live voice mock interviews with a 0-10 readiness score. It never applies to jobs or sends anything without the user.
 
 ## Product
 
-- [Job Hunter home](https://jobhunter.supermia.ai/): what it does, a 47-second demo video, features, how it works and FAQ
-- [Sign up / app](https://app.jobhunter.supermia.ai): the Job Hunter web app
-- [Brochure (PDF)](https://jobhunter.supermia.ai/brochure/job-hunter-brochure.pdf): eight-page product overview
+- [JobHunter home](https://jobhunter.supermia.ai/): AI job search across LinkedIn, Indeed and Dice, resume match score, application email and live interview practice.
+- [Start or sign in](https://app.jobhunter.supermia.ai): the JobHunter web app.
+- [Brochure (PDF, 8 pages)](https://jobhunter.supermia.ai/brochure/job-hunter-brochure.pdf): the product story, no sign-up needed.
+- [Demo video (47 seconds)](https://jobhunter.supermia.ai/video/jobhunter-ai-demo.mp4)
+- [FAQ](https://jobhunter.supermia.ai/faq): how JobHunter works, what it never does and what happens to your data.
+- [Pricing](https://jobhunter.supermia.ai/pricing): Free plan, Starter at $15 a month and Pro at $30 a month; plans differ in monthly limits.
 
-## What it does
+## Features
 
-- Job discovery: one search across LinkedIn, Indeed and Dice, each role ranked by fit with your resume
-- Resume and ATS score: match score per job, missing skills and what to fix first
-- Application email: a short, specific email written for that role and recruiter
-- AI mock interviews: four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, Managerial & Final) in two modes (AI Guided Practice, Real Interview Simulation)
-- Scorecard: a 0-10 readiness score, clarity and confidence scores, strengths, gaps and topics to practise
+- [AI Mock Interview](https://jobhunter.supermia.ai/ai-mock-interview): four rounds out loud with follow-up questions and a scorecard.
+- [Resume Job Match](https://jobhunter.supermia.ai/resume-job-match): a match score out of 100 for one job, the missing skills and what to fix first.
+- [Application Email Writer](https://jobhunter.supermia.ai/job-application-email): a short email for each role, drafted from your resume, that you edit and send.
+- [AI Job Match](https://jobhunter.supermia.ai/ai-job-match): LinkedIn, Indeed and Dice in one search, ranked by fit with your resume.
+
+## Who it is for
+
+- [New grads](https://jobhunter.supermia.ai/for-new-grads)
+- [Career switchers](https://jobhunter.supermia.ai/for-career-switchers)
+- [Software engineers](https://jobhunter.supermia.ai/for-software-engineers)
+- [Designers and analysts](https://jobhunter.supermia.ai/for-designers-and-analysts)
+- [People returning to work](https://jobhunter.supermia.ai/for-people-returning-to-work)
+
+## Resources
+
+- [Blog](https://jobhunter.supermia.ai/blog): job search, resume and interview tips.
+- [Interview questions by round and role](https://jobhunter.supermia.ai/interview-questions)
+- [How to email a recruiter about a job](https://jobhunter.supermia.ai/blog/how-to-email-a-recruiter)
+- [How to match your resume to a job description](https://jobhunter.supermia.ai/blog/match-resume-to-job-description)
+- [Behavioral interview practice with STAR answers](https://jobhunter.supermia.ai/blog/behavioral-interview-practice)
+- [How to practice for an interview out loud](https://jobhunter.supermia.ai/blog/how-to-practice-for-an-interview)
+- [Applied to jobs and no response: a fix list](https://jobhunter.supermia.ai/blog/applied-to-jobs-no-response)
+- [Best AI job search tools in 2026, compared](https://jobhunter.supermia.ai/blog/best-ai-job-search-tools)
+
+## Key facts
+
+- Job boards searched: LinkedIn, Indeed, Dice (third-party services; their own terms and privacy policies apply when you use them).
+- Mock interview rounds: HR & Introduction; Role & Knowledge; Practical & Behavioral; Managerial & Final.
+- Practice modes: guided practice (with hints) and real simulation (strict).
+- Scorecard: readiness score 0-10, clarity, confidence, technical depth, strengths, gaps, topics to practice.
+- Users can keep several resume versions.
+- Minimum age: 16. Contact: hello@supermia.ai
 
 ## Company
 
-- [SuperMIA](https://supermia.ai): the company behind Job Hunter
-- Contact: hello@supermia.ai
+- [SuperMIA](https://supermia.ai/): conversational AI platform and AI agents.
+- [JobHunter on SuperMIA](https://supermia.ai/ai-job-search-assistant/)
+
+## Legal
+
 - [Privacy Policy](https://jobhunter.supermia.ai/privacy-policy)
-- [Terms & Conditions](https://jobhunter.supermia.ai/terms-and-conditions)
+- [Terms and Conditions](https://jobhunter.supermia.ai/terms-and-conditions)

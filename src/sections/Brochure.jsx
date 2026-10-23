@@ -4,9 +4,10 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import CreativeHeading from '@/components/CreativeHeading';
+import { BROCHURE } from '@/content/site';
 
 const PDF = '/brochure/job-hunter-brochure.pdf';
-const DOWNLOAD_NAME = 'JobHunter-AI-by-SuperMIA-brochure.pdf';
+const DOWNLOAD_NAME = 'JobHunter-by-SuperMIA-brochure.pdf';
 const page = (n) => `/brochure/pages/page-${n}.jpg`;
 
 // Pages 2-8 of the PDF (page 1 is the cover)
@@ -30,7 +31,7 @@ const LEAVES = [
 ];
 // What is open after each turn
 const SPREADS = [[1], [2, 3], [4, 5], [6, 7], [8]];
-const SPREAD_LABEL = ['Cover', 'Pages 2–3', 'Pages 4–5', 'Pages 6–7', 'Page 8'];
+const SPREAD_LABEL = ['Cover', 'Pages 2-3', 'Pages 4-5', 'Pages 6-7', 'Page 8'];
 
 /*
  * Brochure as a real book. On desktop the section pins and the brochure, built from the eight pages of
@@ -128,16 +129,13 @@ export default function Brochure() {
             tone="dark"
             className="font-display text-[clamp(2rem,1.2rem+2.4vw,3.6rem)] font-extrabold leading-[1.04] tracking-[-0.035em]"
             lines={[
-              ['The whole'],
-              [{ mark: 'story,' }, ' in ', { chip: 'book' }],
-              [{ grad: 'eight pages.', swoosh: true }],
+              ['Take the ', { mark: '8-Page' }],
+              [{ chip: 'book' }, ' Brochure ', { grad: 'With You', swoosh: true }],
             ]}
           />
             </div>
             <p className="mt-5 max-w-[30rem] text-[clamp(1rem,0.95rem+0.3vw,1.15rem)] font-medium leading-relaxed text-brand-100 [@media(min-width:1024px)_and_(max-height:860px)]:hidden">
-              <span className="hidden lg:inline">Scroll to turn the pages. </span>
-              <span className="lg:hidden">Swipe through the pages. </span>
-              Read it later, print it, or share it with someone who is job hunting. No sign-up needed.
+              {BROCHURE.sub}
             </p>
 
             <ol className="mt-7 border-t border-white/10">

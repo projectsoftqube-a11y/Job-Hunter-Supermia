@@ -14,7 +14,7 @@ import CreativeHeading from '@/components/CreativeHeading';
  */
 
 // The statement split into the three beats
-const SENTENCES = PROBLEM.text.match(/[^.]+\./g).map((s) => s.trim());
+const SENTENCES = PROBLEM.beats.map((b) => b.title);
 
 function Chip({ children, tone = 'muted' }) {
   const tones = {
@@ -79,9 +79,9 @@ function Guesswork() {
 }
 
 const BEATS = [
-  { tag: 'Same file, every time', Ui: SameResume, img: '/images/problem-same-resume.jpg', alt: 'Job seeker sending the same resume late at night', why: 'A generic resume rarely matches the job description, so it gets passed over before a person reads it.', fix: 'Resume tailored to each job' },
-  { tag: 'No replies', Ui: Silence, img: '/images/problem-late-night.jpg', alt: 'Job seeker alone at his desk late at night, waiting for replies', why: 'With no feedback you cannot tell what is going wrong, so you keep sending more of the same.', fix: 'Every match scored before you apply' },
-  { tag: 'Guessing', Ui: Guesswork, img: '/images/problem-guessing.jpg', alt: 'Stressed job seeker surrounded by notes the night before an interview', why: 'Practising alone, nobody asks the follow-up questions or tells you which answers fall flat.', fix: 'AI interviewer with real feedback' },
+  { tag: 'Same file, every time', Ui: SameResume, img: '/images/problem-same-resume.jpg', alt: 'Job seeker sending the same resume to several companies late at night', ...PROBLEM.beats[0] },
+  { tag: 'No feedback', Ui: Silence, img: '/images/problem-late-night.jpg', alt: 'Job seeker at a desk late at night waiting for replies to applications', ...PROBLEM.beats[1] },
+  { tag: 'Guessing', Ui: Guesswork, img: '/images/problem-guessing.jpg', alt: 'Job seeker surrounded by notes the night before an interview', ...PROBLEM.beats[2] },
 ];
 const PLAN_IMG = '/images/problem-plan.jpg';
 
@@ -179,7 +179,7 @@ export default function Problem() {
 
   return (
     <section ref={root} aria-labelledby="problem-title" className="relative bg-light-lavender">
-      <div data-pin className="relative flex h-[100svh] min-h-[640px] flex-col items-center justify-center overflow-hidden pb-20 pt-16 lg:pb-6 lg:pt-20">
+      <div data-pin className="relative flex h-[100svh] min-h-[640px] flex-col items-center justify-center overflow-hidden pb-8 pt-[84px] sm:pt-[92px]">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_40%_at_50%_55%,rgba(196,179,234,0.5),transparent),radial-gradient(35%_30%_at_85%_90%,rgba(252,211,77,0.16),transparent)]" />
 
         <div className="container-x relative flex w-full flex-col items-center text-center">
@@ -189,12 +189,17 @@ export default function Problem() {
           </p>
           <CreativeHeading
             id="problem-title"
-            className="mt-3 font-display text-[clamp(1.4rem,1rem+1.4vw,2.5rem)] font-extrabold tracking-[-0.03em] text-ink-950"
-            lines={[['Most ', { mark: 'job hunts' }, ' look like ', { chip: 'search' }, ' ', { grad: 'this.', swoosh: true }]]}
+            className="mt-3 max-w-4xl font-display text-[clamp(1.35rem,0.95rem+1.5vw,2.5rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-ink-950"
+            lines={[
+              ['Why You Hear ', { mark: 'Nothing Back:' }],
+              ['Same Resume, No Feedback, ', { grad: 'No Practice', swoosh: true }],
+            ]}
           />
 
+          <p className="mt-3 hidden max-w-2xl text-[15px] font-medium leading-relaxed text-ink-900/60 sm:block [@media(max-height:899px)]:hidden">{PROBLEM.intro}</p>
+
           {/* The stack: one card in focus at a time */}
-          <div className="relative mt-9 h-[min(660px,calc(100svh-260px))] min-h-[420px] w-full max-w-[1240px] text-left lg:mt-12">
+          <div className="relative mt-6 h-[min(600px,calc(100svh-330px))] min-h-[380px] w-full max-w-[1240px] text-left lg:mt-8 [@media(min-height:900px)]:h-[min(600px,calc(100svh-390px))]">
             {BEATS.map(({ tag, Ui, img, alt, why, fix }, i) => (
               <article
                 key={tag}
@@ -213,16 +218,16 @@ export default function Problem() {
                   </span>
                 </div>
                 <div className="flex min-h-0 flex-col p-5 sm:p-7 lg:p-9">
-                  <p className="font-display text-[clamp(1.2rem,0.8rem+1.6vw,2.5rem)] font-bold leading-[1.12] tracking-[-0.03em] text-ink-950">
+                  <h3 className="font-display text-[clamp(1.2rem,0.8rem+1.6vw,2.5rem)] font-bold leading-[1.12] tracking-[-0.03em] text-ink-950">
                     <Words text={SENTENCES[i]} />
-                  </p>
+                  </h3>
                   <p className="mt-3 hidden max-w-[46ch] text-[15px] font-medium leading-relaxed text-ink-900/60 sm:block lg:text-base">{why}</p>
                   <div className="mt-auto rounded-2xl bg-light-lavender p-3 sm:p-4">
                     <Ui />
                   </div>
                   <p className="mt-4 hidden items-center gap-2.5 text-sm font-semibold text-ink-900/70 md:flex">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-600 text-[11px] font-bold text-gold-300">→</span>
-                    Job Hunter fixes this:
+                    Instead:
                     <span className="rounded-full bg-gold-100 px-2.5 py-1 text-xs font-bold text-gold-800">{fix}</span>
                   </p>
                 </div>
@@ -249,7 +254,7 @@ export default function Problem() {
                 <p className="relative mt-4 font-display text-[clamp(1.15rem,0.75rem+1.9vw,2.9rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
                   <Words text={PROBLEM.turn} accentFrom={2} />
                 </p>
-                <p className="relative mt-3 hidden max-w-[44ch] text-[15px] font-medium leading-relaxed text-brand-100 sm:block lg:text-base">
+                <p className="relative mt-3 hidden max-w-[44ch] text-[15px] font-medium leading-relaxed text-brand-100 sm:block lg:text-base [@media(max-height:820px)]:hidden">
                   One place to find the right roles, tailor every application and rehearse the interview out loud.
                 </p>
                 <ul className="relative mt-auto grid gap-1.5 pt-3 sm:grid-cols-2 sm:gap-2 lg:gap-2.5">
@@ -263,7 +268,7 @@ export default function Problem() {
                     </li>
                   ))}
                 </ul>
-                <div data-plan-step className="relative mt-3 hidden items-center gap-4 sm:flex lg:mt-4">
+                <div data-plan-step className="relative mt-3 hidden items-center gap-4 sm:flex lg:mt-4 [@media(max-height:820px)]:!hidden">
                   <div className="hidden flex-1 rounded-2xl border border-white/10 px-4 py-2.5 sm:block">
                     <span className="flex items-center justify-between text-xs font-semibold text-brand-100">
                       Interview readiness
@@ -285,7 +290,7 @@ export default function Problem() {
           </div>
 
           {/* Progress through the story */}
-          <div aria-hidden="true" className="mt-6 flex w-full max-w-[240px] gap-1.5">
+          <div aria-hidden="true" className="mt-5 flex w-full max-w-[240px] gap-1.5">
             {[0, 1, 2, 3].map((i) => (
               <span key={i} className="h-1 flex-1 overflow-hidden rounded-full bg-brand-200/70">
                 <span data-seg className={`block h-full origin-left rounded-full ${i === 3 ? 'bg-gold-500' : 'bg-brand-600'}`} />

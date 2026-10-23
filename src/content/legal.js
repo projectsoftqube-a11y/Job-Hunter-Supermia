@@ -270,3 +270,17 @@ export const TERMS = {
     },
   ],
 };
+
+// Title and description for each legal page (used by the page metadata and its share image)
+export const LEGAL_SEO = {
+  privacy: {
+    path: '/privacy-policy',
+    title: 'Privacy Policy | JobHunter by SuperMIA',
+    description: 'How JobHunter by SuperMIA, operated by Botfinity Inc., collects, uses and protects your resume, interview recordings and account data.',
+  },
+  terms: {
+    path: '/terms-and-conditions',
+    title: 'Terms and Conditions | JobHunter by SuperMIA',
+    description: 'The terms for using JobHunter by SuperMIA, including accounts, paid plans, acceptable use and third-party job boards. Operated by Botfinity Inc.',
+  },
+};

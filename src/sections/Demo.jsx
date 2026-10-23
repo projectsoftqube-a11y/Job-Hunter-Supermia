@@ -195,8 +195,8 @@ export default function Demo() {
             id="demo-title"
             className="font-display text-display font-extrabold text-ink-950"
             lines={[
-              ['See ', { mark: 'JobHunter AI' }],
-              ['work in ', { chip: 'play' }, ' ', { grad: '47 seconds.', swoosh: true }],
+              ['See ', { mark: 'JobHunter' }],
+              ['Work in ', { chip: 'play' }, ' ', { grad: '47 Seconds', swoosh: true }],
             ]}
           />
           <FadeUp>
@@ -286,7 +286,7 @@ export default function Demo() {
                   onSeeked={paint}
                 >
                   <source src={DEMO.src} type="video/mp4" />
-                  Your browser does not play this video. <a href={DEMO.src}>Download the JobHunter AI demo</a>.
+                  Your browser does not play this video. <a href={DEMO.src}>Download the JobHunter demo</a>.
                 </video>
 
                 {/* Big play button while paused */}

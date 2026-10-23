@@ -218,7 +218,7 @@ export default function Preloader() {
     ));
 
   return (
-    <div ref={root} className="grain-ink fixed inset-0 z-[90] overflow-hidden bg-[#faf9ff] text-ink-950" style={{ clipPath: 'inset(0% 0% 0% 0%)' }} aria-hidden="true">
+    <div ref={root} data-preloader className="grain-ink fixed inset-0 z-[90] overflow-hidden bg-[#faf9ff] text-ink-950" style={{ clipPath: 'inset(0% 0% 0% 0%)' }} aria-hidden="true">
       {/* Soft light */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-[20%] -top-[30%] h-[85vmax] w-[85vmax] bg-[radial-gradient(closest-side,rgba(196,179,234,0.45),transparent)]" />

@@ -2,6 +2,8 @@ import { Inter, Lexend } from 'next/font/google';
 import 'lenis/dist/lenis.css';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+import Nav from '@/components/Nav';
+import Footer from '@/sections/Footer';
 import JsonLd from '@/components/JsonLd';
 import { siteSchema } from '@/lib/schema';
 import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO } from '@/content/site';
@@ -11,34 +13,28 @@ const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: SEO.title, template: SEO.titleTemplate },
+  title: { default: SEO.title, template: '%s | JobHunter' },
   description: SEO.description,
   applicationName: BRAND.name,
-  keywords: SEO.keywords,
   authors: [{ name: BRAND.parent, url: PARENT_URL }],
   creator: BRAND.parent,
   publisher: BRAND.parent,
-  category: 'technology',
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   },
-  // The share image comes from app/opengraph-image.js
+  // Share images come from the opengraph-image files (root, pages and posts)
   openGraph: {
     type: 'website',
-    siteName: 'JobHunter AI by SuperMIA',
+    siteName: BRAND.siteName,
     locale: 'en_US',
     url: '/',
     title: SEO.title,
     description: SEO.description,
     videos: [{ url: `${SITE_URL}${DEMO.src}`, type: 'video/mp4', width: 720, height: 1280 }],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: SEO.title,
-    description: SEO.description,
-  },
+  twitter: { card: 'summary_large_image', title: SEO.title, description: SEO.description },
 };
 
 export const viewport = {
@@ -47,9 +43,16 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${lexend.variable}`}>
+    <html lang="en-US" className={`${inter.variable} ${lexend.variable}`}>
       <body>
-        <SmoothScroll>{children}</SmoothScroll>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[95] focus:rounded-full focus:bg-gold-500 focus:px-5 focus:py-3 focus:font-semibold focus:text-ink-900">
+          Skip to content
+        </a>
+        <SmoothScroll>
+          <Nav />
+          {children}
+          <Footer />
+        </SmoothScroll>
         <JsonLd data={siteSchema} />
       </body>
     </html>

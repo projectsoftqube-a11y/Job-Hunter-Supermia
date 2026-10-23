@@ -4,7 +4,8 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import { JobsMock, AtsMock, MailMock, VoiceMock, ReportMock } from '@/components/mocks';
-import { FEATURES } from '@/content/site';
+import { FEATURES, FEATURES_INTRO } from '@/content/site';
+import Rich from '@/components/Rich';
 import CreativeHeading from '@/components/CreativeHeading';
 
 const MOCKS = { jobs: JobsMock, ats: AtsMock, mail: MailMock, voice: VoiceMock, report: ReportMock };
@@ -30,7 +31,9 @@ function Panel({ f }) {
           <h3 id={`feature-${f.id}`} className="font-display text-title font-bold text-white">
             {f.title}
           </h3>
-          <p className="mt-5 max-w-xl text-lead font-medium text-brand-100">{f.body}</p>
+          <p className="mt-5 max-w-xl text-lead font-medium text-brand-100">
+            <Rich text={f.body} tone="dark" />
+          </p>
         </div>
       </div>
 
@@ -114,12 +117,12 @@ export default function Features() {
             tone="dark"
             className="font-display text-display font-extrabold lg:col-span-8"
             lines={[
-              ['Everything between ', { mark: 'applying' }],
-              ['and ', { chip: 'spark' }, ' ', { grad: 'getting hired.', swoosh: true }],
+              ['Five ', { mark: 'AI Job Search' }, ' Tools'],
+              ['That ', { chip: 'spark' }, ' ', { grad: 'Work Together', swoosh: true }],
             ]}
           />
           <p className="text-lead font-medium text-brand-100 lg:col-span-4">
-            Five tools that work together, so every application is better than the last one.
+            {FEATURES_INTRO.sub}
           </p>
         </div>
       </div>

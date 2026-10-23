@@ -1,11 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { APP_URL, OFFER } from '@/content/site';
-import Footer from '@/sections/Footer';
 
 /** Renders a body block: a paragraph string, or { list: [...] } for a bulleted list. */
 function Block({ b }) {
@@ -26,7 +23,7 @@ function Block({ b }) {
  * Shared layout for the legal pages: a light hero with a plain-words summary, a sticky contents rail
  * that tracks the section you are reading, numbered sections, and a contact card.
  */
-export default function LegalPage({ eyebrow, title, intro, updated, summary, sections, contact, other }) {
+export default function LegalPage({ h1, path, eyebrow, title, intro, updated, summary, sections, contact, other }) {
   const root = useRef(null);
   const [active, setActive] = useState(sections[0].id);
 
@@ -62,24 +59,9 @@ export default function LegalPage({ eyebrow, title, intro, updated, summary, sec
 
   return (
     <>
-      <div ref={root} id="top" className="relative bg-[#faf9ff] text-ink-950">
-        {/* Header */}
-        <header className="container-x absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 pt-6 sm:pt-8">
-          <Link href="/" aria-label="Job Hunter home" className="flex items-center rounded-2xl bg-white px-3 py-2 shadow-[0_10px_30px_-18px_rgba(75,46,131,0.5)] ring-1 ring-brand-100">
-            <Image src="/brand/logo.png" alt="Job Hunter" width={2172} height={724} className="h-9 w-auto" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link href="/" className="hidden rounded-full px-4 py-2.5 text-sm font-semibold text-ink-900 transition-colors hover:text-brand-600 sm:block">
-              ← Back to home
-            </Link>
-            <a href={APP_URL} className="inline-flex h-11 items-center rounded-full bg-gold-500 px-5 text-sm font-bold text-ink-950 transition-colors hover:bg-gold-300">
-              {OFFER.cta}
-            </a>
-          </div>
-        </header>
-
+      <main ref={root} id="main" className="relative bg-[#faf9ff] text-ink-950">
         {/* Hero */}
-        <section className="relative overflow-hidden pb-16 pt-36 sm:pt-44">
+        <section className="relative overflow-hidden pb-16 pt-28 sm:pt-36">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(45%_55%_at_15%_10%,rgba(196,179,234,0.55),transparent),radial-gradient(35%_45%_at_90%_30%,rgba(252,211,77,0.18),transparent)]" />
           <div
             aria-hidden="true"
@@ -96,7 +78,8 @@ export default function LegalPage({ eyebrow, title, intro, updated, summary, sec
                 <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
                 {eyebrow}
               </p>
-              <h1 className="font-display text-[clamp(2.75rem,1.5rem+5vw,7rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{title}</h1>
+              <h1 className="font-display text-[clamp(2.75rem,1.5rem+5vw,7rem)] font-extrabold leading-[0.98] tracking-[-0.045em]">{h1}</h1>
+              <p className="mt-4 font-display text-[clamp(1.4rem,1rem+1.4vw,2.25rem)] font-bold leading-tight tracking-[-0.03em] text-brand-600">{title}</p>
               <p className="mt-6 max-w-[40rem] text-lead font-medium text-ink-900/65">{intro}</p>
               <p className="mt-6 flex flex-wrap items-center gap-3 text-sm font-semibold text-ink-900/55">
                 <span className="rounded-full bg-white px-3 py-1.5 ring-1 ring-brand-100">Last updated {updated}</span>
@@ -126,7 +109,7 @@ export default function LegalPage({ eyebrow, title, intro, updated, summary, sec
         {/* Body */}
         <div data-body className="container-x relative grid gap-12 pb-48 pt-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-20 xl:grid-cols-[340px_minmax(0,1fr)]">
           {/* Contents */}
-          <nav aria-label="On this page" className="lg:sticky lg:top-8 lg:h-fit">
+          <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:h-fit">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-ink-900/45">On this page</p>
             <div className="relative">
               <span aria-hidden="true" className="absolute bottom-1 left-[11px] top-1 hidden w-[2px] rounded-full bg-brand-100 lg:block">
@@ -197,8 +180,7 @@ export default function LegalPage({ eyebrow, title, intro, updated, summary, sec
             </div>
           </article>
         </div>
-      </div>
-      <Footer />
+      </main>
     </>
   );
 }

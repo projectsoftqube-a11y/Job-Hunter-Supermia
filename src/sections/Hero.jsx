@@ -27,6 +27,7 @@ const EMAIL = 'Hi Sarah, I am applying for the Senior Frontend Engineer role. I 
 function Pill({ src, className = '' }) {
   return (
     <span
+      aria-hidden="true"
       data-pill
       className={`group/pill relative mx-[0.12em] inline-block h-[0.8em] w-[1.85em] translate-y-[0.06em] overflow-hidden rounded-full align-baseline shadow-[0_18px_40px_-16px_rgba(26,15,51,0.55)] ring-[0.06em] ring-white ${className}`}
     >
@@ -38,7 +39,7 @@ function Pill({ src, className = '' }) {
 function Faces({ className = '' }) {
   const faces = ['/images/hero-face-1.jpg', '/images/hero-face-2.jpg', '/images/hero-face-3.jpg'];
   return (
-    <span data-pill className={`relative mx-[0.12em] inline-flex h-[0.8em] translate-y-[0.06em] items-center align-baseline ${className}`}>
+    <span data-pill aria-hidden="true" className={`relative mx-[0.12em] inline-flex h-[0.8em] translate-y-[0.06em] items-center align-baseline ${className}`}>
       {faces.map((f, i) => (
         <span
           key={f}
@@ -279,19 +280,19 @@ export default function Hero() {
 
       {/* ------- Copy ------- */}
       <div data-copy className="container-x relative z-[2] flex flex-col items-center pt-[clamp(7.5rem,15vh,10rem)] text-center">
-        <p data-fade className="mb-7 inline-flex items-center gap-3 rounded-full border border-brand-200/80 bg-white/80 py-1.5 pl-1.5 pr-1.5 text-sm font-semibold text-brand-700 shadow-[0_10px_30px_-18px_rgba(75,46,131,0.5)] sm:pr-5">
-          <span className="flex items-center gap-1.5 rounded-full bg-brand-950 px-3 py-1 text-xs font-bold text-white">
+        {/* The page's one H1 (SEO Audit issue 5): the big lines below are a display statement, not the heading */}
+        <div data-fade className="mb-7 inline-flex max-w-full items-center gap-3 rounded-[20px] border border-brand-200/80 bg-white/80 py-1.5 pl-1.5 pr-4 text-left shadow-[0_10px_30px_-18px_rgba(75,46,131,0.5)] sm:rounded-full sm:pr-5">
+          <span aria-hidden="true" className="flex shrink-0 items-center gap-1.5 rounded-full bg-brand-950 px-3 py-1 text-xs font-bold text-white">
             <span className="relative flex h-2 w-2">
               <span className="absolute inset-0 animate-ping rounded-full bg-gold-400/70" />
               <span className="relative h-2 w-2 rounded-full bg-gold-400" />
             </span>
             Live AI interviewer
           </span>
-          <span className="hidden sm:inline">{HERO.eyebrow} for serious job seekers</span>
-        </p>
+          <h1 className="text-[13px] font-semibold leading-snug text-brand-700 sm:text-sm">{HERO.h1}</h1>
+        </div>
 
-        <h1 className="mx-auto font-display text-[clamp(2.25rem,1rem+4vw,6rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
-          <span className="sr-only">Job Hunter (JobHunter AI) by SuperMIA: </span>
+        <p className="mx-auto font-display text-[clamp(2.25rem,1rem+4vw,6rem)] font-extrabold leading-[1.02] tracking-[-0.045em]">
           <span className="block">
             {words(l1.replace('.', ','))}
             <Pill src="/images/hero-pill-search.jpg" />
@@ -304,20 +305,22 @@ export default function Hero() {
             {words(l3.replace('Land', 'land'), { mark: true })}
             <Faces className="ml-[0.32em]" />
           </span>
-        </h1>
+        </p>
 
-        <p data-fade className="mx-auto mt-7 max-w-[40rem] text-lead font-medium text-ink-900/70">
+        <p data-fade className="mx-auto mt-7 max-w-[60rem] text-lead font-medium text-ink-900/70">
           {HERO.sub}
         </p>
+        <p data-fade className="mx-auto mt-4 max-w-[60rem] text-[15px] font-semibold text-ink-900/55">{HERO.sub2}</p>
 
         <div data-fade className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button href={APP_URL} magnetic={false}>
             {OFFER.ctaLong}
           </Button>
-          <Button href="#features" variant="outline-dark" arrow={false} magnetic={false}>
-            See how it works
+          <Button href="#demo" variant="outline-dark" arrow={false} magnetic={false}>
+            {OFFER.demo}
           </Button>
         </div>
+        <p data-fade className="mt-4 text-[13px] font-semibold text-ink-900/55">{OFFER.control}</p>
 
         <div data-fade className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-3 text-sm font-semibold text-ink-900/60">
           <span>One search across</span>
@@ -335,7 +338,7 @@ export default function Hero() {
         <div data-bento className="mx-auto grid max-w-[1440px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[256px_256px] lg:gap-5">
           {/* Photo */}
           <Tile className="aspect-[4/5] sm:aspect-[4/3] md:row-span-2 md:aspect-auto lg:col-span-4 lg:row-span-2">
-            <Image src="/images/hero-candidate.jpg" data-photo alt="Job seeker holding her laptop, ready for her next role" fill sizes="(max-width: 1024px) 100vw, 34vw" className="object-cover object-[50%_22%]" />
+            <Image src="/images/hero-candidate.jpg" data-photo alt="Job seeker with a laptop, about to search LinkedIn, Indeed and Dice" fill sizes="(max-width: 1024px) 100vw, 34vw" className="object-cover object-[50%_22%]" />
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-950/70 to-transparent" />
             <div data-chip className="absolute left-4 top-4 flex items-center gap-2.5 rounded-2xl bg-white p-2 pr-3.5 shadow-lg">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-950 font-display text-sm font-extrabold text-gold-400">7.8</span>

@@ -5,7 +5,11 @@ import Image from 'next/image';
 import { LayoutGroup, motion } from 'framer-motion';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import { Waveform } from '@/components/mocks';
-import { ROUNDS, MODES } from '@/content/site';
+import { ROUNDS, MODES, INTERVIEW } from '@/content/site';
+import Link from 'next/link';
+import { Icon } from '@/components/icons';
+
+const ROUND_ICONS = ['user', 'book', 'chat', 'briefcase'];
 import CreativeHeading from '@/components/CreativeHeading';
 
 /*
@@ -136,7 +140,7 @@ export default function Interview() {
 
       <div className="container-x relative">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-[80rem] text-center">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-gold-300">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" />
             AI mock interviews
@@ -146,11 +150,11 @@ export default function Interview() {
             tone="dark"
             className="font-display text-display font-extrabold"
             lines={[
-              ['Rehearse the ', { mark: 'real interview,' }],
-              [{ grad: 'out loud.', swoosh: true }, ' ', { chip: 'mic', eq: true }],
+              ['Rehearse the ', { mark: 'Real Interview' }],
+              [{ grad: 'Out Loud', swoosh: true }, ' ', { chip: 'mic', eq: true }],
             ]}
           />
-          <p className="mx-auto mt-5 max-w-[34rem] text-lead font-medium text-brand-100">Pick a round, answer out loud, and the AI follows up and scores you.</p>
+          <p className="mx-auto mt-5 max-w-[60rem] text-lead font-medium text-brand-100">{INTERVIEW.sub}</p>
         </div>
 
         {/* Controls: one row */}
@@ -191,7 +195,7 @@ export default function Interview() {
           <div ref={stage} className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/9]">
             <div data-tile="you" data-on="false" className="group absolute inset-0">
               <div data-photo className="absolute inset-0">
-                <Image src="/images/mock-interview-practice.jpg" alt="Candidate answering in a mock interview" fill sizes="(max-width: 1200px) 100vw, 1180px" className="object-cover object-[35%_center]" />
+                <Image src="/images/mock-interview-practice.jpg" alt="Candidate in a live practice interview with on-screen hints" fill sizes="(max-width: 1200px) 100vw, 1180px" className="object-cover object-[35%_center]" />
               </div>
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/30" />
               <span aria-hidden="true" className="absolute inset-0 rounded-[32px] ring-0 ring-inset ring-gold-400 transition-[box-shadow] duration-300 group-data-[on=true]:ring-4" />
@@ -269,6 +273,66 @@ export default function Interview() {
         </div>
 
         <p className="mx-auto mt-5 max-w-[1180px] text-center text-sm font-medium text-brand-200">{guided ? MODES[0].best : MODES[1].best}.</p>
+
+        {/* The same choices as plain text: four rounds, then two modes (Home v2) */}
+        <div className="mx-auto mt-16 max-w-[1180px]">
+          <div className="flex items-center gap-4">
+            <span className="flex h-8 items-center rounded-full bg-gold-400 px-3 text-[12px] font-bold uppercase tracking-[0.12em] text-ink-950">Step 1</span>
+            <p className="font-display text-[1.35rem] font-bold text-white">Choose one of four rounds</p>
+            <span aria-hidden="true" className="h-px flex-1 bg-white/10" />
+          </div>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {ROUNDS.map((r, i) => (
+              <li key={r.name} className="group relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.04] p-5 transition-colors duration-300 hover:border-gold-400/40 hover:bg-white/[0.07]">
+                <span aria-hidden="true" className="absolute -right-2 -top-5 font-display text-[5.5rem] font-extrabold leading-none text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.12)]">0{i + 1}</span>
+                <span className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gold-400 text-ink-950" aria-hidden="true">
+                  <Icon name={ROUND_ICONS[i]} className="h-5 w-5" />
+                </span>
+                <p className="relative mt-8 text-[12px] font-semibold uppercase tracking-[0.14em] text-brand-200">Round {i + 1}</p>
+                <p className="relative mt-1 font-display text-[1.2rem] font-bold leading-snug text-white">{r.name}</p>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-12 flex items-center gap-4">
+            <span className="flex h-8 items-center rounded-full bg-gold-400 px-3 text-[12px] font-bold uppercase tracking-[0.12em] text-ink-950">Step 2</span>
+            <p className="font-display text-[1.35rem] font-bold text-white">Then choose how strict it should be</p>
+            <span aria-hidden="true" className="h-px flex-1 bg-white/10" />
+          </div>
+          <ul className="mt-5 grid gap-3 md:grid-cols-2">
+            {MODES.map((m, i) => (
+              <li key={m.name} className={`relative overflow-hidden rounded-[24px] border p-6 sm:p-7 ${i === 0 ? 'border-gold-400/30 bg-gradient-to-br from-gold-400/[0.12] to-transparent' : 'border-white/10 bg-white/[0.04]'}`}>
+                <div className="flex items-start justify-between gap-4">
+                  <span className="flex items-center gap-3">
+                    <span className={`flex h-11 w-11 items-center justify-center rounded-2xl ${i === 0 ? 'bg-gold-400 text-ink-950' : 'bg-white text-brand-800'}`} aria-hidden="true">
+                      <Icon name={i === 0 ? 'spark' : 'target'} className="h-5 w-5" />
+                    </span>
+                    <span className="font-display text-[1.45rem] font-bold text-white">{m.name}</span>
+                  </span>
+                  <span className={`shrink-0 rounded-full px-3 py-1 text-[12px] font-bold ${i === 0 ? 'bg-gold-400/15 text-gold-300' : 'bg-white/10 text-white/80'}`}>{i === 0 ? 'With hints' : 'Strict'}</span>
+                </div>
+                <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-brand-200">Best for</dt>
+                    <dd className="mt-1.5 text-[15.5px] font-medium leading-relaxed text-white/90">{m.best.replace('Best for ', '').replace(/^./, (c) => c.toUpperCase())}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-brand-200">What happens</dt>
+                    <dd className="mt-1.5 text-[15.5px] font-medium leading-relaxed text-white/90">{m.sub}</dd>
+                  </div>
+                </dl>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mx-auto mt-8 flex max-w-[60rem] flex-col items-center justify-center gap-2 text-center text-[15.5px] font-medium text-white/75 sm:flex-row sm:flex-wrap">
+            {INTERVIEW.reassure}
+            <Link href="/ai-mock-interview" className="inline-flex items-center gap-1.5 font-semibold text-gold-300 underline decoration-gold-300/40 underline-offset-4 hover:decoration-gold-300">
+              How the AI mock interview works
+              <Icon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
+            </Link>
+          </p>
+        </div>
       </div>
     </section>
   );

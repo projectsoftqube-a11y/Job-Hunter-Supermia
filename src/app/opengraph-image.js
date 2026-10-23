@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 // Share card for LinkedIn, WhatsApp, X, Slack and search results
-export const alt = 'JobHunter AI by SuperMIA: find the role, practice the interview, land the offer';
+export const alt = 'JobHunter: AI job search, resume match score and live interview practice';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -25,7 +25,7 @@ export default function Image() {
             <span>Practice the interview.</span>
             <span style={{ color: '#f9c320' }}>Land the offer.</span>
           </div>
-          <div style={{ display: 'flex', marginTop: 32, fontSize: 28, color: '#c4b3ea' }}>The AI job search assistant by SuperMIA</div>
+          <div style={{ display: 'flex', marginTop: 32, fontSize: 28, color: '#c4b3ea' }}>AI job search and interview practice by SuperMIA</div>
         </div>
         <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ display: 'flex', padding: 10, background: '#0f0820', borderRadius: 44, transform: 'rotate(-4deg)', boxShadow: '0 40px 80px rgba(0,0,0,0.5)' }}>

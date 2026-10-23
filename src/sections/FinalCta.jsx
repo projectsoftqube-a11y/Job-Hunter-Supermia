@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
 import CreativeHeading from '@/components/CreativeHeading';
-import { APP_URL, OFFER } from '@/content/site';
+import { APP_URL, OFFER, FINAL_CTA, BROCHURE_URL } from '@/content/site';
+import Rich from '@/components/Rich';
 
 /*
  * Closing call to action as a departures board. Split-flap letters spin through random characters
@@ -119,7 +120,7 @@ export default function FinalCta() {
   );
 
   return (
-    <section ref={root} aria-labelledby="cta-title" className="relative overflow-hidden bg-light-lavender pb-[156px] pt-[60px] sm:pb-52 sm:pt-32 lg:pb-60 lg:pt-36">
+    <section ref={root} aria-labelledby="cta-title" className="relative overflow-hidden bg-light-lavender pb-[156px] pt-[60px] sm:pb-52 sm:pt-20 lg:pb-60 lg:pt-24">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_40%_at_50%_45%,rgba(196,179,234,0.6),transparent),radial-gradient(35%_30%_at_15%_90%,rgba(252,211,77,0.2),transparent)]" />
 
       <div className="container-x relative">
@@ -131,18 +132,33 @@ export default function FinalCta() {
           </p>
           <CreativeHeading
             id="cta-title"
-            className="font-display text-hero font-extrabold text-ink-950"
+            className="mx-auto max-w-6xl font-display text-display font-extrabold text-ink-950"
             lines={[
-              ['Your next ', { mark: 'offer' }],
-              ['starts with ', { chip: 'mic', eq: true }, ' ', { grad: 'practice.', swoosh: true }],
+              ['Start Your Next ', { mark: 'Job Hunt' }, ' With'],
+              ['One Search and ', { chip: 'mic', eq: true }],
+              [{ grad: 'One Practice Round', swoosh: true }],
             ]}
           />
-          <p className="mx-auto mt-6 max-w-xl text-lead font-medium text-ink-900/65">Search smarter, apply with a resume that fits, and rehearse until the real interview feels familiar.</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lead font-medium text-ink-900/65">
+            <Rich text={FINAL_CTA.sub} />
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href={APP_URL} className="group inline-flex h-14 items-center gap-3 rounded-full bg-brand-600 pl-7 pr-2 text-[15px] font-bold text-white transition-colors hover:bg-brand-800">
+              {OFFER.ctaLong}
+              <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-400 text-ink-950 transition-transform duration-500 group-hover:-rotate-45">
+                →
+              </span>
+            </a>
+            <a href={BROCHURE_URL} className="text-[15px] font-bold text-brand-600 underline decoration-brand-200 decoration-2 underline-offset-4 hover:decoration-brand-600">
+              Download the brochure
+            </a>
+          </div>
+          <p className="mt-4 text-sm font-semibold text-ink-900/55">{FINAL_CTA.note}</p>
         </div>
 
         <div className="relative mx-auto mt-10 w-full sm:mt-14 sm:w-fit sm:max-w-full lg:mt-16">
           {/* Departures board */}
-          <div data-board className="relative z-[2] rounded-[28px] bg-brand-950 p-4 shadow-[0_60px_120px_-50px_rgba(26,15,51,0.9)] ring-1 ring-white/5 sm:p-7">
+          <div data-board aria-hidden="true" className="relative z-[2] rounded-[28px] bg-brand-950 p-4 shadow-[0_60px_120px_-50px_rgba(26,15,51,0.9)] ring-1 ring-white/5 sm:p-7">
             <div className="mb-5 flex items-center justify-between gap-4 px-1 text-white">
               <span className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold-400 text-ink-950" aria-hidden="true">
@@ -202,7 +218,7 @@ export default function FinalCta() {
             <div data-ticket className="relative pt-10">
               <div className="relative grid overflow-hidden rounded-[22px] bg-white shadow-[0_40px_80px_-40px_rgba(26,15,51,0.6),0_0_0_1px_rgba(26,15,51,0.05)] sm:grid-cols-[1fr_250px]">
                 {/* Main part */}
-                <div className="relative p-5 sm:p-7">
+                <div aria-hidden="true" className="relative p-5 sm:p-7">
                   <p className="flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.18em] text-brand-600">
                     Boarding pass
                     <span className="text-ink-900/40">Job Hunter</span>

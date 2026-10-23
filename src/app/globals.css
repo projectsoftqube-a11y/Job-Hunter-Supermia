@@ -112,6 +112,23 @@
   img {
     user-select: none;
   }
+  /* Pointer cursor on everything clickable (Tailwind v4 leaves buttons on the default arrow) */
+  a[href],
+  button:not(:disabled),
+  [role='button'],
+  [role='radio'],
+  [role='tab'],
+  summary,
+  label[for],
+  select,
+  input[type='checkbox'],
+  input[type='radio'],
+  input[type='submit'] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
 }
 
 /* Lines produced by SplitText clip their words for the slide-up reveal */
@@ -136,6 +153,27 @@
 @keyframes eq {
   0%, 100% { transform: scaleY(0.35); }
   50% { transform: scaleY(1); }
+}
+
+/* Light band sweeping across a surface (CONFIDENCE letters) */
+@keyframes floaty {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+@keyframes shine {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes nudge {
+  0%, 100% { opacity: 0.25; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+}
+
+@keyframes sweep {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(300%); }
 }
 
 /* Scroll cue: a short line that drops through its track */

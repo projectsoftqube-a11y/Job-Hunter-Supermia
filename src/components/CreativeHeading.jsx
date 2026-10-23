@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
+import { ICON_PATHS } from '@/components/icons';
 
 /**
  * Section heading with the page's signature accents. `lines` is an array of lines; each line is an
@@ -34,29 +35,12 @@ const TONES = {
   },
 };
 
-const ICONS = {
-  mic: (
-    <>
-      <rect x="9" y="3" width="6" height="11" rx="3" />
-      <path d="M5 11a7 7 0 0 0 14 0M12 18v3" />
-    </>
-  ),
-  play: <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.6-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor" />,
-  doc: <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h4" />,
-  spark: <path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z" fill="currentColor" />,
-  check: <path d="M4 12.5l5 5L20 6.5" />,
-  chat: <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12zM8.5 12h.01M12 12h.01M15.5 12h.01" />,
-  users: <path d="M16 20v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 18.5V20M10 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM20 20v-1.5a3.5 3.5 0 0 0-2.6-3.4M15.5 4.6a3.5 3.5 0 0 1 0 6.8" />,
-  book: <path d="M12 6.5C10 5 7.5 4.5 4 4.5v14c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-14c-3.5 0-6 .5-8 2zM12 6.5v14" />,
-  search: <path d="M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4" />,
-};
-
 function Chip({ icon, eq, label, tone }) {
   const t = TONES[tone];
   return (
     <span data-ch-chip aria-hidden="true" className={`mx-[0.06em] inline-flex h-[0.78em] -translate-y-[0.06em] items-center gap-[0.06em] rounded-full px-[0.2em] align-middle ${t.chip}`}>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="h-[0.38em] w-[0.38em]">
-        {ICONS[icon]}
+        {ICON_PATHS[icon]}
       </svg>
       {eq && (
         <span className="flex h-[0.36em] items-center gap-[0.035em]">
@@ -76,7 +60,7 @@ function Part({ part, tone }) {
   if (part.chip) return <Chip icon={part.chip} eq={part.eq} label={part.label} tone={tone} />;
   if (part.mark)
     return (
-      <span className="relative isolate inline-block">
+      <span className="relative isolate inline-block sm:whitespace-nowrap">
         {part.mark}
         <span data-ch-mark aria-hidden="true" className={`absolute inset-x-[-0.06em] bottom-[0.1em] -z-[1] h-[0.3em] origin-left -skew-x-6 rounded-[0.06em] ${t.mark}`} />
       </span>
@@ -84,7 +68,7 @@ function Part({ part, tone }) {
   if (part.outline) return <span className={`text-transparent ${t.outline}`}>{part.outline}</span>;
   if (part.grad)
     return (
-      <span className={`relative inline-block bg-gradient-to-r bg-clip-text pr-[0.04em] text-transparent ${t.grad}`}>
+      <span className={`relative inline-block bg-gradient-to-r bg-clip-text pr-[0.04em] text-transparent sm:whitespace-nowrap ${t.grad}`}>
         {part.grad}
         {part.swoosh && (
           <svg viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true" className={`absolute left-0 top-[88%] h-[0.2em] w-[92%] overflow-visible ${t.swoosh}`}>
@@ -96,7 +80,8 @@ function Part({ part, tone }) {
   return null;
 }
 
-export default function CreativeHeading({ as: Tag = 'h2', id, lines, tone = 'light', className = '', start = 'top 85%' }) {
+export default function CreativeHeading({ as: Tag = 'h2', id, lines: input, tone = 'light', className = '', start = 'top 85%' }) {
+  const lines = typeof input === 'string' ? [[input]] : input;
   const ref = useRef(null);
 
   useGSAP(
@@ -128,6 +113,8 @@ export default function CreativeHeading({ as: Tag = 'h2', id, lines, tone = 'lig
                 <Part key={j} part={p} tone={tone} />
               ))}
             </span>
+            {/* A real space between lines, so the heading's text reads "Out Loud, Get" and not "Loud,Get" */}
+            {i < lines.length - 1 ? ' ' : null}
           </span>
         );
       })}
