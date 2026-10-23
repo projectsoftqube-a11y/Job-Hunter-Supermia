@@ -12,7 +12,6 @@ export const SIGNUP_URL = 'https://app.jobhunter.supermia.ai/signup';
 export const PRIVACY_URL = '/privacy-policy';
 export const TERMS_URL = '/terms-and-conditions';
 export const PARENT_URL = 'https://supermia.ai';
-export const PARENT_PRODUCT_URL = 'https://supermia.ai/ai-job-search-assistant/';
 export const SITE_URL = 'https://jobhunter.supermia.ai';
 export const BROCHURE_URL = '/brochure/job-hunter-brochure.pdf';
 

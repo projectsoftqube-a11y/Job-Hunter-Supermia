@@ -41,17 +41,12 @@
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
-  --animate-float: float 7s ease-in-out infinite;
   --animate-spin-slow: spin 40s linear infinite;
   --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
 
   @keyframes marquee {
     from { transform: translate3d(0, 0, 0); }
     to { transform: translate3d(-50%, 0, 0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -14px, 0); }
   }
   @keyframes pulse-ring {
     0% { transform: scale(0.9); opacity: 0.7; }
@@ -161,17 +156,6 @@
   to { opacity: 1; translate: 0 0; }
 }
 
-@keyframes fadeout {
-  to { opacity: 0; scale: 0.9; }
-}
-
-@keyframes seek {
-  0%, 100% { translate: 0 0; rotate: 0deg; }
-  25% { translate: 0.06em -0.04em; rotate: 6deg; }
-  50% { translate: -0.05em 0.03em; rotate: -4deg; }
-  75% { translate: 0.04em 0.05em; rotate: 3deg; }
-}
-
 @keyframes floaty {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -12px; }
@@ -190,12 +174,6 @@
 @keyframes sweep {
   0% { transform: translateX(0); }
   100% { transform: translateX(300%); }
-}
-
-/* Scroll cue: a short line that drops through its track */
-@keyframes scrollcue {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(200%); }
 }
 
 /* Paper grain over light sections (ink-tinted, multiplied so it never greys the colours) */
