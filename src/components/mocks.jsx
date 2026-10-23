@@ -94,7 +94,7 @@ export function JobsMock() {
             <circle cx="11" cy="11" r="7" />
             <path d="m20 20-3.5-3.5" strokeLinecap="round" />
           </svg>
-          <span className="truncate">Frontend Engineer · Austin, TX</span>
+          <span className="min-w-0 leading-snug">Frontend Engineer · Austin, TX</span>
         </div>
         <span className="shrink-0 rounded-full bg-gold-100 px-2.5 py-1 text-[11px] font-bold text-gold-800">64 matches</span>
       </div>
@@ -103,8 +103,8 @@ export function JobsMock() {
           <li key={j.title} className="flex items-center gap-3 rounded-2xl border border-hairline bg-white p-3 transition-colors hover:bg-light-lavender">
             <span className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 font-display text-lg font-extrabold text-brand-600 min-[420px]:flex">{j.company[0]}</span>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-bold text-ink-900">{j.title}</p>
-              <p className="truncate text-xs font-medium text-ink-800">
+              <p className="text-sm font-bold leading-snug text-ink-900">{j.title}</p>
+              <p className="text-xs font-medium leading-snug text-ink-800">
                 {j.company} · {j.place}
               </p>
               <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
@@ -202,9 +202,9 @@ export function MailMock() {
         <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700">Ready to send</span>
       </div>
       <div className="space-y-2.5 px-5 py-4 text-[13px]">
-        <p className="flex gap-2 text-ink-900">
+        <p className="flex flex-wrap gap-x-2 text-ink-900">
           <span className="w-16 shrink-0 font-semibold text-brand-600">To</span>
-          <span className="truncate font-mono font-semibold">careers@northwindlabs.com</span>
+          <span className="min-w-0 font-mono font-semibold">jobs@northwind.co</span>
         </p>
         <p className="flex gap-2 text-ink-900">
           <span className="w-16 shrink-0 font-semibold text-brand-600">Subject</span>

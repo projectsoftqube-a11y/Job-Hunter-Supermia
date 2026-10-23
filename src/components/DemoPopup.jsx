@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { onIntroDone } from '@/lib/gsap';
-import { DEMO, APP_URL, OFFER } from '@/content/site';
+import { DEMO, OFFER, SIGNUP_URL } from '@/content/site';
 
 /*
  * Demo video popup. A few seconds after the intro it opens on tablets and desktops; on phones a small
@@ -294,7 +294,7 @@ export default function DemoPopup() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-                  <a href={APP_URL} className="group flex h-13 items-center gap-3 rounded-full bg-gold-500 pl-6 pr-1.5 text-[15px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
+                  <a href={SIGNUP_URL} className="group flex h-13 items-center gap-3 rounded-full bg-gold-500 pl-6 pr-1.5 text-[15px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
                     {OFFER.ctaLong}
                     <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-gold-400 transition-transform duration-500 group-hover:-rotate-45">
                       →

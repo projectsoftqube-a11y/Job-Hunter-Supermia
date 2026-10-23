@@ -13,10 +13,11 @@
 
 ## Features
 
-- [AI Mock Interview](https://jobhunter.supermia.ai/ai-mock-interview): four rounds out loud with follow-up questions and a scorecard.
-- [Resume Job Match](https://jobhunter.supermia.ai/resume-job-match): a match score out of 100 for one job, the missing skills and what to fix first.
-- [Application Email Writer](https://jobhunter.supermia.ai/job-application-email): a short email for each role, drafted from your resume, that you edit and send.
-- [AI Job Match](https://jobhunter.supermia.ai/ai-job-match): LinkedIn, Indeed and Dice in one search, ranked by fit with your resume.
+- [All features](https://jobhunter.supermia.ai/features): the four features in the order of a job hunt: find, apply, practice.
+- [AI Mock Interview](https://jobhunter.supermia.ai/features/ai-mock-interview): four rounds out loud with follow-up questions and a scorecard.
+- [Resume Job Match](https://jobhunter.supermia.ai/features/resume-job-match): a match score out of 100 for one job, the missing skills and what to fix first.
+- [Application Email Writer](https://jobhunter.supermia.ai/features/job-application-email): a short email for each role, drafted from your resume, that you edit and send.
+- [AI Job Match](https://jobhunter.supermia.ai/features/ai-job-match): LinkedIn, Indeed and Dice in one search, ranked by fit with your resume.
 
 ## Who it is for
 

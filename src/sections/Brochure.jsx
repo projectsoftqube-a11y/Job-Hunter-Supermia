@@ -236,7 +236,7 @@ export default function Brochure() {
                   </div>
                 ))}
               </div>
-              <div aria-hidden="true" className="absolute -bottom-10 left-1/2 -z-[1] h-12 w-[80%] -translate-x-1/2 rounded-[50%] bg-black/50 blur-2xl" />
+              <div aria-hidden="true" className="absolute -bottom-10 left-1/2 -z-[1] h-12 w-[80%] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgba(0,0,0,0.5),transparent)]" />
             </div>
 
             {/* Where you are in the book */}
@@ -258,7 +258,7 @@ export default function Brochure() {
                   <a href={`${PDF}#page=${n}`} target="_blank" rel="noopener" className="block">
                     <span className="relative block aspect-[210/297] overflow-hidden rounded-[14px] bg-white shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)] ring-1 ring-white/10">
                       <Image src={page(n)} alt={`Brochure page ${n}: ${TITLE(n)}`} fill sizes="(max-width: 1023px) 72vw, 1px" className="object-cover" />
-                      <span className="absolute left-3 top-3 rounded-full bg-brand-950/80 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur">
+                      <span className="absolute left-3 top-3 rounded-full bg-brand-950/90 px-2.5 py-1 text-[11px] font-bold text-white">
                         {n} / 8
                       </span>
                     </span>

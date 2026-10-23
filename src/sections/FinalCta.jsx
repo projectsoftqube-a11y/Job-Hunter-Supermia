@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
 import CreativeHeading from '@/components/CreativeHeading';
-import { APP_URL, OFFER, FINAL_CTA, BROCHURE_URL } from '@/content/site';
+import { OFFER, FINAL_CTA, BROCHURE_URL, SIGNUP_URL } from '@/content/site';
 import Rich from '@/components/Rich';
 
 /*
@@ -143,7 +143,7 @@ export default function FinalCta() {
             <Rich text={FINAL_CTA.sub} />
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href={APP_URL} className="group inline-flex h-14 items-center gap-3 rounded-full bg-brand-600 pl-7 pr-2 text-[15px] font-bold text-white transition-colors hover:bg-brand-800">
+            <a href={SIGNUP_URL} className="group inline-flex h-14 items-center gap-3 rounded-full bg-brand-600 pl-7 pr-2 text-[15px] font-bold text-white transition-colors hover:bg-brand-800">
               {OFFER.ctaLong}
               <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-400 text-ink-950 transition-transform duration-500 group-hover:-rotate-45">
                 →
@@ -255,7 +255,7 @@ export default function FinalCta() {
                 </div>
                 {/* Stub: the sign-up button, lifts like it is being torn off */}
                 <a
-                  href={APP_URL}
+                  href={SIGNUP_URL}
                                     className="group relative flex flex-col items-center justify-center gap-4 border-t-2 border-dashed border-ink-900/20 bg-gold-400 p-6 text-ink-950 transition-colors duration-300 hover:bg-gold-300 sm:border-l-2 sm:border-t-0"
                 >
                   <span data-stub-cta className="flex flex-col items-center gap-3 text-center">

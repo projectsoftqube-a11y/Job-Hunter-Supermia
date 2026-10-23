@@ -133,7 +133,7 @@ const post = {
     },
     {
       type: 'product',
-      text: 'For a second check before you apply, the [resume match score](/resume-job-match) in JobHunter by SuperMIA compares your resume with one job. It scores your resume out of 100 as an ATS match score for a specific job, with the reasoning, the skills you are missing and what to fix first. Treat it as a guide to where to focus, not a prediction of a hiring decision, and only add the missing skills you really have.',
+      text: 'For a second check before you apply, the [resume match score](/features/resume-job-match) in JobHunter by SuperMIA compares your resume with one job. It scores your resume out of 100 as an ATS match score for a specific job, with the reasoning, the skills you are missing and what to fix first. Treat it as a guide to where to focus, not a prediction of a hiring decision, and only add the missing skills you really have.',
     },
 
     { type: 'h2', id: 'how-much', text: 'How much should you tailor for each application?' },

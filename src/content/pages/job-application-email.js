@@ -1,6 +1,6 @@
 const page = {
   slug: 'job-application-email',
-  path: '/job-application-email',
+  path: '/features/job-application-email',
   kind: 'feature',
   label: 'Application Email Writer',
   seo: {
@@ -63,7 +63,7 @@ const page = {
             },
             {
               title: 'Pick the role',
-              text: 'Choose the job you want to write about. Check your [resume match score](/resume-job-match) first, so you only write to roles worth your time.',
+              text: 'Choose the job you want to write about. Check your [resume match score](/features/resume-job-match) first, so you only write to roles worth your time.',
             },
             {
               title: 'Get a short draft',
@@ -188,12 +188,12 @@ const page = {
       text: 'Short examples you can adapt when you write to a recruiter.',
     },
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'See how well your resume fits a role before you write to the recruiter.',
     },
     {
-      href: '/ai-job-match',
+      href: '/features/ai-job-match',
       title: 'AI Job Match',
       text: 'Find roles across LinkedIn, Indeed and Dice, ranked by how well they fit your resume.',
     },

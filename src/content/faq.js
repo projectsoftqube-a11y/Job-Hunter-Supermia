@@ -35,7 +35,7 @@ export const FAQ_PAGE = {
       id: 'job-search',
       title: 'Job search',
       icon: 'search',
-      intro: 'JobHunter searches three job boards at once and ranks every role by how well it fits your resume. Here is how [AI job match](/ai-job-match) works.',
+      intro: 'JobHunter searches three job boards at once and ranks every role by how well it fits your resume. Here is how [AI job match](/features/ai-job-match) works.',
       items: [
         { q: 'Which job boards does JobHunter search?', a: 'JobHunter searches LinkedIn, Indeed and Dice in a single search. Each role comes back ranked by how well it fits your resume, with the recruiter contact when it is public. The job boards are third-party services, and their own terms and privacy policies apply when you use them.' },
         { q: 'How are jobs ranked?', a: 'Each job is ranked by how well it fits your resume. You see a score out of 100, the reasoning behind it and the skills you are missing, so you can decide which roles deserve your time first.' },
@@ -48,7 +48,7 @@ export const FAQ_PAGE = {
       id: 'resume-match',
       title: 'Resume match score',
       icon: 'target',
-      intro: 'The match score compares your resume with one specific job. Read more about the [resume match score](/resume-job-match).',
+      intro: 'The match score compares your resume with one specific job. Read more about the [resume match score](/features/resume-job-match).',
       items: [
         { q: 'How does the resume match score work?', a: 'Pick a job and JobHunter scores your resume against it out of 100. It explains the reasoning, lists the skills you are missing and shows what to fix first.' },
         { q: 'Is the match score the same as an ATS score?', a: "It is an ATS match score for one specific job. It shows how your resume reads against that job description, with the reasoning and the skills you are missing, so you can judge it yourself. Use it to decide where to focus. It does not predict how an employer's own system will rank you or whether you will be hired." },
@@ -59,7 +59,7 @@ export const FAQ_PAGE = {
       id: 'application-emails',
       title: 'Application emails',
       icon: 'mail',
-      intro: 'Each draft is written for one role and its recruiter, and you send it yourself. See the [job application email writer](/job-application-email).',
+      intro: 'Each draft is written for one role and its recruiter, and you send it yourself. See the [job application email writer](/features/job-application-email).',
       items: [
         { q: 'Does JobHunter send the application email for me?', a: 'No. JobHunter drafts a short, specific email for the role and the recruiter, written from your resume. You copy it, edit it if you want, and send it yourself.' },
         { q: 'What goes into the application email?', a: 'The draft is written from your resume for the role you picked, so it is specific to that job rather than a generic cover note. AI drafts can miss things, so check it and change any line before you send it.' },
@@ -69,7 +69,7 @@ export const FAQ_PAGE = {
       id: 'mock-interviews',
       title: 'AI mock interviews',
       icon: 'mic',
-      intro: 'The mock interview is a spoken practice round with follow-up questions and a scorecard. Try an [AI mock interview](/ai-mock-interview).',
+      intro: 'The mock interview is a spoken practice round with follow-up questions and a scorecard. Try an [AI mock interview](/features/ai-mock-interview).',
       items: [
         { q: 'How does the AI mock interview work?', a: 'You pick one of four rounds: HR & Introduction, Role & Knowledge, Practical & Behavioral, or Managerial & Final. Then you answer out loud. The AI interviewer asks follow-up questions based on your level, your resume and the job, and gives you a readiness score with the topics to practice next.' },
         { q: 'Which interview rounds can I practice?', a: 'You can practice four rounds: HR & Introduction, Role & Knowledge, Practical & Behavioral, and Managerial & Final. Pick the round you are preparing for and answer out loud.' },

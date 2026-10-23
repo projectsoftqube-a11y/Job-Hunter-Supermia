@@ -3,7 +3,7 @@ import CreativeHeading from "@/components/CreativeHeading";
 import { FadeUp } from "@/components/Reveal";
 import { Icon } from "@/components/icons";
 import SlideCta from "@/components/SlideCta";
-import { APP_URL, OFFER, PRICING } from "@/content/site";
+import { OFFER, PRICING, SIGNUP_URL } from "@/content/site";
 
 /*
  * Pricing: three plan cards (Free, Starter, Pro) with each plan's monthly limits, and a full comparison
@@ -90,7 +90,7 @@ export function PricingPlans({ headingLevel = 3 }) {
                     </p>
 
                     <SlideCta
-                      href={APP_URL}
+                      href={SIGNUP_URL}
                       label={plan.cta}
                       tone={dark ? "dark" : "light"}
                       className="mt-7"
@@ -270,7 +270,7 @@ export function PricingTable() {
                 className={`px-6 py-6 text-center ${p.featured ? "border-t border-white/10 bg-brand-950" : ""}`}
               >
                 <a
-                  href={APP_URL}
+                  href={SIGNUP_URL}
                   className={`group inline-flex h-11 items-center gap-2 rounded-full px-5 text-[14px] font-bold transition-colors ${
                     p.featured
                       ? "bg-gold-400 text-ink-950 hover:bg-gold-300"

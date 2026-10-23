@@ -72,7 +72,7 @@ const page = {
       visual: 'report',
       h2: [[{ chip: 'compass' }, 'Rebuild Confidence With'], [{ grad: 'Guided Practice', swoosh: true }, ' First']],
       intro:
-        'Interview practice after a career break works best in small, low-pressure steps. The [AI mock interview](/ai-mock-interview) is a live voice interview set to your level, your resume and the job you picked. You answer out loud, and the AI interviewer asks follow-up questions.',
+        'Interview practice after a career break works best in small, low-pressure steps. The [AI mock interview](/features/ai-mock-interview) is a live voice interview set to your level, your resume and the job you picked. You answer out loud, and the AI interviewer asks follow-up questions.',
       blocks: [
         {
           type: 'steps',
@@ -167,7 +167,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'Upload your resume once and [JobHunter](/) runs one search across LinkedIn, Indeed and Dice, ranking each role by how well it fits. Pick a job and the [resume match score](/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first.',
+          text: 'Upload your resume once and [JobHunter](/) runs one search across LinkedIn, Indeed and Dice, ranking each role by how well it fits. Pick a job and the [resume match score](/features/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first.',
         },
         {
           type: 'list',
@@ -182,7 +182,7 @@ const page = {
           type: 'callout',
           tone: 'info',
           title: 'What the score is for',
-          text: 'The match score is a guide to where to focus, not a prediction of a hiring decision. When you find a role worth applying for, JobHunter drafts a short [application email](/job-application-email) for it, which you edit and send yourself. It never applies or sends anything without you.',
+          text: 'The match score is a guide to where to focus, not a prediction of a hiring decision. When you find a role worth applying for, JobHunter drafts a short [application email](/features/job-application-email) for it, which you edit and send yourself. It never applies or sends anything without you.',
         },
       ],
     },
@@ -211,12 +211,12 @@ const page = {
   },
   related: [
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'The four rounds, both practice modes and the scorecard in detail.',
     },
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'See how your resume reads against a specific job today.',
     },

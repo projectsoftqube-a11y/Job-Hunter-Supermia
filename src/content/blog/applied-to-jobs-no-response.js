@@ -104,7 +104,7 @@ const post = {
     },
     {
       type: "product",
-      text: "If you want to see where your resume falls short before you apply, JobHunter by SuperMIA scores it against the job you pick. The [resume match score](/resume-job-match) rates your resume out of 100 for that specific job, explains the reasoning, lists the skills you are missing and shows what to fix first. It is an ATS match score for one job: a guide to where to focus, not a prediction of a hiring decision. It never applies or sends anything without you.",
+      text: "If you want to see where your resume falls short before you apply, JobHunter by SuperMIA scores it against the job you pick. The [resume match score](/features/resume-job-match) rates your resume out of 100 for that specific job, explains the reasoning, lists the skills you are missing and shows what to fix first. It is an ATS match score for one job: a guide to where to focus, not a prediction of a hiring decision. It never applies or sends anything without you.",
     },
     {
       type: "h2",

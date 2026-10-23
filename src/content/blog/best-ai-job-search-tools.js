@@ -265,7 +265,7 @@ const post = {
     },
     {
       label: 'Jobright AI job match',
-      url: 'https://jobright.ai/ai-job-match',
+      url: 'https://jobright.ai/features/ai-job-match',
       note: 'Checked 22 Oct 2026: Match Score based on skills, experience, seniority and industry background, explained by Orion.',
     },
     {

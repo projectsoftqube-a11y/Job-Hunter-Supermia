@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
-import { APP_URL, OFFER } from '@/content/site';
+import { OFFER, SIGNUP_URL } from '@/content/site';
 
 /** Phone-only call to action that slides up once the hero is out of view, and steps aside for the closing call to action. */
 export default function StickyCta() {
@@ -38,7 +38,7 @@ export default function StickyCta() {
           className="fixed inset-x-0 bottom-0 z-40 p-3 md:hidden"
         >
           <a
-            href={APP_URL}
+            href={SIGNUP_URL}
             className="flex h-14 w-full items-center justify-between rounded-full bg-gold-500 pl-6 pr-2 font-semibold text-ink-900 shadow-[0_18px_40px_-12px_rgba(26,15,51,0.7)]"
           >
             {OFFER.ctaLong}

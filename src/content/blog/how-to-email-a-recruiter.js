@@ -185,7 +185,7 @@ const post = {
     },
     {
       type: 'product',
-      text: 'If you stall on the first two sentences, JobHunter by SuperMIA can give you a starting draft. Its [job application email writer](/job-application-email) drafts a short email from your resume for the role and recruiter you pick, and shows the recruiter contact when it is public. You copy it, edit it and send it yourself. It never sends anything without you.',
+      text: 'If you stall on the first two sentences, JobHunter by SuperMIA can give you a starting draft. Its [job application email writer](/features/job-application-email) drafts a short email from your resume for the role and recruiter you pick, and shows the recruiter contact when it is public. You copy it, edit it and send it yourself. It never sends anything without you.',
     },
 
     { type: 'h2', id: 'follow-up', text: 'When to follow up, and when to stop' },

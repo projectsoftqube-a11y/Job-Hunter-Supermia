@@ -10,12 +10,16 @@ import forPeopleReturningToWork from './for-people-returning-to-work';
 import interviewQuestions from './interview-questions';
 
 /*
- * Registry of the content pages served by app/[slug]. A page is live once it is listed here; the menu,
+ * Registry of the content pages, served by app/[slug] (audiences, resources) and app/features/[slug]. A page is live once it is listed here; the menu,
  * footer, sitemap and llms.txt only point to live pages.
  */
 export const PAGES = [aiMockInterview, resumeJobMatch, jobApplicationEmail, aiJobMatch, forNewGrads, forCareerSwitchers, forSoftwareEngineers, forDesignersAndAnalysts, forPeopleReturningToWork, interviewQuestions];
 
 export const PAGE_BY_SLUG = Object.fromEntries(PAGES.map((p) => [p.slug, p]));
 
-// Breadcrumb trail per page (Navigation spec, section 7: Home › Page)
-export const trailFor = (page) => [{ name: page.label, path: page.path }];
+// Feature pages live under /features/<slug>; audience and resource pages stay at /<slug>
+export const FEATURE_PAGES = PAGES.filter((p) => p.kind === 'feature');
+export const TOP_PAGES = PAGES.filter((p) => p.kind !== 'feature');
+
+// Breadcrumb trail per page: Home › Page, or Home › Features › Page for a feature
+export const trailFor = (page) => [...(page.kind === 'feature' ? [{ name: 'Features', path: '/features' }] : []), { name: page.label, path: page.path }];

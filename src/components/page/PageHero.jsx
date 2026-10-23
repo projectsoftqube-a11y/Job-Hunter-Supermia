@@ -5,7 +5,7 @@ import Rich from '@/components/Rich';
 import { Icon } from '@/components/icons';
 import HeroStage from '@/components/page/HeroStage';
 import MockFrame from '@/components/page/MockFrame';
-import { APP_URL, OFFER } from '@/content/site';
+import { OFFER, SIGNUP_URL } from '@/content/site';
 
 /**
  * Inner page hero, kept light and centred like the homepage: eyebrow, the page's one H1 (the target
@@ -35,7 +35,7 @@ export default function PageHero({ eyebrow, h1, tagline, compact = false, lead, 
               <Rich text={short} tone="dark" />
             </p>
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={APP_URL} className="group relative isolate inline-flex h-14 items-center gap-3 overflow-hidden rounded-full bg-gold-500 pl-7 pr-2 text-[15px] font-bold text-ink-950 shadow-[0_18px_40px_-16px_rgba(244,180,0,0.9)] sm:h-16 sm:text-base">
+              <a href={SIGNUP_URL} className="group relative isolate inline-flex h-14 items-center gap-3 overflow-hidden rounded-full bg-gold-500 pl-7 pr-2 text-[15px] font-bold text-ink-950 shadow-[0_18px_40px_-16px_rgba(244,180,0,0.9)] sm:h-16 sm:text-base">
                 <span aria-hidden="true" className="absolute inset-0 -z-10 translate-y-full rounded-full bg-white transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0" />
                 {OFFER.ctaLong}
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-gold-400 transition-transform duration-500 group-hover:-rotate-45 sm:h-12 sm:w-12" aria-hidden="true">

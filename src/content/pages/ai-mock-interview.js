@@ -1,6 +1,6 @@
 const page = {
   slug: 'ai-mock-interview',
-  path: '/ai-mock-interview',
+  path: '/features/ai-mock-interview',
   kind: 'feature',
   label: 'AI Mock Interview',
   seo: {
@@ -78,7 +78,7 @@ const page = {
           type: 'callout',
           tone: 'info',
           title: 'Your mind went blank on the follow-up?',
-          text: 'That is the moment worth rehearsing. A practice interview with AI puts you there without the stakes. Not sure which jobs to rehearse for yet? Check your [resume match score](/resume-job-match) for a role first, then practice for the ones that fit.',
+          text: 'That is the moment worth rehearsing. A practice interview with AI puts you there without the stakes. Not sure which jobs to rehearse for yet? Check your [resume match score](/features/resume-job-match) for a role first, then practice for the ones that fit.',
         },
       ],
     },
@@ -262,7 +262,7 @@ const page = {
       text: 'A practical routine for rehearsing answers, even when you practice alone.',
     },
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'Check how well your resume fits a job before you spend time preparing for it.',
     },

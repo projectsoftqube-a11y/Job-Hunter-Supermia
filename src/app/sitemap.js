@@ -28,6 +28,7 @@ export default function sitemap() {
       ],
     },
     ...PAGES.map((p) => ({ url: url(p.path), lastModified: SEO.updated, changeFrequency: 'monthly', priority: p.kind === 'feature' ? 0.9 : 0.8, images: og(p.path) })),
+    { url: url('/features'), lastModified: SEO.updated, changeFrequency: 'monthly', priority: 0.9, images: og('/features') },
     { url: url('/faq'), lastModified: SEO.updated, changeFrequency: 'monthly', priority: 0.8, images: og('/faq') },
     { url: url('/pricing'), lastModified: SEO.updated, changeFrequency: 'monthly', priority: 0.8, images: og('/pricing') },
   ];

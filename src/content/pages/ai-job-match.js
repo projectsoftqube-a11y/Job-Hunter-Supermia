@@ -1,6 +1,6 @@
 const page = {
   slug: 'ai-job-match',
-  path: '/ai-job-match',
+  path: '/features/ai-job-match',
   kind: 'feature',
   label: 'AI Job Match',
   seo: {
@@ -110,7 +110,7 @@ const page = {
           type: 'callout',
           tone: 'warn',
           title: 'What the score is not',
-          text: 'The fit score is a guide to where to focus, not a prediction of a hiring decision. For the full breakdown on one job, see how the [resume match score](/resume-job-match) works.',
+          text: 'The fit score is a guide to where to focus, not a prediction of a hiring decision. For the full breakdown on one job, see how the [resume match score](/features/resume-job-match) works.',
         },
       ],
     },
@@ -132,7 +132,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'From there, the next step is yours. Add the missing skills you really have, or draft a [job application email](/job-application-email) for the role and send it yourself. JobHunter never applies to a job for you.',
+          text: 'From there, the next step is yours. Add the missing skills you really have, or draft a [job application email](/features/job-application-email) for the role and send it yourself. JobHunter never applies to a job for you.',
         },
       ],
     },
@@ -165,12 +165,12 @@ const page = {
   },
   related: [
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'Go deeper on one role: the score, the reasoning and what to fix first.',
     },
     {
-      href: '/job-application-email',
+      href: '/features/job-application-email',
       title: 'Application Email Writer',
       text: 'Get a short, role-specific email draft that you edit and send yourself.',
     },

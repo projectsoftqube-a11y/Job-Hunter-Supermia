@@ -12,7 +12,7 @@ import Cover from '@/components/blog/Cover';
 import PostCard from '@/components/blog/PostCard';
 import Toc from '@/components/blog/Toc';
 import { POSTS, POST_BY_SLUG, CATEGORY_BY_SLUG, AUTHOR } from '@/content/blog';
-import { APP_URL, OFFER } from '@/content/site';
+import { OFFER, SIGNUP_URL } from '@/content/site';
 import { graph, pageNode, breadcrumbNode, articleNode } from '@/lib/schema';
 import { countWords, longDate, readingMinutes } from '@/lib/text';
 
@@ -115,7 +115,7 @@ export default async function PostPage({ params }) {
                 <div className="mt-8 rounded-[22px] bg-light-lavender p-5 2xl:hidden">
                   <p className="font-display text-[15px] font-bold text-ink-950">Practice it on a real job</p>
                   <p className="mt-1.5 text-[13.5px] leading-relaxed text-ink-900/65">One search, a match score per role and a mock interview with follow-ups.</p>
-                  <a href="https://app.jobhunter.supermia.ai" className="mt-4 inline-flex h-10 items-center rounded-full bg-gold-500 px-4 text-[13px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
+                  <a href={SIGNUP_URL} className="mt-4 inline-flex h-10 items-center rounded-full bg-gold-500 px-4 text-[13px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
                     Start your job hunt
                   </a>
                 </div>
@@ -215,7 +215,7 @@ export default async function PostPage({ params }) {
                       </li>
                     ))}
                   </ul>
-                  <a href={APP_URL} className="relative mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-gold-500 text-[14px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
+                  <a href={SIGNUP_URL} className="relative mt-6 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-gold-500 text-[14px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
                     {OFFER.ctaLong}
                     <Icon name="arrow" className="h-4 w-4" strokeWidth={2.4} />
                   </a>

@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { STEPS, HOW, APP_URL, OFFER } from '@/content/site';
+import { STEPS, HOW, OFFER, SIGNUP_URL } from '@/content/site';
 import Button from '@/components/Button';
 import CreativeHeading from '@/components/CreativeHeading';
 
@@ -343,7 +343,7 @@ export default function HowItWorks() {
         <div className="mx-auto mt-16 flex max-w-3xl flex-col items-center text-center sm:mt-24">
           <p className="font-display text-[clamp(1.4rem,1rem+1.4vw,2.2rem)] font-bold leading-tight tracking-[-0.03em] text-ink-950">{HOW.leadIn}</p>
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
-            <Button href={APP_URL} magnetic={false}>
+            <Button href={SIGNUP_URL} magnetic={false}>
               {OFFER.ctaLong}
             </Button>
             <Button href="#demo" variant="outline-dark" arrow={false} magnetic={false}>

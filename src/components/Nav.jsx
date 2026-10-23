@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useLenis } from 'lenis/react';
 import { gsap, useGSAP, onIntroDone } from '@/lib/gsap';
 import { Icon } from '@/components/icons';
-import { MENU, APP_URL, OFFER, CHANNELS, PRICING } from '@/content/site';
+import { MENU, OFFER, CHANNELS, PRICING, SIGNUP_URL } from '@/content/site';
 
 /*
  * Sitewide header (Navigation and Menu Spec v2): a floating, rounded glass bar with the Features
@@ -304,7 +304,7 @@ export default function Nav() {
           </div>
 
           <div className="mt-auto pt-10">
-            <a data-m-fade href={APP_URL} className="group flex h-14 items-center justify-between rounded-full bg-gold-500 pl-6 pr-2 text-[16px] font-bold text-ink-950">
+            <a data-m-fade href={SIGNUP_URL} className="group flex h-14 items-center justify-between rounded-full bg-gold-500 pl-6 pr-2 text-[16px] font-bold text-ink-950">
               {OFFER.ctaLong}
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-gold-400 transition-transform duration-500 group-hover:-rotate-45" aria-hidden="true">
                 <Icon name="arrow" className="h-4 w-4" strokeWidth={2.4} />
@@ -326,8 +326,8 @@ export default function Nav() {
             mobile
               ? 'border-white bg-white shadow-[0_18px_44px_-20px_rgba(0,0,0,0.6)]'
               : raised
-              ? 'border-ink-900/[0.08] bg-white/[0.88] shadow-[0_18px_44px_-24px_rgba(26,15,51,0.35)] backdrop-blur-xl'
-              : 'border-white/70 bg-white/55 shadow-[0_10px_30px_-24px_rgba(26,15,51,0.3)] backdrop-blur-md'
+              ? 'border-ink-900/[0.08] bg-white/[0.97] shadow-[0_18px_44px_-24px_rgba(26,15,51,0.35)]'
+              : 'border-white/70 bg-white/[0.82] shadow-[0_10px_30px_-24px_rgba(26,15,51,0.3)]'
           }`}
         >
           <Link href="/" aria-label="JobHunter by SuperMIA, home" className="flex shrink-0 items-center">
@@ -393,59 +393,93 @@ export default function Nav() {
                       </div>
                     </div>
                   </div>
+                  {/* Footer: the hub as the main action, then the two secondary links, all on one line */}
                   <div className={footStrip}>
-                    <span className="flex items-center gap-2 text-[12.5px] text-ink-900/55">
-                      <Icon name="shield" className="h-4 w-4 text-brand-500" strokeWidth={1.8} />
-                      {OFFER.control}
-                    </span>
-                    <span className="flex items-center gap-5">
-                      {MENU.features.footer.map((l) => (
-                        <Link key={l.href} href={l.href} onClick={close} className="group/l inline-flex items-center gap-1.5 text-[13px] font-semibold text-ink-950 hover:text-brand-700">
-                          {l.href.includes('demo') && (
-                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-950 text-gold-400">
-                              <Icon name="play" className="ml-px h-2.5 w-2.5" />
-                            </span>
-                          )}
+                    {MENU.features.footer
+                      .filter((l) => l.href === '/features')
+                      .map((l) => (
+                        <Link key={l.href} href={l.href} onClick={close} className="group/l inline-flex items-center gap-2.5 whitespace-nowrap rounded-full bg-brand-950 py-1.5 pl-4 pr-1.5 text-[13px] font-semibold text-white transition-colors hover:bg-brand-800">
                           {l.label}
-                          {!l.href.includes('demo') && <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover/l:translate-x-0.5" strokeWidth={2.2} />}
+                          <span className="text-white/45">· 4 tools, one plan</span>
+                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gold-400 text-ink-950 transition-transform group-hover/l:translate-x-0.5" aria-hidden="true">
+                            <Icon name="arrow" className="h-3 w-3" strokeWidth={2.4} />
+                          </span>
                         </Link>
                       ))}
+                    <span className="flex items-center gap-5">
+                      {MENU.features.footer
+                        .filter((l) => l.href !== '/features')
+                        .map((l) => (
+                          <Link key={l.href} href={l.href} onClick={close} className="group/l inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink-950 hover:text-brand-700">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-light-lavender text-brand-700 group-hover/l:bg-brand-950 group-hover/l:text-gold-400">
+                              <Icon name={l.href.includes('demo') ? 'play' : 'layers'} className="h-2.5 w-2.5" />
+                            </span>
+                            {l.label}
+                          </Link>
+                        ))}
                     </span>
                   </div>
                 </div>
               </li>
 
-              {/* Who It's For: the group photo with the promise, then the five audiences in two columns */}
-              <li id="nav-panel-audiences" className={`${panelShell} w-[760px] ${panelState(menu === 'audiences')}`} onMouseEnter={openOn('audiences')}>
-                <div className={`${panelCard} grid grid-cols-[220px_minmax(0,1fr)]`}>
-                  <div className="relative m-2 overflow-hidden rounded-[14px] bg-brand-950">
-                    <Image src="/images/community-group.jpg" alt="" fill sizes="220px" className="object-cover object-[50%_60%] opacity-80" />
-                    <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/55 to-transparent" />
-                    <span className="absolute inset-x-0 bottom-0 p-4">
-                      <span className="block font-display text-[16px] font-bold leading-snug text-white">One plan for any role</span>
-                      <span className="mt-1.5 block text-[12.5px] leading-snug text-white/70">Find the right jobs, apply with a resume that fits, practice until you are ready.</span>
-                    </span>
-                  </div>
-                  <div className="px-5 pb-4 pt-5">
-                    <GroupLabel>Built for</GroupLabel>
-                    <div className="grid grid-cols-2 gap-x-3 gap-y-1">
-                      {MENU.audiences.items.map((item) => (
-                        <MenuLink key={item.href} item={item} pathname={pathname} onPick={close} />
+              {/* Who It's For: a dark "one plan" panel (no photo), then the five audiences as one clean list */}
+              <li id="nav-panel-audiences" className={`${panelShell} w-[700px] ${panelState(menu === 'audiences')}`} onMouseEnter={openOn('audiences')}>
+                <div className={`${panelCard} grid grid-cols-[250px_minmax(0,1fr)]`}>
+                  <div className="relative m-2 flex flex-col overflow-hidden rounded-[14px] bg-brand-950 p-5 text-white">
+                    <span aria-hidden="true" className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[radial-gradient(closest-side,rgba(244,180,0,0.28),transparent)]" />
+                    <span className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-300">One plan for any role</span>
+                    <ol className="relative mt-4 space-y-3.5">
+                      {[
+                        ['search', 'Find the right jobs'],
+                        ['doc', 'Apply with a resume that fits'],
+                        ['mic', 'Practice until you are ready'],
+                      ].map(([icon, label], i) => (
+                        <li key={label} className="flex items-center gap-3">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.08] text-gold-300 ring-1 ring-white/10">
+                            <Icon name={icon} className="h-4 w-4" strokeWidth={1.9} />
+                          </span>
+                          <span className="text-[13.5px] font-semibold leading-snug text-white/90">
+                            <span className="mr-1 text-white/40">0{i + 1}</span>
+                            {label}
+                          </span>
+                        </li>
                       ))}
-                      <Link
-                        href={MENU.audiences.aside.link.href}
-                        onClick={close}
-                        className="group/q -mx-0.5 flex items-center justify-between gap-3 rounded-xl bg-[#f6f4fb] px-3.5 py-3 transition-colors hover:bg-brand-950"
-                      >
-                        <span>
-                          <span className="block text-[12.5px] text-ink-900/55 transition-colors group-hover/q:text-white/60">Not sure which fits?</span>
-                          <span className="mt-0.5 block text-[14px] font-semibold text-ink-950 transition-colors group-hover/q:text-gold-300">{MENU.audiences.aside.link.label}</span>
-                        </span>
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-ink-950 shadow-[0_1px_2px_rgba(26,15,51,0.1)] transition-colors group-hover/q:bg-gold-400">
-                          <Icon name="arrow" className="h-3.5 w-3.5" strokeWidth={2.2} />
-                        </span>
-                      </Link>
-                    </div>
+                    </ol>
+                    <Link
+                      href={MENU.audiences.aside.link.href}
+                      onClick={close}
+                      className="group/q relative mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4 text-[13px] font-semibold text-white/75 transition-colors hover:text-gold-300"
+                    >
+                      Not sure which fits? {MENU.audiences.aside.link.label}
+                      <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover/q:translate-x-0.5" strokeWidth={2.2} />
+                    </Link>
+                  </div>
+                  <div className="px-4 pb-3 pt-4">
+                    <GroupLabel>Built for</GroupLabel>
+                    <ul className="divide-y divide-ink-900/[0.06]">
+                      {MENU.audiences.items.map((item) => {
+                        const current = matches(pathname, item.href);
+                        return (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={close}
+                              aria-current={current ? 'page' : undefined}
+                              className={`group/a -mx-2 flex items-center gap-3.5 rounded-xl px-2 py-2.5 transition-colors hover:bg-[#f6f4fb] ${current ? 'bg-[#f6f4fb]' : ''}`}
+                            >
+                              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-950 text-gold-400 transition-transform duration-200 group-hover/a:-rotate-6">
+                                <Icon name={item.icon} className="h-[17px] w-[17px]" strokeWidth={1.9} />
+                              </span>
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-[14px] font-semibold leading-tight text-ink-950">{item.label}</span>
+                                <span className="mt-0.5 block truncate text-[12.5px] text-ink-900/55">{item.desc}</span>
+                              </span>
+                              <Icon name="arrow" className="h-4 w-4 shrink-0 -translate-x-1 text-brand-600 opacity-0 transition-[opacity,transform] duration-200 group-hover/a:translate-x-0 group-hover/a:opacity-100" strokeWidth={2.2} />
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </div>
                 </div>
               </li>
@@ -457,7 +491,7 @@ export default function Nav() {
               {MENU.login.label}
             </a>
             <a
-              href={APP_URL}
+              href={SIGNUP_URL}
               className="group hidden h-10 items-center gap-1.5 whitespace-nowrap rounded-[14px] sm:inline-flex bg-gold-500 px-3.5 text-[13px] font-semibold text-ink-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_16px_-10px_rgba(180,120,0,0.9)] transition-colors duration-200 hover:bg-gold-400 sm:h-11 sm:px-5 sm:text-[14.5px]"
             >
               {OFFER.cta}

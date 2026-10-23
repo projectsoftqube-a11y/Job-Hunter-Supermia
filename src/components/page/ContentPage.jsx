@@ -25,10 +25,10 @@ export default function ContentPage({ page, trail }) {
       {faqs?.items?.length > 0 && (
         <section id="faqs" aria-labelledby="faqs-title" className={`relative scroll-mt-24 py-20 sm:py-28 ${sections.length % 2 === 0 ? 'bg-white' : 'bg-light-lavender'}`}>
           <div className="container-x grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-4">
+            <div className="min-w-0 lg:col-span-5">
               <div className="lg:sticky lg:top-28">
                 <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-brand-500">Questions</p>
-                <CreativeHeading id="faqs-title" lines={faqs.h2} className="font-display text-[clamp(1.85rem,1.2rem+2.2vw,3.2rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-ink-950" />
+                <CreativeHeading id="faqs-title" lines={faqs.h2} className="font-display text-[clamp(1.85rem,1.2rem+1.9vw,2.9rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-ink-950" />
                 {faqs.intro && (
                   <p className="mt-5 text-lead font-medium text-ink-900/70">
                     <Rich text={faqs.intro} />
@@ -39,7 +39,7 @@ export default function ContentPage({ page, trail }) {
                 </p>
               </div>
             </div>
-            <div className="lg:col-span-8">
+            <div className="min-w-0 lg:col-span-7">
               <FaqList items={faqs.items} idPrefix={`${page.slug}-faq`} />
             </div>
           </div>

@@ -180,7 +180,7 @@ const post = {
     },
     {
       type: 'product',
-      text: 'Practicing alone has one gap: nobody asks the follow-up. The [AI mock interview](/ai-mock-interview) in JobHunter by SuperMIA asks it out loud. Choose the Practical & Behavioral round (or HR & Introduction, Role & Knowledge, or Managerial & Final), pick guided practice with hints or the strict real simulation, and tell your STAR stories as you would in the room. Follow-up questions are based on your level, your resume and the job. Afterward you get an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, your strengths, your gaps and the topics to practice next.',
+      text: 'Practicing alone has one gap: nobody asks the follow-up. The [AI mock interview](/features/ai-mock-interview) in JobHunter by SuperMIA asks it out loud. Choose the Practical & Behavioral round (or HR & Introduction, Role & Knowledge, or Managerial & Final), pick guided practice with hints or the strict real simulation, and tell your STAR stories as you would in the room. Follow-up questions are based on your level, your resume and the job. Afterward you get an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, your strengths, your gaps and the topics to practice next.',
     },
 
     { type: 'h2', id: 'checklist', text: 'A quick checklist before your behavioral interview' },

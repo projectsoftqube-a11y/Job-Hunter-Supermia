@@ -296,7 +296,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'Practicing alone has one problem: nobody asks the follow-up. An [AI mock interview in JobHunter](/ai-mock-interview) does. You pick one of four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, or Managerial & Final) and answer out loud in a live voice session. The AI interviewer asks follow-up questions based on your level, your resume and the job.',
+          text: 'Practicing alone has one problem: nobody asks the follow-up. An [AI mock interview in JobHunter](/features/ai-mock-interview) does. You pick one of four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, or Managerial & Final) and answer out loud in a live voice session. The AI interviewer asks follow-up questions based on your level, your resume and the job.',
         },
         {
           type: 'list',
@@ -347,7 +347,7 @@ const page = {
   },
   related: [
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'Rehearse any of the four rounds out loud and get a 0-10 readiness score.',
     },

@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
-import { PROBLEM, APP_URL, OFFER } from '@/content/site';
+import { PROBLEM, OFFER, SIGNUP_URL } from '@/content/site';
 import CreativeHeading from '@/components/CreativeHeading';
 
 /*
@@ -280,7 +280,7 @@ export default function Problem() {
                       <span className="block h-full w-[78%] rounded-full bg-gradient-to-r from-brand-400 to-gold-400" />
                     </span>
                   </div>
-                  <a href={APP_URL} className="flex h-12 shrink-0 items-center gap-2 rounded-full bg-gold-500 px-5 text-sm font-bold text-ink-950 transition-colors hover:bg-gold-300">
+                  <a href={SIGNUP_URL} className="flex h-12 shrink-0 items-center gap-2 rounded-full bg-gold-500 px-5 text-sm font-bold text-ink-950 transition-colors hover:bg-gold-300">
                     {OFFER.ctaLong}
                     <span aria-hidden="true">→</span>
                   </a>

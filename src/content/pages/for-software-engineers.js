@@ -35,7 +35,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: '[JobHunter](/) runs one search across LinkedIn, Indeed and Dice. Dice tech jobs come back in the same search as LinkedIn and Indeed roles, each ranked by how well it fits your resume. Here is how [AI job match](/ai-job-match) ranks them.',
+          text: '[JobHunter](/) runs one search across LinkedIn, Indeed and Dice. Dice tech jobs come back in the same search as LinkedIn and Indeed roles, each ranked by how well it fits your resume. Here is how [AI job match](/features/ai-job-match) ranks them.',
         },
         {
           type: 'cards',
@@ -75,7 +75,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'Pick a role and the [resume match score](/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first. Use it to decide which roles deserve a tailored resume and which to skip. It is a guide to where to focus, not a prediction of a hiring decision.',
+          text: 'Pick a role and the [resume match score](/features/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first. Use it to decide which roles deserve a tailored resume and which to skip. It is a guide to where to focus, not a prediction of a hiring decision.',
         },
         {
           type: 'list',
@@ -123,7 +123,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'The other three rounds are there too: HR & Introduction, Practical & Behavioral, and Managerial & Final. For the behavioral side, read this guide to [behavioral interview practice](/blog/behavioral-interview-practice). Start an [AI mock interview](/ai-mock-interview) in guided practice, where the AI interviewer gives you hints, then switch to the strict real simulation when you want a true test.',
+          text: 'The other three rounds are there too: HR & Introduction, Practical & Behavioral, and Managerial & Final. For the behavioral side, read this guide to [behavioral interview practice](/blog/behavioral-interview-practice). Start an [AI mock interview](/features/ai-mock-interview) in guided practice, where the AI interviewer gives you hints, then switch to the strict real simulation when you want a true test.',
         },
       ],
     },
@@ -193,12 +193,12 @@ const page = {
   },
   related: [
     {
-      href: '/ai-job-match',
+      href: '/features/ai-job-match',
       title: 'AI Job Match',
       text: 'How one search ranks roles from LinkedIn, Indeed and Dice.',
     },
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'All four rounds, both practice modes and the full scorecard.',
     },

@@ -74,7 +74,7 @@ export default function Trust() {
 
             {/* Handoff mock: the AI's steps end at a Send button that waits for you */}
             <div aria-hidden="true" className="relative min-w-0">
-              <div className="rounded-[28px] bg-white/[0.04] p-4 ring-1 ring-white/10 backdrop-blur-sm sm:p-6">
+              <div className="rounded-[28px] bg-white/[0.04] p-4 ring-1 ring-white/10 sm:p-6">
                 <div className="flex items-center justify-between px-1">
                   <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-200">
                     <Icon name="spark" className="h-4 w-4 text-brand-300" />

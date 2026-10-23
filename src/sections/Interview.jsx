@@ -327,7 +327,7 @@ export default function Interview() {
 
           <p className="mx-auto mt-8 flex max-w-[60rem] flex-col items-center justify-center gap-2 text-center text-[15.5px] font-medium text-white/75 sm:flex-row sm:flex-wrap">
             {INTERVIEW.reassure}
-            <Link href="/ai-mock-interview" className="inline-flex items-center gap-1.5 font-semibold text-gold-300 underline decoration-gold-300/40 underline-offset-4 hover:decoration-gold-300">
+            <Link href="/features/ai-mock-interview" className="inline-flex items-center gap-1.5 font-semibold text-gold-300 underline decoration-gold-300/40 underline-offset-4 hover:decoration-gold-300">
               How the AI mock interview works
               <Icon name="arrow" className="h-4 w-4" strokeWidth={2.2} />
             </Link>

@@ -7,6 +7,8 @@
  */
 
 export const APP_URL = 'https://app.jobhunter.supermia.ai';
+// Every "Start your job hunt" style button goes to sign-up; Log in keeps APP_URL
+export const SIGNUP_URL = 'https://app.jobhunter.supermia.ai/signup';
 export const PRIVACY_URL = '/privacy-policy';
 export const TERMS_URL = '/terms-and-conditions';
 export const PARENT_URL = 'https://supermia.ai';
@@ -53,24 +55,25 @@ export const MENU = {
     columns: [
       {
         title: 'Find jobs',
-        items: [{ label: 'AI Job Match', desc: 'LinkedIn, Indeed and Dice in one search, ranked by fit', href: '/ai-job-match', icon: 'search' }],
+        items: [{ label: 'AI Job Match', desc: 'LinkedIn, Indeed and Dice in one search, ranked by fit', href: '/features/ai-job-match', icon: 'search' }],
       },
       {
         title: 'Apply',
         items: [
-          { label: 'Resume Job Match', desc: 'Your match score and missing skills for one job', href: '/resume-job-match', icon: 'target' },
-          { label: 'Application Email Writer', desc: 'A note for every role, ready for you to send', href: '/job-application-email', icon: 'mail' },
+          { label: 'Resume Job Match', desc: 'Your match score and missing skills for one job', href: '/features/resume-job-match', icon: 'target' },
+          { label: 'Application Email Writer', desc: 'A note for every role, ready for you to send', href: '/features/job-application-email', icon: 'mail' },
         ],
       },
       {
         title: 'Practice',
         items: [
-          { label: 'AI Mock Interview', desc: 'Four rounds, out loud, with follow-up questions', href: '/ai-mock-interview', icon: 'mic' },
-          { label: 'Interview Scorecard', desc: 'Readiness score 0-10 and what to practice next', href: '/ai-mock-interview#scorecard', icon: 'chart' },
+          { label: 'AI Mock Interview', desc: 'Four rounds, out loud, with follow-up questions', href: '/features/ai-mock-interview', icon: 'mic' },
+          { label: 'Interview Scorecard', desc: 'Readiness score 0-10 and what to practice next', href: '/features/ai-mock-interview#scorecard', icon: 'chart' },
         ],
       },
     ],
     footer: [
+      { label: 'All features', href: '/features' },
       { label: 'How it works', href: '/#how' },
       { label: 'Watch the 47-second demo', href: '/#demo' },
     ],
@@ -130,13 +133,14 @@ export const FOOTER = [
   {
     title: 'Product',
     links: [
-      { label: 'AI Job Match', href: '/ai-job-match' },
-      { label: 'Resume Job Match', href: '/resume-job-match' },
-      { label: 'Application Email Writer', href: '/job-application-email' },
-      { label: 'AI Mock Interview', href: '/ai-mock-interview' },
+      { label: 'All Features', href: '/features' },
+      { label: 'AI Job Match', href: '/features/ai-job-match' },
+      { label: 'Resume Job Match', href: '/features/resume-job-match' },
+      { label: 'Application Email Writer', href: '/features/job-application-email' },
+      { label: 'AI Mock Interview', href: '/features/ai-mock-interview' },
       { label: 'How It Works', href: '/#how' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Start your job hunt', href: APP_URL },
+      { label: 'Start your job hunt', href: SIGNUP_URL },
     ],
   },
   {
@@ -213,7 +217,7 @@ export const FEATURES = [
     id: 'discover',
     index: '01',
     title: '1. Three job boards, one search',
-    body: 'Search LinkedIn, Indeed and Dice at once. Each role comes back ranked by how well it fits your resume, with the recruiter contact when it is public. See how [AI job match](/ai-job-match) works.',
+    body: 'Search LinkedIn, Indeed and Dice at once. Each role comes back ranked by how well it fits your resume, with the recruiter contact when it is public. See how [AI job match](/features/ai-job-match) works.',
     image: '/images/discovery-cafe.jpg',
     alt: 'Job seeker reviewing matched jobs from LinkedIn, Indeed and Dice in a cafe',
     mock: 'jobs',
@@ -222,7 +226,7 @@ export const FEATURES = [
     id: 'ats',
     index: '02',
     title: '2. Know your match score before you apply',
-    body: "See how your resume reads against a specific job: an ATS match score out of 100, the skills you are missing, and what to fix first. It is a guide to where to focus for that job, not a prediction of how an employer's system will rank you. Here is how the [resume match score](/resume-job-match) works.",
+    body: "See how your resume reads against a specific job: an ATS match score out of 100, the skills you are missing, and what to fix first. It is a guide to where to focus for that job, not a prediction of how an employer's system will rank you. Here is how the [resume match score](/features/resume-job-match) works.",
     image: '/images/resume-editing.jpg',
     alt: 'Job seeker editing a resume next to a highlighted printed copy',
     mock: 'ats',
@@ -231,7 +235,7 @@ export const FEATURES = [
     id: 'mail',
     index: '03',
     title: '3. An application email written for that job',
-    body: 'JobHunter drafts a short, specific email for the role and the recruiter, ready for you to copy, edit and send yourself. See the [job application email writer](/job-application-email).',
+    body: 'JobHunter drafts a short, specific email for the role and the recruiter, ready for you to copy, edit and send yourself. See the [job application email writer](/features/job-application-email).',
     image: null,
     alt: '',
     mock: 'mail',
@@ -240,7 +244,7 @@ export const FEATURES = [
     id: 'interview',
     index: '04',
     title: '4. Rehearse out loud with an AI interviewer',
-    body: 'A live voice interview set to your level, your resume and the job. Pick a round, answer naturally, and get the kind of follow-up questions a real panel asks. Try an [AI mock interview](/ai-mock-interview).',
+    body: 'A live voice interview set to your level, your resume and the job. Pick a round, answer naturally, and get the kind of follow-up questions a real panel asks. Try an [AI mock interview](/features/ai-mock-interview).',
     image: '/images/feature-interview.jpg',
     alt: 'Candidate answering a practice interview question out loud at a laptop',
     mock: 'voice',

@@ -147,7 +147,7 @@ const post = {
     },
     {
       type: 'product',
-      text: 'If you want a partner that asks the follow-ups and does the scoring, try the [AI mock interview](/ai-mock-interview) in JobHunter by SuperMIA. Pick one of four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, or Managerial & Final), choose guided practice with hints or the strict real simulation, and answer out loud. The AI interviewer asks follow-up questions based on your level, your resume and the job. Each session ends with an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, and the topics to practice next.',
+      text: 'If you want a partner that asks the follow-ups and does the scoring, try the [AI mock interview](/features/ai-mock-interview) in JobHunter by SuperMIA. Pick one of four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, or Managerial & Final), choose guided practice with hints or the strict real simulation, and answer out loud. The AI interviewer asks follow-up questions based on your level, your resume and the job. Each session ends with an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, and the topics to practice next.',
     },
 
     { type: 'h2', id: 'what-to-fix', text: 'What to fix after each practice session' },

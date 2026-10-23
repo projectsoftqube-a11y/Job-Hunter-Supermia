@@ -107,7 +107,7 @@ export default function CreativeHeading({ as: Tag = 'h2', id, lines: input, tone
       {lines.map((parts, i) => {
         const underlined = parts.some((p) => p?.swoosh);
         return (
-          <span key={i} className={`block overflow-hidden ${underlined ? '-mb-[0.22em] pb-[0.3em]' : 'pb-[0.08em]'}`}>
+          <span key={i} className={`-mx-[0.08em] block overflow-hidden px-[0.08em] ${underlined ? '-mb-[0.22em] pb-[0.3em]' : 'pb-[0.08em]'}`}>
             <span data-ch-line className="inline-block">
               {parts.map((p, j) => (
                 <Part key={j} part={p} tone={tone} />

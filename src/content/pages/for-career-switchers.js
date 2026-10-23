@@ -68,7 +68,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'Pick a job and the [resume match score](/resume-job-match) rates your resume against it out of 100, as an ATS match score for that specific job. You see the reasoning, the skills you are missing and what to fix first. That shows which of your skills already carry over and which gaps to close before you apply. It is a guide to where to focus, not a prediction of a hiring decision.',
+          text: 'Pick a job and the [resume match score](/features/resume-job-match) rates your resume against it out of 100, as an ATS match score for that specific job. You see the reasoning, the skills you are missing and what to fix first. That shows which of your skills already carry over and which gaps to close before you apply. It is a guide to where to focus, not a prediction of a hiring decision.',
         },
         {
           type: 'steps',
@@ -155,7 +155,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'Rehearse it in an [AI mock interview](/ai-mock-interview). The live voice interview is set to your level, your resume and the job, and the AI interviewer asks follow-up questions, so you practice the second answer, not just the first. Start with the HR & Introduction round, where the why question usually comes up. Then try Role & Knowledge, which typically tests the skills and tools in the job description, right where the gaps show.',
+          text: 'Rehearse it in an [AI mock interview](/features/ai-mock-interview). The live voice interview is set to your level, your resume and the job, and the AI interviewer asks follow-up questions, so you practice the second answer, not just the first. Start with the HR & Introduction round, where the why question usually comes up. Then try Role & Knowledge, which typically tests the skills and tools in the job description, right where the gaps show.',
         },
         {
           type: 'callout',
@@ -190,12 +190,12 @@ const page = {
   },
   related: [
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'How the match score, reasoning and missing skills list work.',
     },
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'Practice all four rounds out loud, guided or strict.',
     },

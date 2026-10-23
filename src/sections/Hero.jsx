@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK, onIntroDone } from '@/lib/gsap';
 import Button from '@/components/Button';
 import { Waveform } from '@/components/mocks';
-import { HERO, CHANNELS, APP_URL, OFFER } from '@/content/site';
+import { HERO, CHANNELS, OFFER, SIGNUP_URL } from '@/content/site';
 
 /*
  * The bento tiles are product UI drawn in code. The jobs, people and emails inside them are
@@ -313,7 +313,7 @@ export default function Hero() {
         <p data-fade className="mx-auto mt-4 max-w-[60rem] text-[15px] font-semibold text-ink-900/55">{HERO.sub2}</p>
 
         <div data-fade className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button href={APP_URL} magnetic={false}>
+          <Button href={SIGNUP_URL} magnetic={false}>
             {OFFER.ctaLong}
           </Button>
           <Button href="#demo" variant="outline-dark" arrow={false} magnetic={false}>

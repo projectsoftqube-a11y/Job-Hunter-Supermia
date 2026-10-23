@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 import Rich from '@/components/Rich';
 import CreativeHeading from '@/components/CreativeHeading';
 import FaqList from '@/components/page/FaqList';
-import { FAQS, FAQ_PREVIEW, APP_URL, OFFER } from '@/content/site';
+import { FAQS, FAQ_PREVIEW, OFFER, SIGNUP_URL } from '@/content/site';
 
 /*
  * Homepage FAQ preview: five questions, every answer in the server HTML (details/summary accordion).
@@ -29,7 +29,7 @@ export default function Faq() {
               <Rich text={FAQ_PREVIEW.sub} />
             </p>
             <div className="mt-8 flex flex-col items-start gap-4">
-              <Button href={APP_URL} variant="ink">
+              <Button href={SIGNUP_URL} variant="ink">
                 {OFFER.ctaLong}
               </Button>
               <Link href="/faq" className="text-[15px] font-bold text-brand-600 underline decoration-brand-200 decoration-2 underline-offset-4 hover:decoration-brand-600">

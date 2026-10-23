@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Icon } from '@/components/icons';
-import { FOOTER, APP_URL, OFFER, PRIVACY_URL, TERMS_URL, PARENT_URL, BROCHURE_URL } from '@/content/site';
+import { FOOTER, OFFER, PRIVACY_URL, TERMS_URL, PARENT_URL, BROCHURE_URL, SIGNUP_URL } from '@/content/site';
 
 const OFFICE = {
   street: '2451 W Grapevine Mills Cir #547',
@@ -92,7 +92,7 @@ export default function Footer() {
               ))}
             </p>
             <div className="relative mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-6">
-              <a href={APP_URL} className="group inline-flex h-14 items-center gap-3 rounded-full bg-gold-500 pl-6 pr-2 font-bold text-ink-950 transition-colors hover:bg-gold-300">
+              <a href={SIGNUP_URL} className="group inline-flex h-14 items-center gap-3 rounded-full bg-gold-500 pl-6 pr-2 font-bold text-ink-950 transition-colors hover:bg-gold-300">
                 {OFFER.ctaLong}
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-950 text-gold-400 transition-transform duration-500 group-hover:-rotate-45" aria-hidden="true">
                   →

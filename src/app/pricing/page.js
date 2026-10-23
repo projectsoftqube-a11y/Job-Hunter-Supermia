@@ -34,7 +34,7 @@ export default function PricingPage() {
           eyebrow="3 plans · prices in US dollars"
           h1={[['JobHunter ', { mark: 'Pricing' }], ['Free, Starter and ', { grad: 'Pro Plans', swoosh: true }]]}
           tagline={`A ${free.name} plan, ${starter.name} at ${starter.price} a month and ${pro.name} at ${pro.price} a month. Every plan includes all four tools.`}
-          lead={`JobHunter by SuperMIA has a ${free.name} plan and two paid plans: ${starter.name} at $${starter.price} a month and ${pro.name} at $${pro.price} a month. Every plan includes AI job search across LinkedIn, Indeed and Dice, ATS match scores, application email drafts and live voice [mock interviews](/ai-mock-interview). The plans differ in how much you can use each month.`}
+          lead={`JobHunter by SuperMIA has a ${free.name} plan and two paid plans: ${starter.name} at $${starter.price} a month and ${pro.name} at $${pro.price} a month. Every plan includes AI job search across LinkedIn, Indeed and Dice, ATS match scores, application email drafts and live voice [mock interviews](/features/ai-mock-interview). The plans differ in how much you can use each month.`}
           points={[`${free.name}: $0 to start`, `${starter.name}: $${starter.price} a month`, `${pro.name}: $${pro.price} a month`]}
         />
 

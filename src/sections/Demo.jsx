@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { gsap, useGSAP, MOTION_OK } from '@/lib/gsap';
 import { FadeUp } from '@/components/Reveal';
 import Button from '@/components/Button';
-import { DEMO, APP_URL, OFFER } from '@/content/site';
+import { DEMO, OFFER, SIGNUP_URL } from '@/content/site';
 import CreativeHeading from '@/components/CreativeHeading';
 
 /*
@@ -242,7 +242,7 @@ export default function Demo() {
           </FadeUp>
 
           <FadeUp className="mt-10">
-            <Button href={APP_URL} variant="ink">
+            <Button href={SIGNUP_URL} variant="ink">
               {OFFER.ctaLong}
             </Button>
           </FadeUp>
@@ -306,7 +306,7 @@ export default function Demo() {
             </div>
 
             {/* Controls */}
-            <div className="mt-5 flex items-center gap-3 rounded-full bg-white/90 p-1.5 pr-4 shadow-[0_20px_40px_-24px_rgba(26,15,51,0.5)] ring-1 ring-hairline backdrop-blur">
+            <div className="mt-5 flex items-center gap-3 rounded-full bg-white/95 p-1.5 pr-4 shadow-[0_20px_40px_-24px_rgba(26,15,51,0.5)] ring-1 ring-hairline">
               <button type="button" onClick={toggle} aria-label={playing ? 'Pause the demo' : 'Play the demo'} className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white transition-colors hover:bg-brand-800">
                 <Icon name={playing ? 'pause' : 'play'} className="h-4 w-4" />
               </button>

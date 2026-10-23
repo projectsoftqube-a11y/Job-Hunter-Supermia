@@ -1,4 +1,4 @@
-import { PAGES, PAGE_BY_SLUG } from '@/content/pages';
+import { TOP_PAGES, PAGE_BY_SLUG } from '@/content/pages';
 import { ogCard, OG_SIZE } from '@/lib/og';
 import { headingText } from '@/lib/text';
 
@@ -9,7 +9,7 @@ export const alt = 'JobHunter by SuperMIA';
 const KICKER = { feature: 'Feature', audience: "Who it's for", resource: 'Resource' };
 
 export function generateStaticParams() {
-  return PAGES.map((p) => ({ slug: p.slug }));
+  return TOP_PAGES.map((p) => ({ slug: p.slug }));
 }
 
 export default async function Image({ params }) {

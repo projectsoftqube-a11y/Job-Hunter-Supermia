@@ -70,7 +70,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'Start with one search across LinkedIn, Indeed and Dice. [JobHunter](/) ranks each role by how well it fits your resume; here is how [AI job match](/ai-job-match) does it. Pick a role and the [resume match score](/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first.',
+          text: 'Start with one search across LinkedIn, Indeed and Dice. [JobHunter](/) ranks each role by how well it fits your resume; here is how [AI job match](/features/ai-job-match) does it. Pick a role and the [resume match score](/features/resume-job-match) gives you an ATS match score for that specific job, out of 100, with the reasoning, the skills you are missing and what to fix first.',
         },
         {
           type: 'p',
@@ -116,7 +116,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'When the version and the role line up, JobHunter drafts a short application email from your resume, written for that job and that recruiter. You edit it, add your portfolio link if you have one, and send it yourself. See the [job application email writer](/job-application-email).',
+          text: 'When the version and the role line up, JobHunter drafts a short application email from your resume, written for that job and that recruiter. You edit it, add your portfolio link if you have one, and send it yourself. See the [job application email writer](/features/job-application-email).',
         },
       ],
     },
@@ -130,7 +130,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'JobHunter does not review your portfolio or dashboards. It gives you practice at the talking part. The [AI mock interview](/ai-mock-interview) is a live voice interview set to your level, your resume and the job you picked, with follow-up questions: the part that catches people off guard.',
+          text: 'JobHunter does not review your portfolio or dashboards. It gives you practice at the talking part. The [AI mock interview](/features/ai-mock-interview) is a live voice interview set to your level, your resume and the job you picked, with follow-up questions: the part that catches people off guard.',
         },
         {
           type: 'p',
@@ -188,12 +188,12 @@ const page = {
   },
   related: [
     {
-      href: '/resume-job-match',
+      href: '/features/resume-job-match',
       title: 'Resume Job Match',
       text: 'How the match score, reasoning and missing skills list work.',
     },
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'Practice all four rounds out loud, guided or strict.',
     },

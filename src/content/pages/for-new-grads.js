@@ -80,7 +80,7 @@ const page = {
       eyebrow: 'Find roles',
       h2: [['Entry Level Job Search:'], ['Find Roles That ', { grad: 'Fit Your Resume', swoosh: true }]],
       intro:
-        'Upload your resume once. [JobHunter](/) reads your skills, experience and level, then runs one search across LinkedIn, Indeed and Dice. Each role comes back ranked by how well it fits your resume, with the recruiter contact when it is public. Here is how [AI job match](/ai-job-match) ranks the results.',
+        'Upload your resume once. [JobHunter](/) reads your skills, experience and level, then runs one search across LinkedIn, Indeed and Dice. Each role comes back ranked by how well it fits your resume, with the recruiter contact when it is public. Here is how [AI job match](/features/ai-job-match) ranks the results.',
       blocks: [
         {
           type: 'steps',
@@ -107,7 +107,7 @@ const page = {
           type: 'callout',
           tone: 'success',
           title: 'Little experience? The score still helps.',
-          text: 'The [resume match score](/resume-job-match) compares what your resume shows with what the job asks for, so list your projects, internships and coursework clearly. The reasoning behind each score shows which skills you can already show, not just the ones you are missing. It is a guide to where to focus, not a prediction of a hiring decision.',
+          text: 'The [resume match score](/features/resume-job-match) compares what your resume shows with what the job asks for, so list your projects, internships and coursework clearly. The reasoning behind each score shows which skills you can already show, not just the ones you are missing. It is a guide to where to focus, not a prediction of a hiring decision.',
         },
       ],
     },
@@ -162,7 +162,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'After each session your scorecard shows an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, your strengths, your gaps and the topics to practice next. Try an [AI mock interview](/ai-mock-interview) for the job you want most, and for a weekly routine read [how to practice for an interview](/blog/how-to-practice-for-an-interview).',
+          text: 'After each session your scorecard shows an overall readiness score from 0 to 10, scores for clarity, confidence and technical depth, your strengths, your gaps and the topics to practice next. Try an [AI mock interview](/features/ai-mock-interview) for the job you want most, and for a weekly routine read [how to practice for an interview](/blog/how-to-practice-for-an-interview).',
         },
       ],
     },
@@ -175,7 +175,7 @@ const page = {
       blocks: [
         {
           type: 'p',
-          text: 'For each role, JobHunter drafts a short application email from your resume, written for that job and that recruiter. You copy it, edit it so it sounds like you, and send it yourself. It never applies or sends anything without you. See how the [job application email writer](/job-application-email) works.',
+          text: 'For each role, JobHunter drafts a short application email from your resume, written for that job and that recruiter. You copy it, edit it so it sounds like you, and send it yourself. It never applies or sends anything without you. See how the [job application email writer](/features/job-application-email) works.',
         },
         {
           type: 'list',
@@ -213,12 +213,12 @@ const page = {
   },
   related: [
     {
-      href: '/ai-job-match',
+      href: '/features/ai-job-match',
       title: 'AI Job Match',
       text: 'How one search across three job boards ranks roles by fit.',
     },
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'The four rounds, both practice modes and the scorecard in detail.',
     },

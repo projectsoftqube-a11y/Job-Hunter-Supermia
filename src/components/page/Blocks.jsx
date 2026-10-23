@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Rich from '@/components/Rich';
 import { Icon } from '@/components/icons';
-import { APP_URL } from '@/content/site';
+import { SIGNUP_URL } from '@/content/site';
 
 /*
  * Renders content blocks from the page and blog modules (see the content spec): paragraphs, lists,
@@ -190,7 +190,7 @@ function Product({ text }) {
         <Rich text={text} tone="dark" />
       </p>
       <div className="relative mt-5 flex flex-wrap items-center gap-4">
-        <a href={APP_URL} className="inline-flex h-11 items-center gap-2 rounded-full bg-gold-500 pl-5 pr-1.5 text-[14px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
+        <a href={SIGNUP_URL} className="inline-flex h-11 items-center gap-2 rounded-full bg-gold-500 pl-5 pr-1.5 text-[14px] font-bold text-ink-950 transition-colors hover:bg-gold-300">
           Start your job hunt
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink-950 text-gold-400" aria-hidden="true">
             <Icon name="arrow" className="h-4 w-4" strokeWidth={2.4} />

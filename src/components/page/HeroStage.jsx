@@ -40,7 +40,7 @@ export default function HeroStage({ as: Tag = 'section', children, tiles = false
                 className={`pointer-events-none absolute z-[1] hidden xl:block ${t.pos}`}
               >
                 <span
-                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.06] text-gold-300 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 backdrop-blur-sm motion-safe:animate-[floaty_7s_ease-in-out_infinite] ${t.rot}`}
+                  className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-white/[0.06] text-gold-300 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.6)] ring-1 ring-white/10 motion-safe:animate-[floaty_7s_ease-in-out_infinite] ${t.rot}`}
                   style={{ animationDelay: t.delay }}
                 >
                   <Icon name={icons[i] || t.icon} className="h-7 w-7" strokeWidth={1.8} />

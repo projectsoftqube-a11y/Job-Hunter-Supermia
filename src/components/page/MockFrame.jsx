@@ -20,8 +20,8 @@ export default function MockFrame({ name, className = '', caption = true, tone =
   if (!Mock) return null;
   return (
     <figure className={`relative ${className}`}>
-      <div aria-hidden="true" className="absolute -inset-6 rounded-[48px] bg-[radial-gradient(closest-side,rgba(155,127,212,0.45),transparent)] blur-2xl" />
-      <div className={`relative overflow-hidden rounded-[30px] p-4 ring-1 sm:p-8 ${dark ? 'bg-white/[0.05] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.7)] ring-white/12 backdrop-blur-sm' : 'bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 shadow-[0_50px_100px_-40px_rgba(26,15,51,0.8)] ring-white/10'}`}>
+      <div aria-hidden="true" className="absolute -inset-6 rounded-[48px] bg-[radial-gradient(closest-side,rgba(155,127,212,0.38),transparent)]" />
+      <div className={`relative overflow-hidden rounded-[30px] p-4 ring-1 sm:p-8 ${dark ? 'bg-white/[0.05] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.7)] ring-white/12' : 'bg-gradient-to-br from-brand-700 via-brand-800 to-brand-950 shadow-[0_50px_100px_-40px_rgba(26,15,51,0.8)] ring-white/10'}`}>
         <div aria-hidden="true" className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at 80% 10%, rgba(244,180,0,0.5), transparent 55%)' }} />
         <div className="relative mx-auto w-full max-w-[500px]">
           <Mock />

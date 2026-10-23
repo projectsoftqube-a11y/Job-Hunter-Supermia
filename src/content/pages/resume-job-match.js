@@ -1,6 +1,6 @@
 const page = {
   slug: 'resume-job-match',
-  path: '/resume-job-match',
+  path: '/features/resume-job-match',
   kind: 'feature',
   label: 'Resume Job Match',
   seo: {
@@ -141,7 +141,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'When the match looks strong, the next step is the note that goes with your application. JobHunter drafts a [job application email](/job-application-email) for that role from your resume, and you edit it and send it yourself.',
+          text: 'When the match looks strong, the next step is the note that goes with your application. JobHunter drafts a [job application email](/features/job-application-email) for that role from your resume, and you edit it and send it yourself.',
         },
       ],
     },
@@ -174,7 +174,7 @@ const page = {
   },
   related: [
     {
-      href: '/ai-job-match',
+      href: '/features/ai-job-match',
       title: 'AI Job Match',
       text: 'Search LinkedIn, Indeed and Dice at once and see every role ranked by fit.',
     },
@@ -184,7 +184,7 @@ const page = {
       text: 'A step-by-step method for tailoring your resume to any posting.',
     },
     {
-      href: '/ai-mock-interview',
+      href: '/features/ai-mock-interview',
       title: 'AI Mock Interview',
       text: 'Once the resume fits, rehearse the interview out loud and get a readiness score.',
     },

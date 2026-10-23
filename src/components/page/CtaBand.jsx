@@ -2,7 +2,7 @@ import Link from 'next/link';
 import CreativeHeading from '@/components/CreativeHeading';
 import Rich from '@/components/Rich';
 import { Icon } from '@/components/icons';
-import { APP_URL, OFFER } from '@/content/site';
+import { OFFER, SIGNUP_URL } from '@/content/site';
 
 /**
  * Closing call to action on inner pages: light band (so it reads apart from the dark footer) with the page's final H2, one line of copy, the
@@ -31,7 +31,7 @@ export default function CtaBand({ h2, text, secondary = { label: OFFER.demo, hre
           </p>
         )}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href={APP_URL} className="group relative isolate inline-flex h-16 items-center gap-3 overflow-hidden rounded-full bg-gold-500 pl-8 pr-2 text-base font-bold text-ink-950 transition-colors duration-500 hover:text-white shadow-[0_20px_50px_-18px_rgba(244,180,0,0.9)]">
+          <a href={SIGNUP_URL} className="group relative isolate inline-flex h-16 items-center gap-3 overflow-hidden rounded-full bg-gold-500 pl-8 pr-2 text-base font-bold text-ink-950 transition-colors duration-500 hover:text-white shadow-[0_20px_50px_-18px_rgba(244,180,0,0.9)]">
             <span aria-hidden="true" className="absolute inset-0 -z-10 translate-y-full rounded-full bg-brand-950 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0" />
             {OFFER.ctaLong}
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink-950 text-gold-400 transition-colors duration-500 group-hover:bg-gold-400 group-hover:text-ink-950" aria-hidden="true">
