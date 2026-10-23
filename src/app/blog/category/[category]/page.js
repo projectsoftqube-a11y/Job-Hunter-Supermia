@@ -7,6 +7,10 @@ import { BlogHeader, BlogNote } from '@/components/blog/BlogShell';
 import { CATEGORIES, CATEGORY_BY_SLUG, postsIn, categoryIndexable } from '@/content/blog';
 import { graph, pageNode, breadcrumbNode, itemListNode } from '@/lib/schema';
 
+// Every page here is prerendered from generateStaticParams and unknown slugs are a 404, so the dev-only
+// instant-navigation check (which can't render notFound()) is switched off for this segment.
+export const instant = false;
+
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
 }

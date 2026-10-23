@@ -30,9 +30,17 @@ export function RichLink({ href, children, tone = 'light', className }) {
       </Link>
     );
   }
-  const own = href.startsWith('mailto:') || href.includes('jobhunter.supermia.ai');
+  // Only web and mail links are ever rendered as links (never javascript:, data: or other schemes)
+  if (!/^(https?:\/\/|mailto:|#)/i.test(href)) return <span className={className}>{children}</span>;
+  let host = '';
+  try {
+    host = href.startsWith('mailto:') || href.startsWith('#') ? '' : new URL(href).hostname;
+  } catch {
+    return <span className={className}>{children}</span>;
+  }
+  const own = !host || host === 'jobhunter.supermia.ai' || host.endsWith('.jobhunter.supermia.ai');
   return (
-    <a href={href} className={cls} {...(own ? {} : { target: '_blank', rel: 'noopener' })}>
+    <a href={href} className={cls} {...(own ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
       {children}
     </a>
   );

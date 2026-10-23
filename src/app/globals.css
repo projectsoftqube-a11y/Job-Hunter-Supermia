@@ -151,11 +151,6 @@
 }
 
 /* Light band sweeping across a surface (CONFIDENCE letters) */
-@keyframes rise {
-  from { opacity: 0; translate: 0 14px; }
-  to { opacity: 1; translate: 0 0; }
-}
-
 @keyframes floaty {
   0%, 100% { translate: 0 0; }
   50% { translate: 0 -12px; }

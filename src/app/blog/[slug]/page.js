@@ -16,6 +16,10 @@ import { OFFER, SIGNUP_URL } from '@/content/site';
 import { graph, pageNode, breadcrumbNode, articleNode } from '@/lib/schema';
 import { countWords, longDate, readingMinutes } from '@/lib/text';
 
+// Every page here is prerendered from generateStaticParams and unknown slugs are a 404, so the dev-only
+// instant-navigation check (which can't render notFound()) is switched off for this segment.
+export const instant = false;
+
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
 }
