@@ -194,7 +194,6 @@ export default function ScoreSection({ s }) {
           )}
           {callout && (
             <aside className="relative min-w-0 overflow-hidden rounded-[30px] bg-ink-950 p-7 text-white sm:p-10 lg:col-span-5">
-              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-gold-300 to-gold-600" />
               <div className="flex items-center gap-3">
                 <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-400 text-ink-950">
                   <Icon name="shield" className="h-5 w-5" />

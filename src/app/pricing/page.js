@@ -2,6 +2,7 @@ import CreativeHeading from '@/components/CreativeHeading';
 import JsonLd from '@/components/JsonLd';
 import PageHero from '@/components/page/PageHero';
 import CtaBand from '@/components/page/CtaBand';
+import FaqList from '@/components/page/FaqList';
 import { PricingPlans, PricingTable } from '@/sections/Pricing';
 import { OFFER, PRICING } from '@/content/site';
 import { graph, pageNode, breadcrumbNode } from '@/lib/schema';
@@ -55,6 +56,22 @@ export default function PricingPage() {
             <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-ink-900/70">What each plan includes every month, from resume uploads to live voice mock interviews.</p>
             <div className="mt-8">
               <PricingTable />
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="pricing-faq-title" className="relative bg-light-lavender py-16 sm:py-24">
+          <div className="container-x grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="min-w-0 lg:col-span-5">
+              <CreativeHeading
+                id="pricing-faq-title"
+                lines={[['JobHunter Pricing ', { mark: 'FAQs' }]]}
+                className="font-display text-[clamp(1.85rem,1.2rem+1.9vw,2.9rem)] font-extrabold leading-[1.06] tracking-[-0.03em] text-ink-950"
+              />
+              <p className="mt-5 text-lead font-medium text-ink-900/70">Short answers about the plans. More on the FAQ page.</p>
+            </div>
+            <div className="min-w-0 lg:col-span-7">
+              <FaqList items={PRICING.faqs} idPrefix="pricing-faq" />
             </div>
           </div>
         </section>

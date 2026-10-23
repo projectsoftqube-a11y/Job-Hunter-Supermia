@@ -354,7 +354,7 @@ export default function ModulePractice({ s, index, total }) {
                         <h3 className="mt-0.5 font-display text-[1.125rem] font-bold leading-snug tracking-[-0.015em]">{it.q}</h3>
                       </div>
                     </div>
-                    <div data-ws-note className="min-w-0 rounded-2xl bg-gold-50 px-4 py-3 sm:rounded-none sm:border-l-2 sm:border-dashed sm:border-gold-300 sm:bg-transparent sm:py-0.5 sm:pl-5 sm:pr-0">
+                    <div data-ws-note className="min-w-0 rounded-2xl bg-gold-50 px-4 py-3 sm:py-3">
                       <span aria-hidden="true" className="flex items-center gap-1.5 text-[10.5px] font-extrabold uppercase tracking-[0.16em] text-gold-700">
                         <Icon name="chat" className="h-3.5 w-3.5" />
                         Tutor&apos;s note

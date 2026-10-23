@@ -4,12 +4,13 @@
 
 ## Product
 
+- [Full site content for AI assistants](https://jobhunter.supermia.ai/llms-full.txt): every page, plan and FAQ as one Markdown document.
 - [JobHunter home](https://jobhunter.supermia.ai/): AI job search across LinkedIn, Indeed and Dice, resume match score, application email and live interview practice.
-- [Start or sign in](https://app.jobhunter.supermia.ai): the JobHunter web app.
+- [Sign up](https://app.jobhunter.supermia.ai/signup) or [log in](https://app.jobhunter.supermia.ai): the JobHunter web app.
 - [Brochure (PDF, 8 pages)](https://jobhunter.supermia.ai/brochure/job-hunter-brochure.pdf): the product story, no sign-up needed.
 - [Demo video (47 seconds)](https://jobhunter.supermia.ai/video/jobhunter-ai-demo.mp4)
 - [FAQ](https://jobhunter.supermia.ai/faq): how JobHunter works, what it never does and what happens to your data.
-- [Pricing](https://jobhunter.supermia.ai/pricing): Free plan, Starter at $15 a month and Pro at $30 a month; plans differ in monthly limits.
+- [Pricing](https://jobhunter.supermia.ai/pricing): Free plan ($0), Starter ($15 a month) and Pro ($30 a month), prices in US dollars. Every plan includes all four tools; plans differ in monthly limits. Per month, Free / Starter / Pro: resume uploads 1 / 15 / 30, ATS match scores 2 / 15 / 30, job searches 5 / 200 / 800, application email drafts 5 / 200 / 800, AI mock interviews 1 / 6 / 10.
 
 ## Features
 

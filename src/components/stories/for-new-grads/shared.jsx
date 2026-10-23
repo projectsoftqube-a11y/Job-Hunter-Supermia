@@ -112,7 +112,7 @@ export function ModuleHead({ s, index, total, dark = false, meta }) {
       <ModuleBar s={s} index={index} total={total} dark={dark} meta={meta} />
       <div className="mt-10 grid grid-cols-[minmax(0,1fr)] gap-6 sm:mt-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.6fr)] xl:items-end xl:gap-10">
         <CreativeHeading id={`${s.id}-title`} lines={s.h2} tone={tone} className={`${H2} ${dark ? 'text-white' : 'text-ink-950'}`} />
-        <p data-rise className={`max-w-[48rem] border-l-[3px] pl-5 text-[1.0625rem] font-medium leading-relaxed xl:mb-1 xl:text-[1.125rem] ${m.border} ${dark ? 'text-white/75' : 'text-ink-900/70'}`}>
+        <p data-rise className={`max-w-[48rem] text-[1.0625rem] font-medium leading-relaxed xl:mb-1 xl:text-[1.125rem] ${m.border} ${dark ? 'text-white/75' : 'text-ink-900/70'}`}>
           <Rich text={s.intro} tone={tone} />
         </p>
       </div>

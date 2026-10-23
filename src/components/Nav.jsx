@@ -422,38 +422,9 @@ export default function Nav() {
                 </div>
               </li>
 
-              {/* Who It's For: a dark "one plan" panel (no photo), then the five audiences as one clean list */}
-              <li id="nav-panel-audiences" className={`${panelShell} w-[700px] ${panelState(menu === 'audiences')}`} onMouseEnter={openOn('audiences')}>
-                <div className={`${panelCard} grid grid-cols-[250px_minmax(0,1fr)]`}>
-                  <div className="relative m-2 flex flex-col overflow-hidden rounded-[14px] bg-brand-950 p-5 text-white">
-                    <span aria-hidden="true" className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[radial-gradient(closest-side,rgba(244,180,0,0.28),transparent)]" />
-                    <span className="relative text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-300">One plan for any role</span>
-                    <ol className="relative mt-4 space-y-3.5">
-                      {[
-                        ['search', 'Find the right jobs'],
-                        ['doc', 'Apply with a resume that fits'],
-                        ['mic', 'Practice until you are ready'],
-                      ].map(([icon, label], i) => (
-                        <li key={label} className="flex items-center gap-3">
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.08] text-gold-300 ring-1 ring-white/10">
-                            <Icon name={icon} className="h-4 w-4" strokeWidth={1.9} />
-                          </span>
-                          <span className="text-[13.5px] font-semibold leading-snug text-white/90">
-                            <span className="mr-1 text-white/40">0{i + 1}</span>
-                            {label}
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                    <Link
-                      href={MENU.audiences.aside.link.href}
-                      onClick={close}
-                      className="group/q relative mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-4 text-[13px] font-semibold text-white/75 transition-colors hover:text-gold-300"
-                    >
-                      Not sure which fits? {MENU.audiences.aside.link.label}
-                      <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover/q:translate-x-0.5" strokeWidth={2.2} />
-                    </Link>
-                  </div>
+              {/* Who It's For: one clean list of the five audiences, then a slim footer with the plan and the FAQ */}
+              <li id="nav-panel-audiences" className={`${panelShell} w-[440px] ${panelState(menu === 'audiences')}`} onMouseEnter={openOn('audiences')}>
+                <div className={panelCard}>
                   <div className="px-4 pb-3 pt-4">
                     <GroupLabel>Built for</GroupLabel>
                     <ul className="divide-y divide-ink-900/[0.06]">
@@ -472,7 +443,7 @@ export default function Nav() {
                               </span>
                               <span className="min-w-0 flex-1">
                                 <span className="block text-[14px] font-semibold leading-tight text-ink-950">{item.label}</span>
-                                <span className="mt-0.5 block truncate text-[12.5px] text-ink-900/55">{item.desc}</span>
+                                <span className="mt-0.5 block text-[12.5px] leading-snug text-ink-900/55">{item.desc}</span>
                               </span>
                               <Icon name="arrow" className="h-4 w-4 shrink-0 -translate-x-1 text-brand-600 opacity-0 transition-[opacity,transform] duration-200 group-hover/a:translate-x-0 group-hover/a:opacity-100" strokeWidth={2.2} />
                             </Link>
@@ -480,6 +451,20 @@ export default function Nav() {
                         );
                       })}
                     </ul>
+                  </div>
+                  <div className={footStrip}>
+                    <span className="flex items-center gap-1.5 whitespace-nowrap text-[12.5px] font-semibold text-ink-900/60">
+                      {['Find', 'Apply', 'Practice'].map((st, i) => (
+                        <span key={st} className="flex items-center gap-1.5">
+                          {i > 0 && <Icon name="arrow" className="h-3 w-3 text-ink-900/30" strokeWidth={2.2} />}
+                          {st}
+                        </span>
+                      ))}
+                    </span>
+                    <Link href={MENU.audiences.aside.link.href} onClick={close} className="group/q inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink-950 hover:text-brand-700">
+                      {MENU.audiences.aside.link.label}
+                      <Icon name="arrow" className="h-3.5 w-3.5 transition-transform group-hover/q:translate-x-0.5" strokeWidth={2.2} />
+                    </Link>
                   </div>
                 </div>
               </li>

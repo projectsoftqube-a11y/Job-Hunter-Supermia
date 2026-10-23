@@ -111,7 +111,7 @@ function WhatToInclude({ s, n }) {
         </div>
         {s.intro && (
           <div data-copy className="min-w-0 lg:col-span-5 lg:self-end">
-            <p className="border-l-2 border-gold-400 pl-5 text-[clamp(1.05rem,0.95rem+0.35vw,1.25rem)] font-medium leading-relaxed text-ink-900/70">
+            <p className="text-[clamp(1.05rem,0.95rem+0.35vw,1.25rem)] font-medium leading-relaxed text-ink-900/70">
               <Rich text={s.intro} />
             </p>
           </div>
@@ -979,7 +979,7 @@ function YouSendIt({ s, n }) {
             <CreativeHeading id={`${s.id}-title`} lines={s.h2} tone="dark" className={`mt-7 text-white ${h2Class}`} />
           </div>
           {s.intro && (
-            <p data-copy className="min-w-0 border-l-2 border-gold-400 pl-5 text-lead font-medium text-brand-100 lg:col-span-5">
+            <p data-copy className="min-w-0 text-lead font-medium text-brand-100 lg:col-span-5">
               <Rich text={s.intro} tone="dark" />
             </p>
           )}

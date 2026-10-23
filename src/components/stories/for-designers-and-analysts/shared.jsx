@@ -1,77 +1,168 @@
 import CreativeHeading from '@/components/CreativeHeading';
 import Rich from '@/components/Rich';
+import { Icon } from '@/components/icons';
 
 /*
- * Shared pieces for the designers-and-analysts story ("The Canvas"): the chapter tag (a design-tool
- * frame tab with a colour swatch and four frame squares) and the section header.
+ * Shared pieces of "The Case Study": the four chapters, the colour field each one sits on, the running
+ * head (chapter marker + eyebrow), the huge editorial numerals, the section title, and the chapter
+ * hand-off strip that passes the story to the next section. Noa is a sample job seeker the page follows;
+ * every number and posting tied to her is illustrative sample data.
  */
 
-export const H2_CLASS = 'font-display text-[clamp(2rem,1.25rem+2.6vw,4rem)] font-extrabold leading-[1.04] tracking-[-0.035em]';
+export const CHAPTERS = [
+  { id: 'same-title-different-job', name: 'The brief' },
+  { id: 'match-score-first', name: 'The research' },
+  { id: 'resume-versions', name: 'The iterations' },
+  { id: 'talk-through-your-work', name: 'The critique' },
+];
 
-const SWATCH = ['from-brand-500 to-brand-700', 'from-gold-300 to-gold-500', 'from-emerald-400 to-emerald-600', 'from-rose-300 to-brand-500'];
+// One colour field per chapter: brand purple, gold, ink, lavender
+export const TONES = {
+  purple: {
+    heading: 'dark',
+    title: 'text-white [&_[data-ch-mark]]:bg-brand-800',
+    sub: 'text-brand-100',
+    pill: 'bg-gold-400 text-ink-950',
+    eyebrow: 'text-gold-300',
+    on: 'bg-white text-brand-700',
+    off: 'bg-white/10 text-white/65',
+    numeral: 'text-gold-400',
+    link: 'dark',
+  },
+  gold: {
+    heading: 'light',
+    title: 'text-ink-950 [&_[data-ch-mark]]:bg-white [&_.bg-clip-text]:from-brand-800 [&_.bg-clip-text]:via-brand-600 [&_.bg-clip-text]:to-brand-950 [&_[data-ch-swoosh]]:stroke-brand-950',
+    sub: 'text-ink-950/80',
+    pill: 'bg-brand-950 text-gold-300',
+    eyebrow: 'text-brand-900',
+    on: 'bg-brand-950 text-gold-300',
+    off: 'bg-ink-950/10 text-ink-950/65',
+    numeral: 'text-brand-950',
+    link: 'light',
+  },
+  ink: {
+    heading: 'dark',
+    title: 'text-white',
+    sub: 'text-brand-100',
+    pill: 'bg-gold-400 text-ink-950',
+    eyebrow: 'text-gold-300',
+    on: 'bg-gold-400 text-ink-950',
+    off: 'bg-white/[0.08] text-white/60',
+    numeral: 'text-gold-400',
+    link: 'dark',
+  },
+  lavender: {
+    heading: 'light',
+    title: 'text-ink-950',
+    sub: 'text-ink-900/75',
+    pill: 'bg-brand-950 text-gold-300',
+    eyebrow: 'text-brand-600',
+    on: 'bg-brand-600 text-white',
+    off: 'bg-white text-brand-500',
+    numeral: 'text-brand-600',
+    link: 'light',
+  },
+};
 
-/** "Frame 02 · Match score" tab; the four squares show where the story is. */
-export function FrameTag({ n, total = 4, label, tone = 'light' }) {
-  const dark = tone === 'dark';
+export const h2Class = 'font-display text-[clamp(2rem,1.2rem+2.3vw,3.75rem)] font-extrabold leading-[1.04] tracking-[-0.035em]';
+
+/** Chapter marker: "01 / 04" + the section eyebrow, with the four chapter names on wide screens. */
+export function RunningHead({ n, eyebrow, tone }) {
+  const t = TONES[tone];
   return (
-    <p className={`inline-flex items-center gap-3 rounded-xl py-1.5 pl-1.5 pr-3.5 text-xs font-bold uppercase tracking-[0.14em] shadow-[0_10px_24px_-16px_rgba(26,15,51,0.6)] ${dark ? 'bg-white/[0.08] text-white ring-1 ring-white/15' : 'bg-white text-ink-950 ring-1 ring-brand-200'}`}>
-      <span aria-hidden="true" className={`h-7 w-7 rounded-lg bg-gradient-to-br ${SWATCH[(n - 1) % 4]}`} />
-      <span aria-hidden="true" className={dark ? 'text-white/60' : 'text-brand-500'}>
-        Frame {String(n).padStart(2, '0')}
-      </span>
-      {label}
-      <span aria-hidden="true" className="flex gap-1">
-        {Array.from({ length: total }, (_, i) => (
-          <span key={i} className={`h-2 w-2 rounded-[2px] ${i < n ? 'bg-gold-400' : dark ? 'bg-white/20' : 'bg-brand-200'}`} />
-        ))}
-      </span>
-    </p>
-  );
-}
-
-// `wide` gives long headings (with an unbreakable highlighted phrase) more room and a slightly smaller size
-export function Header({ s, n, tone = 'light', wide = false, className = '' }) {
-  const dark = tone === 'dark';
-  const h2 = wide ? 'font-display text-[clamp(2rem,1.2rem+2.2vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-0.035em]' : H2_CLASS;
-  return (
-    <div className={`grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-12 lg:items-end lg:gap-12 ${className}`}>
-      <div className={`min-w-0 ${wide ? 'lg:col-span-8' : 'lg:col-span-7'}`}>
-        <FrameTag n={n} label={s.eyebrow} tone={tone} />
-        <CreativeHeading id={`${s.id}-title`} lines={s.h2} tone={tone} className={`mt-6 ${h2} ${dark ? 'text-white' : 'text-ink-950'}`} />
-      </div>
-      <p className={`min-w-0 text-lead font-medium lg:pb-2 ${wide ? 'lg:col-span-4' : 'lg:col-span-5'} ${dark ? 'text-brand-100' : 'text-ink-900/70'}`}>
-        <Rich text={s.intro} tone={tone} />
+    <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+      <p className="inline-flex items-center gap-3">
+        <span className={`rounded-full px-3 py-1.5 font-display text-[13px] font-extrabold tracking-[0.04em] ${t.pill}`}>
+          {String(n).padStart(2, '0')}
+          <span className="opacity-60"> / 04</span>
+        </span>
+        <span className={`text-[13px] font-bold uppercase tracking-[0.18em] ${t.eyebrow}`}>{eyebrow}</span>
       </p>
+      <ol aria-hidden="true" className="hidden items-center gap-1.5 lg:flex">
+        {CHAPTERS.map((c, i) => (
+          <li key={c.id} className={`rounded-full px-3.5 py-1.5 text-[12.5px] font-bold ${i + 1 === n ? t.on : t.off}`}>
+            <span className="font-display">{String(i + 1).padStart(2, '0')}</span> {c.name}
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
 
-/** Selection handles around a selected frame, like a design tool (decorative). */
-export function Handles({ className = '', color = 'bg-white border-brand-500' }) {
+/** The chapter's huge editorial numeral (decorative). */
+export function Numeral({ n, tone, className = '' }) {
   return (
-    <span aria-hidden="true" className={`pointer-events-none absolute -inset-[5px] rounded-[inherit] border-2 border-brand-500 ${className}`}>
-      {['-left-[6px] -top-[6px]', '-right-[6px] -top-[6px]', '-left-[6px] -bottom-[6px]', '-right-[6px] -bottom-[6px]'].map((p) => (
-        <span key={p} className={`absolute h-2.5 w-2.5 rounded-[2px] border-2 ${color} ${p}`} />
-      ))}
+    <span aria-hidden="true" data-numeral className={`block font-display font-extrabold leading-[0.78] tracking-[-0.07em] ${TONES[tone].numeral} ${className}`}>
+      {String(n).padStart(2, '0')}
     </span>
   );
 }
 
-export function Glyph({ name, className = 'h-3.5 w-3.5', strokeWidth = 2.6 }) {
-  const paths = {
-    plus: <path d="M12 5v14M5 12h14" />,
-    check: <path d="M4 12.5l5 5L20 6.5" />,
-    x: <path d="M6 6l12 12M18 6 6 18" />,
-    arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
-    cursor: <path d="M5 3l14 7-6 2-2 6z" />,
-  };
+export function Title({ s, tone, className = '' }) {
+  const t = TONES[tone];
+  return <CreativeHeading id={`${s.id}-title`} lines={s.h2} tone={t.heading} className={`${h2Class} ${t.title} ${className}`} />;
+}
+
+export function Lead({ text, tone, className = '' }) {
+  if (!text) return null;
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
-      {paths[name]}
-    </svg>
+    <p data-lead className={`text-lead font-medium ${TONES[tone].sub} ${className}`}>
+      <Rich text={text} tone={TONES[tone].link} />
+    </p>
   );
 }
 
-// Dot grid of an infinite canvas (static background)
-export const DOTS_LIGHT = '[background-image:radial-gradient(rgba(75,46,131,0.16)_1.2px,transparent_1.2px)] [background-size:22px_22px]';
-export const DOTS_DARK = '[background-image:radial-gradient(rgba(255,255,255,0.12)_1.2px,transparent_1.2px)] [background-size:22px_22px]';
+export function Para({ text, tone, className = '' }) {
+  if (!text) return null;
+  return (
+    <p className={`text-[17px] leading-relaxed ${TONES[tone].sub} ${className}`}>
+      <Rich text={text} tone={TONES[tone].link} />
+    </p>
+  );
+}
+
+const HANDOFF = {
+  purple: { box: 'bg-brand-950 text-white', num: 'text-gold-400', label: 'text-gold-300', line: 'text-white', btn: 'bg-gold-400 text-ink-950' },
+  gold: { box: 'bg-brand-950 text-white', num: 'text-gold-400', label: 'text-gold-300', line: 'text-white', btn: 'bg-gold-400 text-ink-950' },
+  ink: { box: 'bg-gold-400 text-ink-950', num: 'text-brand-950', label: 'text-brand-900', line: 'text-ink-950', btn: 'bg-brand-950 text-gold-300' },
+};
+
+/** Chapter transition: the next chapter's number, name and one story beat, linking down the page. */
+export function Handoff({ next, line, tone }) {
+  const c = CHAPTERS[next];
+  const h = HANDOFF[tone];
+  return (
+    <div data-handoff className="mt-14 sm:mt-16">
+      <a
+        href={`#${c.id}`}
+        className={`group relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-5 overflow-hidden rounded-[30px] p-5 shadow-[0_40px_80px_-50px_rgba(26,15,51,0.9)] transition-[translate] duration-500 hover:-translate-y-1 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-7 sm:p-7 lg:px-10 ${h.box}`}
+      >
+        <span aria-hidden="true" className={`hidden font-display text-[clamp(3.5rem,2rem+3vw,5.5rem)] font-extrabold leading-[0.8] tracking-[-0.06em] sm:block ${h.num}`}>
+          {String(next + 1).padStart(2, '0')}
+        </span>
+        <span className="min-w-0">
+          <span className={`block text-[12.5px] font-bold uppercase tracking-[0.18em] ${h.label}`}>Next chapter · {c.name}</span>
+          <span className={`mt-1.5 block font-display text-[clamp(1.1rem,0.9rem+0.8vw,1.65rem)] font-bold leading-snug tracking-[-0.02em] ${h.line}`}>{line}</span>
+        </span>
+        <span aria-hidden="true" className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-[translate] duration-500 group-hover:translate-y-1 sm:h-14 sm:w-14 ${h.btn}`}>
+          <Icon name="arrow" className="h-5 w-5 rotate-90" strokeWidth={2.4} />
+        </span>
+      </a>
+    </div>
+  );
+}
+
+/** Noa's initials disc (decorative). */
+export function Avatar({ className = 'h-12 w-12 text-[15px]', tone = 'bg-gold-400 text-ink-950' }) {
+  return (
+    <span aria-hidden="true" className={`flex shrink-0 items-center justify-center rounded-full font-display font-extrabold ${tone} ${className}`}>
+      NR
+    </span>
+  );
+}
+
+/** Deterministic pseudo-random in [-1, 1] for decorative scatter (same on server and client). */
+export function jitter(i, salt = 1) {
+  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
+  return (x - Math.floor(x)) * 2 - 1;
+}

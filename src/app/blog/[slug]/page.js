@@ -69,15 +69,15 @@ export default async function PostPage({ params }) {
       <main id="main">
         {/* Header */}
         <HeroStage as="header">
-          <div className="mx-auto max-w-[60rem] pt-4 text-center sm:pt-8">
+          <div className="grid items-center gap-8 pt-2 text-center sm:pt-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)] lg:gap-12 lg:text-left xl:gap-16">
             <div className="min-w-0">
               <Link href={`/blog/category/${cat.slug}`} className="inline-flex items-center gap-2 rounded-full bg-white/[0.07] px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-gold-300 ring-1 ring-white/10 transition-colors hover:bg-white/[0.12]">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
                 {cat.name}
               </Link>
-              <h1 className="mt-6 font-display text-[clamp(2rem,1.25rem+2.8vw,3.9rem)] font-extrabold leading-[1.06] tracking-[-0.035em] text-white">{post.title}</h1>
-              <p className="mx-auto mt-5 max-w-[40rem] text-[clamp(1.02rem,0.95rem+0.3vw,1.2rem)] font-medium leading-relaxed text-white/70">{post.excerpt}</p>
-              <div className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[14px] font-semibold text-white/60">
+              <h1 className="mt-5 font-display text-[clamp(1.85rem,1.2rem+2.1vw,3.1rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white">{post.title}</h1>
+              <p className="mx-auto mt-4 max-w-[40rem] text-[clamp(1rem,0.95rem+0.25vw,1.12rem)] font-medium leading-relaxed text-white/70 lg:mx-0">{post.excerpt}</p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-[13.5px] font-semibold text-white/60 lg:justify-start">
                 <span className="flex items-center gap-2.5">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold-400 text-ink-950" aria-hidden="true">
                     <Icon name="spark" className="h-4 w-4" />
@@ -100,8 +100,8 @@ export default async function PostPage({ params }) {
                 )}
               </div>
             </div>
-            <FadeUp y={40} delay={0.2} className="mx-auto mt-10 max-w-[46rem] text-left">
-              <Cover slug={post.slug} category={post.category} label={cat.name} tag={post.coverTag} className="aspect-[16/11] rounded-[28px] shadow-[0_50px_100px_-45px_rgba(0,0,0,0.9)] ring-1 ring-white/15" />
+            <FadeUp y={40} delay={0.2} className="mx-auto w-full max-w-[30rem] text-left lg:max-w-none">
+              <Cover slug={post.slug} category={post.category} label={cat.name} tag={post.coverTag} className="aspect-[16/11] rounded-[24px] shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] ring-1 ring-white/15" />
             </FadeUp>
           </div>
         </HeroStage>

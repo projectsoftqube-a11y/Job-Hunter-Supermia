@@ -32,6 +32,7 @@ const organization = {
     addressCountry: BRAND.address.country,
   },
   sameAs: BRAND.sameAs,
+  knowsAbout: ['Conversational AI', 'AI agents', 'AI job search', 'Resume matching', 'AI mock interviews', 'Interview practice'],
 };
 
 const website = {
@@ -48,13 +49,20 @@ const software = {
   '@type': 'SoftwareApplication',
   '@id': APP_ID,
   name: BRAND.name,
-  alternateName: 'Job Hunter',
+  alternateName: BRAND.alternateNames,
   url: `${SITE_URL}/`,
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'AI job search and interview practice',
   operatingSystem: 'Web browser',
   description:
     'AI job search and interview practice app that searches LinkedIn, Indeed and Dice in one search, scores your resume for each job, drafts the application email and runs live voice mock interviews with a scorecard.',
+  audience: { '@type': 'Audience', audienceType: 'Job seekers, including new graduates, career switchers, software engineers, designers, analysts and people returning to work' },
+  // The job boards it searches, linked to their public entities
+  mentions: [
+    { '@type': 'Organization', name: 'LinkedIn', sameAs: 'https://en.wikipedia.org/wiki/LinkedIn' },
+    { '@type': 'Organization', name: 'Indeed', sameAs: 'https://en.wikipedia.org/wiki/Indeed' },
+    { '@type': 'Organization', name: 'Dice', sameAs: 'https://en.wikipedia.org/wiki/Dice_Holdings' },
+  ],
   featureList: [
     'One search across LinkedIn, Indeed and Dice',
     'Resume match score out of 100 with missing skills',

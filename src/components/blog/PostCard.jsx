@@ -9,8 +9,8 @@ export default function PostCard({ post, featured = false, headingLevel = 3 }) {
   const H = `h${headingLevel}`;
   const minutes = readingMinutes([post.title, post.answer, post.takeaways, post.body, post.faqs]);
   return (
-    <article className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-hairline bg-white shadow-[0_30px_60px_-45px_rgba(26,15,51,0.6)] transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-brand-200 ${featured ? 'lg:flex-row' : ''}`}>
-      <Cover slug={post.slug} category={post.category} label={cat?.name} tag={post.coverTag} className={`${featured ? 'aspect-[16/10] lg:aspect-auto lg:w-[52%]' : 'aspect-[16/10]'} transition-transform duration-700 group-hover:scale-[1.02]`} />
+    <article className={`group relative flex h-full flex-col overflow-hidden rounded-[28px] border border-hairline bg-white shadow-[0_30px_60px_-45px_rgba(26,15,51,0.6)] transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-brand-200 ${featured ? 'lg:flex-row lg:items-center' : ''}`}>
+      <Cover slug={post.slug} category={post.category} label={cat?.name} tag={post.coverTag} className={`${featured ? 'aspect-[16/10] lg:w-[42%] lg:shrink-0 lg:self-center' : 'aspect-[16/10]'} transition-transform duration-700 group-hover:scale-[1.02]`} />
       <div className={`flex flex-1 flex-col p-6 ${featured ? 'sm:p-9 lg:justify-center' : ''}`}>
         <p className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.14em] text-brand-500">
           {cat?.name}

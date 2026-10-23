@@ -53,7 +53,7 @@ export function MarginNote({ hint }) {
   const check = at >= 0 ? hint.slice(0, at).trim() : hint;
   const follow = at >= 0 ? hint.slice(at + SPLIT.length).trim() : '';
   return (
-    <div className="relative min-w-0 border-l-2 border-gold-400 pl-4 sm:pl-5">
+    <div className="relative min-w-0">
       <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold-700">What the interviewer checks</p>
       <p className="mt-1.5 text-[15px] italic leading-[1.65] text-ink-900/80">
         <Rich text={check} />

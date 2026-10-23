@@ -3,7 +3,7 @@ export const FEATURES_HUB = {
   path: '/features',
   label: 'Features',
   seo: {
-    title: 'JobHunter Features: AI Job Search, Resume Match and Mock Interviews',
+    title: 'JobHunter Features: Job Search, Resume Match, Interviews',
     description:
       'Every JobHunter feature in one place: one search across LinkedIn, Indeed and Dice, a resume match score, application email drafts and live AI mock interviews.',
   },
