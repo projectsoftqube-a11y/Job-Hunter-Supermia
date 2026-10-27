@@ -31,13 +31,18 @@ const nextConfig = {
       },
     ];
   },
-  // Feature pages moved under /features (permanent, so search engines carry the old URLs' signals over)
+  // Feature pages moved under /features (permanent, so search engines carry the old URLs' signals over).
+  // /faqFAQ and /pricingPricing were picked up by Google from old footer list keys (path + label).
   redirects() {
-    return ['ai-mock-interview', 'resume-job-match', 'job-application-email', 'ai-job-match'].map((slug) => ({
-      source: `/${slug}`,
-      destination: `/features/${slug}`,
-      permanent: true,
-    }));
+    return [
+      ...['ai-mock-interview', 'resume-job-match', 'job-application-email', 'ai-job-match'].map((slug) => ({
+        source: `/${slug}`,
+        destination: `/features/${slug}`,
+        permanent: true,
+      })),
+      { source: '/faqFAQ', destination: '/faq', permanent: true },
+      { source: '/pricingPricing', destination: '/pricing', permanent: true },
+    ];
   },
   turbopack: {
     rules: {
