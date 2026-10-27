@@ -197,6 +197,13 @@ export default function Footer() {
               <span className="mx-2 text-white/30">·</span>
               Botfinity Inc.
             </span>
+            <span aria-hidden="true" className="hidden h-5 w-px bg-white/15 sm:block" />
+            <span>
+              Design &amp; Develop by{' '}
+              <a href="https://softqubes.com/" target="_blank" rel="noopener noreferrer" className="font-bold text-white transition-colors hover:text-gold-300">
+                Softqube Technologies LLC
+              </a>
+            </span>
             <a href="#main" className="group inline-flex items-center gap-3 font-semibold text-white transition-colors hover:text-gold-300">
               Back to top
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 transition-transform duration-500 group-hover:-translate-y-1" aria-hidden="true">
