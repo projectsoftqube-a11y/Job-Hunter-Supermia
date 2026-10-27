@@ -33,7 +33,7 @@ export default function sitemap() {
     { url: url('/pricing'), lastModified: SEO.updated, changeFrequency: 'monthly', priority: 0.8, images: og('/pricing') },
   ];
 
-  if (hubIndexable()) entries.push({ url: url('/blog'), lastModified: POSTS[0].updated, changeFrequency: 'weekly', priority: 0.7, images: og('/blog') });
+  if (hubIndexable()) entries.push({ url: url('/blog'), lastModified: POSTS.map((p) => p.updated).sort().at(-1), changeFrequency: 'weekly', priority: 0.7, images: og('/blog') });
   CATEGORIES.filter((c) => categoryIndexable(c.slug)).forEach((c) => entries.push({ url: url(`/blog/category/${c.slug}`), lastModified: SEO.updated, changeFrequency: 'weekly', priority: 0.5, images: og(`/blog/category/${c.slug}`) }));
   POSTS.forEach((p) => entries.push({ url: url(p.path), lastModified: p.updated, changeFrequency: 'monthly', priority: 0.7, images: og(p.path) }));
 

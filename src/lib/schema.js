@@ -178,7 +178,7 @@ export function articleNode({ path, headline, description, published, updated, i
     image: abs(image),
     author: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
-    isPartOf: { '@id': `${SITE_URL}/blog#webpage` },
+    isPartOf: { '@type': 'Blog', '@id': `${SITE_URL}/blog#blog`, name: `${BRAND.name} Blog`, url: abs('/blog'), publisher: { '@id': ORG_ID } },
     about: { '@id': APP_ID },
   };
 }

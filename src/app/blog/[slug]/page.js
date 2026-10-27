@@ -13,7 +13,7 @@ import PostCard from '@/components/blog/PostCard';
 import Toc from '@/components/blog/Toc';
 import { POSTS, POST_BY_SLUG, CATEGORY_BY_SLUG, AUTHOR } from '@/content/blog';
 import { OFFER, SIGNUP_URL } from '@/content/site';
-import { graph, pageNode, breadcrumbNode, articleNode } from '@/lib/schema';
+import { abs, graph, pageNode, breadcrumbNode, articleNode } from '@/lib/schema';
 import { countWords, longDate, readingMinutes } from '@/lib/text';
 
 // Every page here is prerendered from generateStaticParams and unknown slugs are a 404, so the dev-only
@@ -63,7 +63,7 @@ export default async function PostPage({ params }) {
   const related = (post.related || []).map((s) => POST_BY_SLUG[s]).filter(Boolean).slice(0, 3);
 
   const schema = graph(
-    pageNode({ path: post.path, name: post.seo.title, description: post.seo.description, about: null, updated: post.updated, extra: { mainEntity: { '@id': `${post.path}#article` } } }),
+    pageNode({ path: post.path, name: post.seo.title, description: post.seo.description, about: null, updated: post.updated, extra: { mainEntity: { '@id': `${abs(post.path)}#article` } } }),
     breadcrumbNode(post.path, trail),
     articleNode({ path: post.path, headline: post.title, description: post.seo.description, published: post.published, updated: post.updated, image: `${post.path}/opengraph-image`, section: cat.name, words: countWords(visible) })
   );

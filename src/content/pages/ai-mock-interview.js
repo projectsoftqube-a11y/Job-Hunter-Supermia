@@ -184,8 +184,8 @@ const page = {
             '[New grads](/for-new-grads) without much interview experience, who want to hear the questions before a panel does',
             '[Career switchers](/for-career-switchers) who need to explain, briefly and out loud, how their skills carry over',
             '[Software engineers](/for-software-engineers) preparing for role and knowledge rounds',
-            'Designers and analysts who want to practice talking through their work clearly',
-            'People returning to work who want to rebuild interview confidence',
+            '[Designers and analysts](/for-designers-and-analysts) who want to practice talking through their work clearly',
+            '[People returning to work](/for-people-returning-to-work) who want to rebuild interview confidence',
           ],
         },
         {

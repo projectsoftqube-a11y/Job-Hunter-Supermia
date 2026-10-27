@@ -331,7 +331,7 @@ export default function Nav() {
           }`}
         >
           <Link href="/" aria-label="JobHunter by SuperMIA, home" className="flex shrink-0 items-center">
-            <Image src="/brand/logo.png" alt="JobHunter by SuperMIA" width={2172} height={724} preload sizes="170px" className="h-9 w-auto sm:h-10 lg:h-11" />
+            <Image src="/brand/logo.png" alt="JobHunter by SuperMIA" width={1086} height={362} preload sizes="170px" className="h-9 w-auto sm:h-10 lg:h-11" />
           </Link>
 
           {/* Desktop menu; panels float under the bar */}

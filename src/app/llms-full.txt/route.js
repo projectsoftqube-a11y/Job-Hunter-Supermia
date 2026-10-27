@@ -81,7 +81,7 @@ export function GET() {
     `> ${BRAND.name} (also called ${BRAND.alternateNames.join(', ')}) is an AI job search and interview practice app from ${BRAND.parent}, operated by ${BRAND.company} in Grapevine, Texas. It searches LinkedIn, Indeed and Dice in one search, scores your resume for each job out of 100 with the reasoning and missing skills, drafts an application email for the role that you edit and send, and runs live voice mock interviews with a 0-10 readiness score. It never applies to jobs or sends anything without the user.`,
     `Website: ${SITE_URL}/ · Sign up: ${SIGNUP_URL} · Contact: ${BRAND.email}`,
     '# Features',
-    [`## ${headingText(FEATURES_HUB.hero.h1)}`, `URL: ${SITE_URL}${FEATURES_HUB.path}`, FEATURES_HUB.hero.lead].join('\n\n'),
+    [`## ${headingText(FEATURES_HUB.hero.h1)}`, `URL: ${SITE_URL}${FEATURES_HUB.path}`, abs(FEATURES_HUB.hero.lead)].join('\n\n'),
     ...features.map(contentPage),
     '# Pricing',
     pricing(),

@@ -258,7 +258,7 @@ const page = {
         },
         {
           type: 'p',
-          text: 'Preparing for a specific path? See how JobHunter helps [new grads looking for a first role](/for-new-grads), [career switchers](/for-career-switchers) and [software engineers](/for-software-engineers).',
+          text: 'Preparing for a specific path? See how JobHunter helps [new grads looking for a first role](/for-new-grads), [career switchers](/for-career-switchers), [software engineers](/for-software-engineers), [designers and analysts](/for-designers-and-analysts) and [people returning to work](/for-people-returning-to-work).',
         },
       ],
     },

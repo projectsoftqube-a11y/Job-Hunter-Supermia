@@ -235,7 +235,7 @@ const post = {
       a: "You can, but give recent postings first claim on your time. An older posting may already have a shortlist, or the role may be paused or filled. Before you spend time tailoring, check the company's own careers page to confirm the role is still open, and send a note to a person if you do apply.",
     },
   ],
-  related: ["match-resume-to-job-description", "how-to-email-a-recruiter", "how-to-practice-for-an-interview"],
+  related: ["match-resume-to-job-description", "how-to-email-a-recruiter", "best-ai-job-search-tools"],
 };
 
 export default post;

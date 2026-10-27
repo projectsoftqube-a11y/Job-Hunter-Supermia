@@ -14,7 +14,7 @@ export const FEATURES_HUB = {
       ['From First Search to ', { grad: 'Final Round', swoosh: true }],
     ],
     tagline: 'Find the right jobs, apply with a resume that fits and practice the interview out loud, all in one place.',
-    lead: 'JobHunter by SuperMIA brings your job search into one place. It searches LinkedIn, Indeed and Dice in one go, scores your resume against each job out of 100, drafts an application email you edit and send yourself, and runs live voice mock interviews with a scorecard. It never applies or sends anything without you.',
+    lead: 'JobHunter by SuperMIA brings your job search into one place. It searches LinkedIn, Indeed and Dice in one go, scores your resume against each job out of 100, drafts an application email you edit and send yourself, and runs live voice mock interviews with a scorecard. It never applies or sends anything without you. Every feature is on every plan, including the Free plan; see [JobHunter pricing](/pricing) for the monthly limits.',
     points: ['One search across LinkedIn, Indeed and Dice', 'A match score out of 100 for each job', 'Live voice mock interviews with a scorecard'],
   },
   // Tour order and the stage each feature belongs to

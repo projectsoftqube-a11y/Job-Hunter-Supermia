@@ -16,17 +16,16 @@ const CARDS = [
 ];
 const LAST = CARDS.length - 1;
 const STEPS = ['Find the role', 'Practice the interview', 'Land the offer'];
-// Assets the loader and hero need; the counter only reaches 100 once these are ready
-const CRITICAL = [...CARDS.map((c) => c.src), '/brand/favicon.png', '/images/hero-face-1.jpg', '/images/hero-face-2.jpg', '/images/hero-face-3.jpg'];
-
-function waitForAssets() {
-  const images = CRITICAL.map(
-    (src) =>
+// The counter only reaches 100 once the loader's own images and the hero faces have loaded. It waits on
+// the rendered <img> elements, so only the optimised, right-sized files are fetched (never the originals).
+function waitForAssets(root) {
+  const els = [...root.querySelectorAll('img'), ...document.querySelectorAll('[data-pill] img')];
+  const images = els.map(
+    (img) =>
       new Promise((resolve) => {
-        const img = new window.Image();
-        img.onload = resolve;
-        img.onerror = resolve;
-        img.src = src;
+        if (img.complete) return resolve();
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
       })
   );
   const fonts = document.fonts?.ready ?? Promise.resolve();
@@ -138,7 +137,7 @@ export default function Preloader() {
       // 3. Exit
       let exit;
       let cancelled = false;
-      Promise.all([waitForAssets(), minTime]).then(() => {
+      Promise.all([waitForAssets(root.current), minTime]).then(() => {
         if (cancelled) return;
         creep.kill();
 
@@ -259,7 +258,7 @@ export default function Preloader() {
               >
                 <div data-card-inner className="relative h-full w-full overflow-hidden rounded-[clamp(10px,1vw,16px)]">
                   <div data-card-img className="absolute inset-0">
-                    <Image src={c.src} alt="" fill sizes="(max-width: 768px) 60vw, 100vw" loading="eager" className="object-cover" />
+                    <Image src={c.src} alt="" fill sizes="(max-width: 768px) 60vw, 30vw" loading="eager" className="object-cover" />
                   </div>
                 </div>
               </div>

@@ -189,7 +189,7 @@ const post = {
       a: 'Keep one master resume with everything you have done, plus one version for each type of role you apply for often, such as data analyst and marketing analyst roles. Start each application from the closest version and make a quick match from there. That is faster than starting from scratch and keeps your facts consistent.',
     },
   ],
-  related: ['how-to-email-a-recruiter', 'applied-to-jobs-no-response', 'how-to-practice-for-an-interview'],
+  related: ['how-to-email-a-recruiter', 'applied-to-jobs-no-response', 'best-ai-job-search-tools'],
 };
 
 export default post;

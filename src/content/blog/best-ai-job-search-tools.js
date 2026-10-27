@@ -10,7 +10,7 @@ const post = {
   excerpt:
     'Eight AI job search tools sorted by use case: what each does, what it costs as listed in October 2026, who it suits and where it falls short.',
   published: '2026-10-22',
-  updated: '2026-10-22',
+  updated: '2026-10-27',
   answer:
     'The best AI job search tools depend on the job you need done. Jobright and Simplify focus on finding and applying, Teal, Jobscan and Huntr on resumes and tracking, and Final Round AI and Big Interview on interview practice. JobHunter combines a three-board search, a match score, email drafts and voice practice, with no tracker.',
   takeaways: [
@@ -83,7 +83,7 @@ const post = {
           'JobHunter',
           'Search, match, email and voice practice in one app',
           'LinkedIn, Indeed and Dice in one search; match score; voice mock interviews',
-          'Not listed on the site yet; the terms say some features may require a paid plan',
+          'Free plan; Starter $15/month, Pro $30/month',
           'Three boards only; no application tracker',
         ],
       ],
@@ -217,7 +217,7 @@ const post = {
         '**Best for:** new grads, career switchers and engineers who want search, matching and interview practice in one app.',
         '**What stands out:** one search across LinkedIn, Indeed and Dice, ranked by fit with your resume. You get an ATS match score for a specific job, out of 100, with the reasoning and missing skills. It drafts an application email for you to edit and send, and runs live voice mock interviews in four rounds (HR & Introduction, Role & Knowledge, Practical & Behavioral, Managerial & Final), with a readiness score from 0 to 10.',
         '**Limits:** it searches three boards only: LinkedIn, Indeed and Dice. It has no application tracker. It does not submit applications or send emails for you; by design, nothing is sent without you. Everything works from the resume you upload.',
-        '**Pricing:** not listed on the site yet; the terms say some features may require a paid plan.',
+        '**Pricing:** free plan. Starter is $15 a month and Pro is $30 a month, in US dollars. Every plan includes all four tools; the plans differ in monthly limits. See [JobHunter pricing](/pricing).',
       ],
     },
     {
@@ -334,9 +334,9 @@ const post = {
       note: 'Checked 22 Oct 2026: LinkedIn, Indeed and Dice in one search, match score out of 100, email drafts, voice mock interviews in four rounds, 0-10 readiness score; never applies or sends without you.',
     },
     {
-      label: 'JobHunter terms and conditions',
-      url: 'https://jobhunter.supermia.ai/terms-and-conditions',
-      note: 'Checked 22 Oct 2026: "Some features may require a paid plan. Prices, billing periods and what is included are shown before you buy." No prices are listed on the site.',
+      label: 'JobHunter pricing',
+      url: 'https://jobhunter.supermia.ai/pricing',
+      note: 'Checked 27 Oct 2026: Free plan $0, Starter $15 a month, Pro $30 a month, in US dollars; every plan includes all four tools, with different monthly limits.',
     },
     {
       label: 'JobHunter on SuperMIA',

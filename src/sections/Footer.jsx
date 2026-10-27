@@ -61,8 +61,8 @@ export default function Footer() {
             <Image
               src="/brand/logo.png"
               alt="JobHunter by SuperMIA"
-              width={2172}
-              height={724}
+              width={1086}
+              height={362}
               className="h-14 w-auto brightness-0 invert sm:h-16"
             />
             <p className="mt-7 max-w-[42rem] font-display text-[clamp(1.8rem,1rem+2.6vw,3.6rem)] font-bold leading-[1.08] tracking-[-0.035em]">
