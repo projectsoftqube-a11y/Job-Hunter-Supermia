@@ -112,7 +112,7 @@ export default function Footer() {
               <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold-300">{col.title}</p>
               <ul className="space-y-3">
                 {col.links.map((l) => (
-                  <li key={l.href + l.label}>
+                  <li key={l.label}>
                     {l.href.startsWith('/') && !l.download ? (
                       <Link href={l.href} className={link}>
                         {l.label}
