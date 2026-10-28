@@ -5,49 +5,61 @@ import CtaBand from '@/components/page/CtaBand';
 import FaqList from '@/components/page/FaqList';
 import { PricingPlans, PricingTable } from '@/sections/Pricing';
 import { OFFER, PRICING, OG_BASE } from '@/content/site';
+import { getBillingPlans } from '@/lib/billing';
+import { freePlan, listNames, offerPhrase, paidPlans, pricePhrase, pricingDescription, pricingFaqs, pricingTitle } from '@/lib/pricing';
 import { graph, pageNode, breadcrumbNode, faqNode, offerCatalogNode } from '@/lib/schema';
 
 const { path } = PRICING;
-const { title: TITLE, description: DESCRIPTION } = PRICING.seo;
 const TRAIL = [{ name: 'Pricing', path }];
 
-export const metadata = {
-  title: { absolute: TITLE },
-  description: DESCRIPTION,
-  alternates: { canonical: path },
-  openGraph: { ...OG_BASE, type: 'website', url: path, title: TITLE, description: DESCRIPTION },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
-};
+export async function generateMetadata() {
+  const plans = await getBillingPlans();
+  const title = pricingTitle(plans);
+  const description = pricingDescription(plans);
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: path },
+    openGraph: { ...OG_BASE, type: 'website', url: path, title, description },
+    twitter: { card: 'summary_large_image', title, description },
+  };
+}
 
 /*
- * /pricing: the three plans as cards, then every monthly limit side by side. The offers themselves are
- * on the sitewide SoftwareApplication node; the page's OfferCatalog and FAQPage come from the same
- * PRICING data the cards and FAQ render.
+ * /pricing: the plans as cards, then every limit side by side. The plans come from the billing API; the
+ * offers themselves are on the sitewide SoftwareApplication node, and the page's OfferCatalog, FAQPage
+ * and every sentence naming a plan or price are built from the same plans the cards render.
  */
-export default function PricingPage() {
+export default async function PricingPage() {
+  const plans = await getBillingPlans();
+  const title = pricingTitle(plans);
+  const faqs = pricingFaqs(plans);
+  const free = freePlan(plans);
+  const paid = paidPlans(plans);
+  const names = plans.map((p) => p.name);
+
   const schema = graph(
-    pageNode({ path, name: TITLE, description: DESCRIPTION, extra: { mainEntity: { '@id': offerCatalogNode()['@id'] } } }),
+    pageNode({ path, name: title, description: pricingDescription(plans), extra: { mainEntity: { '@id': offerCatalogNode(plans)['@id'] } } }),
     breadcrumbNode(path, TRAIL),
-    offerCatalogNode(),
-    faqNode(path, PRICING.faqs)
+    offerCatalogNode(plans),
+    faqNode(path, faqs)
   );
-  const [free, starter, pro] = PRICING.plans;
 
   return (
     <>
       <main id="main">
         <PageHero
           trail={TRAIL}
-          eyebrow="3 plans · prices in US dollars"
-          h1={[['JobHunter ', { mark: 'Pricing' }], ['Free, Starter and ', { grad: 'Pro Plans', swoosh: true }]]}
-          tagline={`A ${free.name} plan, ${starter.name} at ${starter.price} a month and ${pro.name} at ${pro.price} a month. Every plan includes all four tools.`}
-          lead={`JobHunter by SuperMIA has a ${free.name} plan and two paid plans: ${starter.name} at $${starter.price} a month and ${pro.name} at $${pro.price} a month. Every plan includes [all four features](/features): AI job search across LinkedIn, Indeed and Dice, ATS match scores, application email drafts and live voice [mock interviews](/features/ai-mock-interview). The plans differ in how much you can use each month.`}
-          points={[`${free.name}: $0 to start`, `${starter.name}: $${starter.price} a month`, `${pro.name}: $${pro.price} a month`]}
+          eyebrow={`${plans.length} plans · prices in US dollars`}
+          h1={[['JobHunter ', { mark: 'Pricing' }], [names.length > 1 ? `${names.slice(0, -1).join(', ')} and ` : '', { grad: `${names[names.length - 1]} Plans`, swoosh: true }]]}
+          tagline={`${plans.map((p) => `${p.name} at ${pricePhrase(p)}`).join(', ')}. Every plan includes all four tools.`}
+          lead={`JobHunter by SuperMIA has ${offerPhrase(plans)}. Every plan includes [all four features](/features): AI job search across LinkedIn, Indeed and Dice, ATS match scores, application email drafts and live voice [mock interviews](/features/ai-mock-interview). The plans differ in how much you can use.`}
+          points={plans.map((p) => `${p.name}: ${pricePhrase(p)}`)}
         />
 
         <section aria-label="Plans" className="relative bg-white pb-8 pt-16 sm:pt-24">
           <div className="container-x">
-            <PricingPlans headingLevel={2} />
+            <PricingPlans plans={plans} headingLevel={2} />
             <p className="mt-10 text-center text-[14px] font-semibold text-ink-900/60">{OFFER.control}</p>
           </div>
         </section>
@@ -59,9 +71,9 @@ export default function PricingPage() {
               lines={[['Compare ', { mark: 'Every Limit' }]]}
               className="font-display text-[clamp(1.9rem,1.3rem+2vw,3.2rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-ink-950"
             />
-            <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-ink-900/70">What each plan includes every month, from resume uploads to live voice mock interviews.</p>
+            <p className="mt-4 max-w-3xl text-[17px] leading-relaxed text-ink-900/70">What each plan includes, from resume uploads to live voice mock interviews.</p>
             <div className="mt-8">
-              <PricingTable />
+              <PricingTable plans={plans} />
             </div>
           </div>
         </section>
@@ -77,12 +89,15 @@ export default function PricingPage() {
               <p className="mt-5 text-lead font-medium text-ink-900/70">Short answers about the plans. More on the FAQ page.</p>
             </div>
             <div className="min-w-0 lg:col-span-7">
-              <FaqList items={PRICING.faqs} idPrefix="pricing-faq" />
+              <FaqList items={faqs} idPrefix="pricing-faq" />
             </div>
           </div>
         </section>
 
-        <CtaBand h2={[['Start Free and ', { mark: 'Upgrade' }], ['When Your ', { grad: 'Search Grows', swoosh: true }]]} text="Try the full loop on a real job with the Free plan, then move to Starter or Pro when you need more." />
+        <CtaBand
+          h2={[['Start Free and ', { mark: 'Upgrade' }], ['When Your ', { grad: 'Search Grows', swoosh: true }]]}
+          text={`Try the full loop on a real job${free ? ` with the ${free.name} plan` : ''}, then move to ${listNames(paid.map((p) => p.name), 'or')} when you need more.`}
+        />
       </main>
       <JsonLd data={schema} />
     </>

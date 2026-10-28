@@ -1,6 +1,8 @@
 import { BRAND, PRICING, SITE_URL, SIGNUP_URL } from '@/content/site';
 import { FEATURES_HUB } from '@/content/features-hub';
-import { FAQ_PAGE } from '@/content/faq';
+import { FAQ_PAGE, faqGroups } from '@/content/faq';
+import { getBillingPlans } from '@/lib/billing';
+import { pricePhrase, pricingFaqs } from '@/lib/pricing';
 import { PAGES } from '@/content/pages';
 import { POSTS } from '@/content/blog';
 import { headingText } from '@/lib/text';
@@ -61,19 +63,20 @@ function post(p) {
   return out.filter(Boolean).join('\n\n');
 }
 
-function pricing() {
-  const rows = PRICING.rows.map((r) => `| ${r.label} | ${PRICING.plans.map((p) => p.limits[r.key]).join(' | ')} |`);
+function pricing(plans) {
+  const rows = PRICING.rows.map((r) => `| ${r.label} | ${plans.map((p) => p.limits[r.key]).join(' | ')} |`);
   return [
     '## JobHunter pricing',
     `URL: ${SITE_URL}${PRICING.path}`,
-    PRICING.plans.map((p) => `- **${p.name}**: ${p.price === 0 ? '$0' : `$${p.price} a month`}. ${p.blurb}`).join('\n'),
-    'Monthly limits per plan (all plans include all four tools; prices in US dollars):',
-    [`| Each month | ${PRICING.plans.map((p) => p.name).join(' | ')} |`, `| --- | ${PRICING.plans.map(() => '---').join(' | ')} |`, ...rows].join('\n'),
-    faqs(PRICING.faqs),
+    plans.map((p) => `- **${p.name}**: ${pricePhrase(p)}. ${p.blurb}`).join('\n'),
+    'Limits per plan (all plans include all four tools; prices in US dollars):',
+    [`| Included | ${plans.map((p) => p.name).join(' | ')} |`, `| --- | ${plans.map(() => '---').join(' | ')} |`, ...rows].join('\n'),
+    faqs(pricingFaqs(plans)),
   ].join('\n\n');
 }
 
-export function GET() {
+export async function GET() {
+  const plans = await getBillingPlans();
   const features = PAGES.filter((p) => p.kind === 'feature');
   const others = PAGES.filter((p) => p.kind !== 'feature');
   const doc = [
@@ -84,12 +87,12 @@ export function GET() {
     [`## ${headingText(FEATURES_HUB.hero.h1)}`, `URL: ${SITE_URL}${FEATURES_HUB.path}`, abs(FEATURES_HUB.hero.lead)].join('\n\n'),
     ...features.map(contentPage),
     '# Pricing',
-    pricing(),
+    pricing(plans),
     '# Who JobHunter is for, and interview questions',
     ...others.map(contentPage),
     '# Frequently asked questions',
     `URL: ${SITE_URL}${FAQ_PAGE.path}`,
-    ...FAQ_PAGE.groups.map((g) => [`## ${g.title}`, faqs(g.items)].join('\n\n')),
+    ...faqGroups(plans).map((g) => [`## ${g.title}`, faqs(g.items)].join('\n\n')),
     '# Blog',
     ...POSTS.map(post),
   ].join('\n\n');

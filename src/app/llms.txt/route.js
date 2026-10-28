@@ -1,6 +1,8 @@
 import { BRAND, PRICING, SITE_URL, SIGNUP_URL, APP_URL, PARENT_URL, BROCHURE_URL, DEMO, SEO, PRIVACY_URL, TERMS_URL } from '@/content/site';
 import { FEATURES_HUB } from '@/content/features-hub';
 import { FAQ_PAGE } from '@/content/faq';
+import { getBillingPlans } from '@/lib/billing';
+import { pricingSummary } from '@/lib/pricing';
 import { PAGES } from '@/content/pages';
 import { POSTS, CATEGORIES, BLOG_HUB, categoryIndexable } from '@/content/blog';
 
@@ -12,13 +14,8 @@ import { POSTS, CATEGORIES, BLOG_HUB, categoryIndexable } from '@/content/blog';
 
 const link = (name, path, note) => `- [${name}](${path.startsWith('http') ? path : SITE_URL + path})${note ? `: ${note}` : ''}`;
 
-function pricing() {
-  const per = PRICING.rows.map((r) => `${r.unit} ${PRICING.plans.map((p) => p.limits[r.key]).join(' / ')}`).join(', ');
-  const plans = PRICING.plans.map((p) => `${p.name} (${p.price === 0 ? '$0' : `$${p.price} a month`})`).join(', ');
-  return `${plans}, prices in US dollars. Every plan includes all four tools; plans differ in monthly limits. Per month, ${PRICING.plans.map((p) => p.name).join(' / ')}: ${per}.`;
-}
-
-export function GET() {
+export async function GET() {
+  const plans = await getBillingPlans();
   const byKind = (kind) => PAGES.filter((p) => p.kind === kind);
   const doc = [
     `# ${BRAND.siteName}`,
@@ -31,7 +28,7 @@ export function GET() {
       link('Brochure (PDF)', BROCHURE_URL, 'the product story, no sign-up needed.'),
       link(`Demo video (${Math.floor(DEMO.seconds)} seconds)`, DEMO.src, DEMO.description),
       link('FAQ', FAQ_PAGE.path, FAQ_PAGE.seo.description),
-      link('Pricing', PRICING.path, pricing()),
+      link('Pricing', PRICING.path, pricingSummary(plans)),
     ].join('\n'),
     ['## Features', link('All features', FEATURES_HUB.path, FEATURES_HUB.seo.description), ...byKind('feature').map((p) => link(p.label, p.path, p.seo.description))].join('\n'),
     ['## Who it is for', ...byKind('audience').map((p) => link(p.label, p.path, p.seo.description))].join('\n'),

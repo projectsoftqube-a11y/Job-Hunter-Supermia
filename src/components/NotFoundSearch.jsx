@@ -13,7 +13,7 @@ import { Icon } from '@/components/icons';
 const CARDS = [
   { href: '/', title: 'Home', text: 'Start from the beginning', icon: 'arrow', keys: 'home start main' },
   { href: '/features', title: 'Features', text: 'Job search, resume match, email and interviews', icon: 'layers', keys: 'features tools job search resume match email mock interview' },
-  { href: '/pricing', title: 'Pricing', text: 'Free, Starter and Pro plans', icon: 'target', keys: 'pricing price plans cost free starter pro' },
+  { href: '/pricing', title: 'Pricing', text: 'Free and paid plans compared', icon: 'target', keys: 'pricing price plans cost free paid essential premium starter pro' },
   { href: '/blog', title: 'Blog', text: 'Job search and interview tips', icon: 'book', keys: 'blog tips guides articles' },
 ];
 const EXTRA = [

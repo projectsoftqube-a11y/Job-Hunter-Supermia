@@ -122,34 +122,26 @@ export const MENU = {
   login: { label: 'Log in', href: APP_URL },
 };
 
-// Plans and limits from the client's pricing sheet (2026-10-22). Only the limits and the actual plan
-// price are public; costs and margins in that sheet stay internal. Prices are US dollars per month.
+// Plans, prices and limits come from the billing API (lib/billing.js); every sentence naming them is
+// built in lib/pricing.js. This holds only what the API does not: the limit rows, in display order, and
+// the copy for each plan keyed by its API plan_code.
 export const PRICING = {
   path: '/pricing',
-  seo: {
-    title: 'JobHunter Pricing: Free, Starter and Pro Plans',
-    description: 'JobHunter pricing: a Free plan, Starter at $15 a month and Pro at $30 a month. Compare job searches, match scores, email drafts and mock interviews.',
-  },
-  currency: 'USD',
   rows: [
     { key: 'resume', one: 'resume upload', unit: 'resume uploads', label: 'Resume uploads', hint: 'Read and parsed into your profile', icon: 'doc' },
     { key: 'ats', one: 'ATS match score', unit: 'ATS match scores', label: 'ATS match scores', hint: 'A score out of 100 for one job', icon: 'target' },
-    { key: 'jobs', one: 'job search', unit: 'job searches', label: 'Job searches', hint: 'LinkedIn, Indeed and Dice in one search', icon: 'search' },
+    { key: 'jobs', one: 'job match', unit: 'job matches', label: 'Job matches', hint: 'Jobs found on LinkedIn, Indeed and Dice', icon: 'search' },
+    { key: 'perSearch', one: 'job per search', unit: 'jobs per search', label: 'Jobs per search', hint: 'The most jobs one search returns', icon: 'briefcase', inProse: false },
     { key: 'emails', one: 'application email draft', unit: 'application email drafts', label: 'Application email drafts', hint: 'Written from your resume, sent by you', icon: 'mail' },
     { key: 'interviews', one: 'AI mock interview', unit: 'AI mock interviews', label: 'AI mock interviews', hint: 'Live voice, with a scorecard', icon: 'mic' },
+    { key: 'minutes', one: 'minute of interview practice', unit: 'minutes of interview practice', label: 'Interview practice minutes', hint: 'Total live voice practice time', icon: 'clock' },
   ],
-  faqs: [
-    { q: 'Is there a free plan?', a: 'Yes. The Free plan costs $0 and includes every tool: 1 resume upload, 2 ATS match scores, 5 job searches, 5 application email drafts and 1 AI mock interview each month.' },
-    { q: 'What is the difference between Free, Starter and Pro?', a: 'All three plans include the same four tools: job search across LinkedIn, Indeed and Dice, ATS match scores, application email drafts and live voice mock interviews. The plans differ in how much you can use each month. Starter is $15 a month and Pro is $30 a month.' },
-    { q: 'Which plan should I pick?', a: 'Start with Free to try the whole loop on a real job. Starter suits an active search, with 200 job searches and 6 mock interviews a month. Pro suits a full-time search across several roles, with 800 job searches and 10 mock interviews a month.' },
-    { q: 'What currency are the prices in?', a: 'Prices are in US dollars, per month.' },
-    { q: 'Does any plan apply to jobs for me?', a: 'No. On every plan, JobHunter never applies to a job or sends an email without you. It drafts, scores and prepares; you decide and send.' },
-  ],
-  plans: [
-    { id: 'free', name: 'Free', price: 0, blurb: 'Try the whole loop on a real job before you pay anything.', cta: 'Start free', limits: { resume: 1, ats: 2, jobs: 5, emails: 5, interviews: 1 } },
-    { id: 'starter', name: 'Starter', price: 15, blurb: 'For an active search: apply to the right roles every week and practice the rounds.', cta: 'Choose Starter', featured: true, limits: { resume: 15, ats: 15, jobs: 200, emails: 200, interviews: 6 } },
-    { id: 'pro', name: 'Pro', price: 30, blurb: 'For a full-time search across several roles, with more interview practice.', cta: 'Choose Pro', limits: { resume: 30, ats: 30, jobs: 800, emails: 800, interviews: 10 } },
-  ],
+  // A plan the API adds later still renders, just without a blurb
+  copy: {
+    free_plan: { blurb: 'Try the whole loop on a real job before you pay anything.' },
+    plan_1: { blurb: 'For an active search: apply to the right roles every week and practice the rounds.', fit: 'an active search' },
+    plan_2: { blurb: 'For a full-time search across several roles, with more interview practice.', fit: 'a full-time search across several roles' },
+  },
 };
 
 export const FOOTER = [

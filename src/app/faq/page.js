@@ -6,11 +6,12 @@ import JsonLd from '@/components/JsonLd';
 import PageHero from '@/components/page/PageHero';
 import FaqList from '@/components/page/FaqList';
 import CtaBand from '@/components/page/CtaBand';
-import { FAQ_PAGE } from '@/content/faq';
+import { FAQ_PAGE, faqGroups } from '@/content/faq';
+import { getBillingPlans } from '@/lib/billing';
 import { graph, pageNode, breadcrumbNode, faqNode } from '@/lib/schema';
 import { OG_BASE } from '@/content/site';
 
-const { path, seo, groups } = FAQ_PAGE;
+const { path, seo } = FAQ_PAGE;
 const TRAIL = [{ name: 'FAQ', path }];
 
 export const metadata = {
@@ -25,7 +26,8 @@ export const metadata = {
  * /faq: 25 questions in six groups, each group with a jump link. Every answer is in the server HTML
  * (details/summary), and the FAQPage JSON-LD is built from the same strings.
  */
-export default function FaqPage() {
+export default async function FaqPage() {
+  const groups = faqGroups(await getBillingPlans());
   const all = groups.flatMap((g) => g.items);
   const schema = graph(
     pageNode({ path, name: seo.title, description: seo.description }),

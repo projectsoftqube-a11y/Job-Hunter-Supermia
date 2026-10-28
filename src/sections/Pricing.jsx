@@ -3,26 +3,26 @@ import CreativeHeading from "@/components/CreativeHeading";
 import { FadeUp } from "@/components/Reveal";
 import { Icon } from "@/components/icons";
 import SlideCta from "@/components/SlideCta";
-import { OFFER, PRICING, SIGNUP_URL } from "@/content/site";
+import { OFFER, PRICING } from "@/content/site";
+import { limitsLabel, money, periodLabel } from "@/lib/pricing";
 
 /*
- * Pricing: three plan cards (Free, Starter, Pro) with each plan's monthly limits, and a full comparison
- * table used on /pricing. Numbers come from PRICING in site.js (the client's confirmed sheet), so the
- * cards, the table and the Offer schema never disagree.
+ * Pricing: one card per plan with its limits, and a full comparison table used on /pricing. The plans
+ * come from the billing API (getBillingPlans in lib/billing.js), passed in by the page, so the cards,
+ * the table and the Offer schema never disagree.
  */
 
 const fmt = (n) => n.toLocaleString("en-US");
-const price = (p) => (p.price === 0 ? "$0" : `$${p.price}`);
 
 // One gold arc that travels round the featured card's border
 const GOLD_ARCS =
   "bg-[conic-gradient(from_0deg,transparent_0deg,transparent_250deg,#f4b400_300deg,#fde68a_330deg,#f9c320_345deg,transparent_360deg)]";
 
-export function PricingPlans({ headingLevel = 3 }) {
+export function PricingPlans({ plans, headingLevel = 3 }) {
   const H = `h${headingLevel}`;
   return (
     <ul className="grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-6">
-      {PRICING.plans.map((plan, i) => {
+      {plans.map((plan, i) => {
         const dark = plan.featured;
         return (
           <FadeUp
@@ -68,7 +68,7 @@ export function PricingPlans({ headingLevel = 3 }) {
                       </H>
                       {dark && (
                         <span className="rounded-full bg-gold-400 px-3 py-1 text-[11.5px] font-bold uppercase tracking-[0.12em] text-ink-950">
-                          Best for an active search
+                          Most popular
                         </span>
                       )}
                     </div>
@@ -80,17 +80,17 @@ export function PricingPlans({ headingLevel = 3 }) {
 
                     <p className="mt-6 flex items-end gap-1.5">
                       <span className="font-display text-[clamp(3rem,2.4rem+2vw,4rem)] font-extrabold leading-none tracking-[-0.04em]">
-                        {price(plan)}
+                        {money(plan)}
                       </span>
                       <span
                         className={`pb-1.5 text-[15px] font-semibold ${dark ? "text-white/55" : "text-ink-900/50"}`}
                       >
-                        {plan.price === 0 ? "to start" : "/ month"}
+                        {periodLabel(plan)}
                       </span>
                     </p>
 
                     <SlideCta
-                      href={SIGNUP_URL}
+                      href={plan.href}
                       label={plan.cta}
                       tone={dark ? "dark" : "light"}
                       className="mt-7"
@@ -99,7 +99,7 @@ export function PricingPlans({ headingLevel = 3 }) {
                     <p
                       className={`mt-8 text-[12px] font-bold uppercase tracking-[0.16em] ${dark ? "text-gold-300" : "text-ink-900/45"}`}
                     >
-                      Each month
+                      {limitsLabel(plan)}
                     </p>
                     <ul
                       className={`mt-3 divide-y ${dark ? "divide-white/10" : "divide-ink-900/[0.07]"}`}
@@ -139,11 +139,11 @@ export function PricingPlans({ headingLevel = 3 }) {
   );
 }
 
-export function PricingTable() {
+export function PricingTable({ plans }) {
   const max = Object.fromEntries(
     PRICING.rows.map((r) => [
       r.key,
-      Math.max(...PRICING.plans.map((p) => p.limits[r.key])),
+      Math.max(1, ...plans.map((p) => p.limits[r.key])),
     ]),
   );
   const cell = (p) => (p.featured ? "bg-brand-950 text-white" : "");
@@ -152,11 +152,11 @@ export function PricingTable() {
     <div className="overflow-x-auto rounded-[30px] border border-hairline bg-white shadow-[0_40px_80px_-55px_rgba(26,15,51,0.6)]">
       <table className="w-full min-w-[720px] border-collapse text-left">
         <caption className="sr-only">
-          JobHunter plans compared: monthly price and limits
+          JobHunter plans compared: price and limits
         </caption>
         <colgroup>
           <col className="w-[34%]" />
-          {PRICING.plans.map((p) => (
+          {plans.map((p) => (
             <col key={p.id} className="w-[22%]" />
           ))}
         </colgroup>
@@ -167,10 +167,10 @@ export function PricingTable() {
                 Compare plans
               </span>
               <span className="mt-1.5 block font-display text-[1.35rem] font-bold leading-snug text-ink-950">
-                What you get each month
+                What each plan includes
               </span>
             </th>
-            {PRICING.plans.map((p) => (
+            {plans.map((p) => (
               <th
                 key={p.id}
                 scope="col"
@@ -184,7 +184,7 @@ export function PricingTable() {
                 )}
                 {p.featured && (
                   <span className="mb-3 inline-block rounded-full bg-gold-400 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.12em] text-ink-950">
-                    Best for an active search
+                    Most popular
                   </span>
                 )}
                 <span
@@ -196,12 +196,12 @@ export function PricingTable() {
                   <span
                     className={`font-display text-[2.4rem] font-extrabold leading-none tracking-[-0.04em] ${p.featured ? "text-gold-300" : "text-ink-950"}`}
                   >
-                    {price(p)}
+                    {money(p)}
                   </span>
                   <span
                     className={`text-[13px] font-semibold ${p.featured ? "text-white/55" : "text-ink-900/50"}`}
                   >
-                    {p.price === 0 ? "to start" : "/ month"}
+                    {periodLabel(p)}
                   </span>
                 </span>
               </th>
@@ -232,7 +232,7 @@ export function PricingTable() {
                   </span>
                 </span>
               </th>
-              {PRICING.plans.map((p) => {
+              {plans.map((p) => {
                 const v = p.limits[r.key];
                 return (
                   <td
@@ -264,13 +264,13 @@ export function PricingTable() {
             <td className="px-7 py-6 text-[13px] font-semibold text-ink-900/55">
               {OFFER.control}
             </td>
-            {PRICING.plans.map((p) => (
+            {plans.map((p) => (
               <td
                 key={p.id}
                 className={`px-6 py-6 text-center ${p.featured ? "border-t border-white/10 bg-brand-950" : ""}`}
               >
                 <a
-                  href={SIGNUP_URL}
+                  href={p.href}
                   className={`group inline-flex h-11 items-center gap-2 rounded-full px-5 text-[14px] font-bold transition-colors ${
                     p.featured
                       ? "bg-gold-400 text-ink-950 hover:bg-gold-300"
@@ -294,7 +294,7 @@ export function PricingTable() {
 }
 
 /** Homepage section */
-export default function Pricing() {
+export default function Pricing({ plans }) {
   return (
     <section
       id="pricing"
@@ -321,13 +321,12 @@ export default function Pricing() {
           />
           <p className="mx-auto mt-6 max-w-[46rem] text-lead font-medium text-ink-900/65">
             Every plan has all four tools: job search, match score, email drafts
-            and mock interviews. The plans differ in how much you can use each
-            month.
+            and mock interviews. The plans differ in how much you can use.
           </p>
         </div>
 
         <div className="mt-12 sm:mt-20">
-          <PricingPlans />
+          <PricingPlans plans={plans} />
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 text-center sm:mt-14 sm:flex-row sm:gap-6">

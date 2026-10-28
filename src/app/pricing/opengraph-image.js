@@ -1,11 +1,14 @@
-import { PRICING } from '@/content/site';
+import { getBillingPlans } from '@/lib/billing';
+import { listNames, pricePhrase } from '@/lib/pricing';
 import { ogCard, OG_SIZE } from '@/lib/og';
 
 export const size = OG_SIZE;
 export const contentType = 'image/png';
-export const alt = "JobHunter pricing: Free, Starter at $15 a month and Pro at $30 a month";
+// Static by Next.js convention, so it names no plan or price that could go stale
+export const alt = 'JobHunter pricing: the free and paid plans compared';
 
-export default function Image() {
-  const line = PRICING.plans.map((p) => (p.price === 0 ? `${p.name} $0` : `${p.name} $${p.price} a month`)).join('  ·  ');
-  return ogCard({ kicker: 'Pricing', title: 'Free, Starter and Pro Plans', line });
+export default async function Image() {
+  const plans = await getBillingPlans();
+  const line = plans.map((p) => `${p.name} ${pricePhrase(p)}`).join('  ·  ');
+  return ogCard({ kicker: 'Pricing', title: `${listNames(plans.map((p) => p.name))} Plans`, line });
 }

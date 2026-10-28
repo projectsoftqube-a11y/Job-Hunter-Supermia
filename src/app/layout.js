@@ -7,6 +7,7 @@ import Footer from '@/sections/Footer';
 import JsonLd from '@/components/JsonLd';
 import LeadTracking from '@/components/LeadTracking';
 import { siteSchema } from '@/lib/schema';
+import { getBillingPlans } from '@/lib/billing';
 import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO, OG_BASE } from '@/content/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -38,6 +39,11 @@ export const viewport = {
   themeColor: '#1a0f33',
 };
 
+// The sitewide graph carries the plan Offers, so it reads the same cached plans as the pricing pages
+async function SiteSchema() {
+  return <JsonLd data={siteSchema(await getBillingPlans())} />;
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en-US" className={`${inter.variable} ${lexend.variable}`}>
@@ -50,7 +56,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </SmoothScroll>
-        <JsonLd data={siteSchema} />
+        <SiteSchema />
         <LeadTracking />
       </body>
     </html>

@@ -1,6 +1,9 @@
+import { costAnswer } from '@/lib/pricing';
+
 /**
  * /faq content (FAQ v3, fact-checked 22 Oct 2026). The only page with FAQPage markup: the JSON-LD is
  * built from these exact strings, so the visible answers and the schema always match word for word.
+ * The cost answer is built from the billing plans; render the groups through faqGroups(plans).
  */
 
 export const FAQ_PAGE = {
@@ -27,7 +30,7 @@ export const FAQ_PAGE = {
         { q: 'Is JobHunter legit, and who makes it?', a: 'Yes, there is a real company behind it. JobHunter is built by SuperMIA (supermia.ai) and operated by Botfinity Inc., the company named in its terms and privacy policy, at 2451 W Grapevine Mills Cir #547, Grapevine, Texas. You can reach the team at hello@supermia.ai.' },
         { q: 'Who is JobHunter for?', a: 'JobHunter is built for new grads, career switchers, engineers, designers, analysts and people returning to work. The match score, application email and mock interview work from your own resume and the job you choose.' },
         { q: 'Can I see how it works before I sign up?', a: 'Yes. Watch the 47-second product demo on the JobHunter homepage, or download the 8-page brochure (PDF), which walks through how it works. Neither needs a sign-up.' },
-        { q: 'How much does JobHunter cost?', a: 'JobHunter has a Free plan at $0 and two paid plans: Starter at $15 a month and Pro at $30 a month, in US dollars. Every plan includes all four tools: job search, ATS match scores, application email drafts and live voice mock interviews. The plans differ in how much you can use each month.' },
+        { q: 'How much does JobHunter cost?', a: 'JobHunter has a free plan and paid plans, in US dollars. See [JobHunter pricing](/pricing) for the current plans and limits.' },
         { q: 'How do I get started?', a: 'Sign up at app.jobhunter.supermia.ai and upload your resume once. JobHunter reads your skills, experience and level, then uses them for the job search, the match score, the application email and the mock interview.' },
         { q: 'How old do I need to be to use JobHunter?', a: 'You need to be at least 16 years old to use JobHunter, as set out in the terms and conditions.' },
       ],
@@ -97,3 +100,9 @@ export const FAQ_PAGE = {
     secondary: { label: 'Email the team', href: 'mailto:hello@supermia.ai' },
   },
 };
+
+const COST_QUESTION = 'How much does JobHunter cost?';
+
+/** FAQ_PAGE.groups with the cost answer built from the billing plans, so it matches /pricing. */
+export const faqGroups = (plans) =>
+  FAQ_PAGE.groups.map((g) => ({ ...g, items: g.items.map((f) => (f.q === COST_QUESTION ? { ...f, a: costAnswer(plans) } : f)) }));

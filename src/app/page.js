@@ -16,6 +16,7 @@ import Faq from '@/sections/Faq';
 import FinalCta from '@/sections/FinalCta';
 import JsonLd from '@/components/JsonLd';
 import { homeSchema } from '@/lib/schema';
+import { getBillingPlans } from '@/lib/billing';
 import { SEO } from '@/content/site';
 
 export const metadata = {
@@ -26,7 +27,9 @@ export const metadata = {
 
 // Section order follows the homepage v2 content. The "Sample stories" testimonials are removed until
 // real, consented stories exist (SEO Audit issue 4).
-export default function Home() {
+export default async function Home() {
+  const plans = await getBillingPlans();
+
   return (
     <>
       <Preloader />
@@ -40,7 +43,7 @@ export default function Home() {
         <Results />
         <Community />
         <Trust />
-        <Pricing />
+        <Pricing plans={plans} />
         <Brochure />
         <Faq />
         <FinalCta />

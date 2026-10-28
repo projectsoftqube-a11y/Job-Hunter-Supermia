@@ -7,8 +7,8 @@ import { plain } from '@/lib/text';
  * - The Organization, WebSite and SoftwareApplication nodes are output sitewide from the root layout, so
  *   every page's @id references resolve. The Organization @id matches supermia.ai so Google merges them.
  * - FAQPage is built from the exact strings each page renders. A question also answered on /faq is
- *   marked up there only, so no question is claimed by two pages. Offers come from the confirmed
- *   pricing. No Review or AggregateRating until real, consented reviews exist.
+ *   marked up there only, so no question is claimed by two pages. Offers come from the billing API
+ *   plans. No Review or AggregateRating until real, consented reviews exist.
  */
 
 export const ORG_ID = `${PARENT_URL}/#organization`;
@@ -81,21 +81,25 @@ const software = {
   ],
   image: abs('/opengraph-image'),
   installUrl: APP_URL,
-  offers: PRICING.plans.map((p) => ({
-    '@type': 'Offer',
-    '@id': planId(p),
-    name: `${BRAND.name} ${p.name}`,
-    price: String(p.price),
-    priceCurrency: PRICING.currency,
-    url: abs(PRICING.path),
-    ...(p.price > 0 ? { priceSpecification: { '@type': 'UnitPriceSpecification', price: String(p.price), priceCurrency: PRICING.currency, billingDuration: 'P1M', unitCode: 'MON' } } : {}),
-  })),
   publisher: { '@id': ORG_ID },
   provider: { '@id': ORG_ID },
 };
 
-/** Sitewide graph, rendered once from the root layout. */
-export const siteSchema = { '@context': 'https://schema.org', '@graph': [organization, website, software] };
+// A 30-day plan bills monthly; any other length is stated in days
+const billingPeriod = (p) => (p.planDays === 30 ? { billingDuration: 'P1M', unitCode: 'MON' } : { billingDuration: `P${p.planDays}D`, unitCode: 'DAY' });
+
+const offer = (p) => ({
+  '@type': 'Offer',
+  '@id': planId(p),
+  name: `${BRAND.name} ${p.name}`,
+  price: String(p.price),
+  priceCurrency: p.currency,
+  url: abs(PRICING.path),
+  ...(p.price > 0 && p.planDays > 0 ? { priceSpecification: { '@type': 'UnitPriceSpecification', price: String(p.price), priceCurrency: p.currency, ...billingPeriod(p) } } : {}),
+});
+
+/** Sitewide graph, rendered once from the root layout. `plans` come from getBillingPlans(). */
+export const siteSchema = (plans) => ({ '@context': 'https://schema.org', '@graph': [organization, website, { ...software, offers: plans.map(offer) }] });
 
 /** BreadcrumbList for an inner page. `trail` = [{ name, path }], Home is added first. */
 export function breadcrumbNode(path, trail) {
@@ -180,11 +184,11 @@ export function faqNode(path, items = []) {
 }
 
 /** OfferCatalog of the published plans, pointing at the Offers on the SoftwareApplication node. */
-export const offerCatalogNode = () => ({
+export const offerCatalogNode = (plans) => ({
   '@type': 'OfferCatalog',
   '@id': `${abs(PRICING.path)}#plans`,
   name: `${BRAND.name} plans`,
-  itemListElement: PRICING.plans.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@id': planId(p) } })),
+  itemListElement: plans.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@id': planId(p) } })),
 });
 
 /** Points voice assistants at the page's answer blocks (elements marked data-speakable). */
