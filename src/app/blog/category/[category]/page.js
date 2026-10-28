@@ -6,10 +6,14 @@ import PostCard from '@/components/blog/PostCard';
 import { BlogHeader, BlogNote } from '@/components/blog/BlogShell';
 import { CATEGORIES, CATEGORY_BY_SLUG, postsIn, categoryIndexable } from '@/content/blog';
 import { graph, pageNode, breadcrumbNode, itemListNode } from '@/lib/schema';
+import { OG_BASE } from '@/content/site';
 
 // Every page here is prerendered from generateStaticParams and unknown slugs are a 404, so the dev-only
 // instant-navigation check (which can't render notFound()) is switched off for this segment.
 export const instant = false;
+// An unknown slug must answer 404 on its first request too. Without this, the prerendered App Shell is
+// sent with a 200 before notFound() runs (a soft 404 for crawlers).
+export const ensureStatic = 'navigation';
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ category: c.slug }));
@@ -27,7 +31,7 @@ export async function generateMetadata({ params }) {
     alternates: { canonical: pathOf(c) },
     // noindex, follow until the category holds three posts (Navigation spec 4.3)
     ...(categoryIndexable(c.slug) ? {} : { robots: { index: false, follow: true } }),
-    openGraph: { type: 'website', url: pathOf(c), title: c.seo.title, description: c.seo.description },
+    openGraph: { ...OG_BASE, type: 'website', url: pathOf(c), title: c.seo.title, description: c.seo.description },
     twitter: { card: 'summary_large_image', title: c.seo.title, description: c.seo.description },
   };
 }

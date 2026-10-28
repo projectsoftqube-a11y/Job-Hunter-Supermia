@@ -12,7 +12,8 @@ export const SIGNUP_URL = 'https://app.jobhunter.supermia.ai/signup';
 export const PRIVACY_URL = '/privacy-policy';
 export const TERMS_URL = '/terms-and-conditions';
 export const PARENT_URL = 'https://supermia.ai';
-export const SITE_URL = 'https://jobhunter.supermia.ai';
+// Canonical origin. A staging or preview host sets NEXT_PUBLIC_SITE_URL so it never emits production canonicals.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://jobhunter.supermia.ai').replace(/\/$/, '');
 export const BROCHURE_URL = '/brochure/job-hunter-brochure.pdf';
 
 // How search engines should name the product and its publisher
@@ -24,8 +25,24 @@ export const BRAND = {
   company: 'Botfinity Inc.',
   email: 'hello@supermia.ai',
   address: { street: '2451 W Grapevine Mills Cir #547', city: 'Grapevine', region: 'TX', postalCode: '76051', country: 'US' },
-  sameAs: ['https://www.linkedin.com/showcase/mia-my-intelligent-assistant', 'https://www.youtube.com/@MIAMyIntelligentAssistant', 'https://twitter.com/supermia_ai'],
+  // Profiles confirmed on 28 Oct 2026: the first three and the Google Maps listing are linked from the
+  // supermia.ai footer, the DEV profile links back to supermia.ai, and the owner confirmed G2 and Capterra.
+  sameAs: [
+    'https://www.linkedin.com/showcase/mia-my-intelligent-assistant',
+    'https://www.youtube.com/@MIAMyIntelligentAssistant',
+    'https://twitter.com/supermia_ai',
+    'https://maps.google.com/?cid=10850915260473186586',
+    'https://dev.to/supermia',
+    'https://www.g2.com/products/supermia',
+    'https://www.capterra.com/p/10039381/SuperMIA/',
+  ],
+  // The one-paragraph answer to "what is JobHunter?", shared by /llms.txt and /llms-full.txt
+  summary:
+    'JobHunter (also called Job Hunter, JobHunter AI) is an AI job search and interview practice app from SuperMIA, operated by Botfinity Inc. in Grapevine, Texas. It searches LinkedIn, Indeed and Dice in one search, scores your resume for each job out of 100 with the reasoning and missing skills, drafts an application email for the role that you edit and send, and runs live voice mock interviews with a 0-10 readiness score. It never applies to jobs or sends anything without the user.',
 };
+
+// Shared by every page's openGraph metadata: Next.js replaces, not merges, the root layout's openGraph
+export const OG_BASE = { siteName: BRAND.siteName, locale: 'en_US' };
 
 export const SEO = {
   title: 'JobHunter: AI Job Search and Live Interview Practice',
@@ -40,7 +57,7 @@ export const OFFER = {
   ctaLong: 'Start your job hunt',
   demo: 'Watch the 47-second demo',
   control: 'It never applies or sends anything without you.',
-  noCreditCard: false, // set true only if sign-up really needs no card
+  noCreditCard: false, // sign-up asks for a card (owner, 2026-10-28); the site doesn't mention cards either way
   freePlan: true, // Free plan confirmed by the client (pricing sheet, 2026-10-22)
 };
 

@@ -1,0 +1,30 @@
+keyword,volume,difficulty,intent,stage,business_value,intent_strength,winnability,score,source,mapped_url
+best ai job search tools,n/a,n/a,commercial,BOFU,5,4,2,40,SERP 2026-10-28 (listicles dominate),/blog/best-ai-job-search-tools
+ai job search,n/a,n/a,commercial,BOFU,5,4,2,40,SERP 2026-10-28,/
+ai job search across linkedin indeed and dice,n/a,n/a,commercial,BOFU,5,5,4,100,SERP 2026-10-28 (no mainstream tool covers Dice),/features/ai-job-match
+search linkedin indeed dice at once,n/a,n/a,commercial,BOFU,5,5,4,100,SERP 2026-10-28,/features/ai-job-match
+ai tool that finds jobs matching my resume,n/a,n/a,commercial,BOFU,5,5,3,75,SERP 2026-10-28 (Kickresume/Resumatch rank),/features/ai-job-match
+ai mock interview,n/a,n/a,commercial,BOFU,5,4,2,40,SERP 2026-10-28,/features/ai-mock-interview
+free ai mock interview with voice,n/a,n/a,transactional,BOFU,5,5,3,75,SERP 2026-10-28 (small vendors rank),/features/ai-mock-interview
+ai mock interview with scorecard,n/a,n/a,commercial,BOFU,5,4,3,60,SERP 2026-10-28,/features/ai-mock-interview
+final round ai alternatives,n/a,n/a,commercial,BOFU,4,5,3,60,SERP 2026-10-28 (roundups/aggregators rank),/blog/final-round-ai-alternatives (planned)
+resume job description match score,n/a,n/a,transactional,BOFU,5,5,2,50,SERP 2026-10-28 (free tools rank),/features/resume-job-match
+compare resume to job description,n/a,n/a,transactional,BOFU,5,5,2,50,SERP 2026-10-28,/features/resume-job-match
+jobscan alternative,n/a,n/a,commercial,BOFU,4,5,3,60,SERP 2026-10-28 (many alternative pages),/blog/jobscan-alternatives (planned)
+jobhunter pricing,n/a,n/a,navigational,BOFU,5,5,5,125,INFERRED (brand),/pricing
+jobhunter ai,n/a,n/a,navigational,BOFU,5,5,4,100,SERP 2026-10-28 (name shared with other tools),/
+job application email,n/a,n/a,informational,MOFU,4,3,3,36,INFERRED,/features/job-application-email
+how to email a recruiter about a job,n/a,n/a,informational,TOFU,3,3,3,27,INFERRED,/blog/how-to-email-a-recruiter
+how to match your resume to a job description,n/a,n/a,informational,TOFU,4,3,3,36,SERP 2026-10-28,/blog/match-resume-to-job-description
+applied to jobs no response,n/a,n/a,informational,TOFU,4,3,3,36,INFERRED,/blog/applied-to-jobs-no-response
+how to practice for an interview,n/a,n/a,informational,TOFU,4,3,3,36,INFERRED,/blog/how-to-practice-for-an-interview
+behavioral interview practice star,n/a,n/a,informational,TOFU,4,3,3,36,INFERRED,/blog/behavioral-interview-practice
+how to answer tell me about yourself,n/a,n/a,informational,TOFU,4,3,2,24,SERP 2026-10-28 (big career sites rank),/blog/how-to-answer-tell-me-about-yourself (planned)
+tell me about yourself answer for career changers,n/a,n/a,informational,TOFU,4,3,4,48,INFERRED (narrower angle),/blog/how-to-answer-tell-me-about-yourself (planned)
+interview questions by round,n/a,n/a,informational,TOFU,4,3,3,36,INFERRED,/interview-questions
+job search for new grads,n/a,n/a,informational,MOFU,4,3,2,24,INFERRED,/for-new-grads
+career change job search tool,n/a,n/a,commercial,MOFU,4,4,3,48,INFERRED,/for-career-switchers
+software engineer job search tool dice,n/a,n/a,commercial,MOFU,5,4,4,80,INFERRED (Dice is tech-focused),/for-software-engineers
+returning to work after career break interview,n/a,n/a,informational,MOFU,4,3,3,36,INFERRED,/for-people-returning-to-work
+what is a resume match score,n/a,n/a,informational,TOFU,3,2,4,24,INFERRED,/features/resume-job-match
+auto apply job tools risks,n/a,n/a,informational,MOFU,3,3,3,27,SERP 2026-10-28 (roundups warn about auto-apply),/blog/best-ai-job-search-tools

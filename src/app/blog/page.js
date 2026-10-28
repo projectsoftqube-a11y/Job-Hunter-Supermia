@@ -8,6 +8,7 @@ import PostCard from '@/components/blog/PostCard';
 import { BlogHeader } from '@/components/blog/BlogShell';
 import { BLOG_HUB, POSTS, CATEGORIES, postsIn, hubIndexable } from '@/content/blog';
 import { graph, pageNode, breadcrumbNode, itemListNode } from '@/lib/schema';
+import { OG_BASE } from '@/content/site';
 
 const TRAIL = [{ name: 'Blog', path: BLOG_HUB.path }];
 const indexable = hubIndexable();
@@ -17,7 +18,7 @@ export const metadata = {
   description: BLOG_HUB.seo.description,
   alternates: { canonical: BLOG_HUB.path },
   ...(indexable ? {} : { robots: { index: false, follow: true } }),
-  openGraph: { type: 'website', url: BLOG_HUB.path, title: BLOG_HUB.seo.title, description: BLOG_HUB.seo.description },
+  openGraph: { ...OG_BASE, type: 'website', url: BLOG_HUB.path, title: BLOG_HUB.seo.title, description: BLOG_HUB.seo.description },
   twitter: { card: 'summary_large_image', title: BLOG_HUB.seo.title, description: BLOG_HUB.seo.description },
 };
 

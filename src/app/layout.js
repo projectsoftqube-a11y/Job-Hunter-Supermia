@@ -5,8 +5,9 @@ import SmoothScroll from '@/components/SmoothScroll';
 import Nav from '@/components/Nav';
 import Footer from '@/sections/Footer';
 import JsonLd from '@/components/JsonLd';
+import LeadTracking from '@/components/LeadTracking';
 import { siteSchema } from '@/lib/schema';
-import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO } from '@/content/site';
+import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO, OG_BASE } from '@/content/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 'swap' });
@@ -19,16 +20,12 @@ export const metadata = {
   authors: [{ name: BRAND.parent, url: PARENT_URL }],
   creator: BRAND.parent,
   publisher: BRAND.parent,
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
-  },
+  // Full-size snippets, image and video previews for every engine (Bing and the AI crawlers read these too)
+  robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   // Share images come from the opengraph-image files (root, pages and posts)
   openGraph: {
+    ...OG_BASE,
     type: 'website',
-    siteName: BRAND.siteName,
-    locale: 'en_US',
     url: '/',
     title: SEO.title,
     description: SEO.description,
@@ -54,6 +51,7 @@ export default function RootLayout({ children }) {
           <Footer />
         </SmoothScroll>
         <JsonLd data={siteSchema} />
+        <LeadTracking />
       </body>
     </html>
   );

@@ -1,8 +1,9 @@
 import ContentPage from '@/components/page/ContentPage';
 import JsonLd from '@/components/JsonLd';
 import { trailFor } from '@/content/pages';
-import { graph, pageNode, breadcrumbNode, itemListNode } from '@/lib/schema';
+import { graph, pageNode, breadcrumbNode, itemListNode, faqNode } from '@/lib/schema';
 import { headingText } from '@/lib/text';
+import { OG_BASE } from '@/content/site';
 
 /*
  * Shared by app/[slug] (audience and resource pages) and app/features/[slug] (feature pages): the
@@ -15,7 +16,7 @@ export function contentMetadata(page) {
     title: { absolute: page.seo.title },
     description: page.seo.description,
     alternates: { canonical: page.path },
-    openGraph: { type: 'website', url: page.path, title: page.seo.title, description: page.seo.description },
+    openGraph: { ...OG_BASE, type: 'website', url: page.path, title: page.seo.title, description: page.seo.description },
     twitter: { card: 'summary_large_image', title: page.seo.title, description: page.seo.description },
   };
 }
@@ -31,7 +32,8 @@ export default function ContentRoute({ page }) {
         page.path,
         headingText(page.hero.h1),
         questionSections.map((s) => ({ name: headingText(s.h2), path: `${page.path}#${s.id}` }))
-      )
+      ),
+    faqNode(page.path, page.faqs?.items)
   );
 
   return (

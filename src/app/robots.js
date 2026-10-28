@@ -17,6 +17,9 @@ const AI_CRAWLERS = [
   'Bingbot',
   'DuckAssistBot',
   'CCBot',
+  'meta-externalagent',
+  'Amazonbot',
+  'Bytespider',
 ];
 
 export default function robots() {

@@ -1,0 +1,31 @@
+url,status,page_type,primary_keyword,secondary_keywords,intent,stage,score,hub,cta,schema,priority,blockers
+/,keep,home,ai job search,ai job search and interview practice,commercial,BOFU,40,-,signup,WebPage+VideoObject+SoftwareApplication,-,-
+/features,keep,hub,jobhunter features,ai job search tools features,commercial,BOFU,-,-,signup,CollectionPage+ItemList,-,-
+/features/ai-job-match,keep (frozen),product,ai job search across linkedin indeed and dice,ai tool that finds jobs matching my resume,commercial,BOFU,100,/features,signup,WebPage+FAQPage,-,owner froze page content
+/features/resume-job-match,keep (frozen),product,resume job description match score,compare resume to job description,transactional,BOFU,50,/features,signup,WebPage+FAQPage,-,owner froze page content
+/features/job-application-email,keep (frozen),product,job application email,application email generator,commercial,MOFU,36,/features,signup,WebPage+FAQPage,-,owner froze page content
+/features/ai-mock-interview,improve,product,ai mock interview,free ai mock interview with voice; scorecard,commercial,BOFU,75,/features,signup (Free: 1 interview/month),WebPage+FAQPage,P2,-
+/pricing,keep,pricing,jobhunter pricing,ai job search tool cost,navigational,BOFU,125,-,signup,WebPage+OfferCatalog+FAQPage,-,B4 no-credit-card fact
+/faq,keep,faq hub,jobhunter faq,-,informational,MOFU,-,-,signup,FAQPage,-,-
+/for-new-grads,keep,audience,job search for new grads,-,informational,MOFU,24,-,signup,WebPage+FAQPage,-,-
+/for-career-switchers,keep,audience,career change job search tool,-,commercial,MOFU,48,-,signup,WebPage+FAQPage,-,-
+/for-software-engineers,keep,audience,software engineer job search tool dice,-,commercial,MOFU,80,-,signup,WebPage+FAQPage,-,-
+/for-designers-and-analysts,keep,audience,job search for designers and analysts,-,informational,MOFU,-,-,signup,WebPage+FAQPage,-,-
+/for-people-returning-to-work,keep,audience,returning to work after career break interview,-,informational,MOFU,36,-,signup,WebPage+FAQPage,-,-
+/interview-questions,keep,resource,interview questions by round,-,informational,TOFU,36,-,signup,WebPage+ItemList+FAQPage,-,-
+/blog,keep,blog hub,job search and interview tips,-,informational,TOFU,-,-,signup,CollectionPage+ItemList,-,-
+/blog/category/job-search,keep,category,job search tips,-,informational,TOFU,-,/blog,signup,CollectionPage,-,-
+/blog/category/resume,keep (noindex),category,resume tips,-,informational,TOFU,-,/blog,signup,CollectionPage,-,needs 3 posts
+/blog/category/interview-prep,keep (noindex until 3 posts),category,interview prep tips,-,informational,TOFU,-,/blog,signup,CollectionPage,P1,unlocked by the new post below
+/blog/best-ai-job-search-tools,improve,roundup,best ai job search tools,auto apply risks,commercial,BOFU,40,/blog/category/job-search,signup,BlogPosting+FAQPage,P3,-
+/blog/how-to-email-a-recruiter,keep,guide,how to email a recruiter about a job,-,informational,TOFU,27,/blog/category/job-search,signup,BlogPosting+FAQPage,-,-
+/blog/match-resume-to-job-description,keep,guide,how to match your resume to a job description,-,informational,TOFU,36,/blog/category/resume,signup,BlogPosting+FAQPage,-,-
+/blog/applied-to-jobs-no-response,keep,guide,applied to jobs no response,-,informational,TOFU,36,/blog/category/job-search,signup,BlogPosting+FAQPage,-,-
+/blog/how-to-practice-for-an-interview,keep,guide,how to practice for an interview,-,informational,TOFU,36,/blog/category/interview-prep,signup,BlogPosting+FAQPage,-,-
+/blog/behavioral-interview-practice,keep,guide,behavioral interview practice star,-,informational,TOFU,36,/blog/category/interview-prep,signup,BlogPosting+FAQPage,-,-
+/blog/how-to-answer-tell-me-about-yourself,new,guide,how to answer tell me about yourself,tell me about yourself for career changers / returners / new grads,informational,TOFU,48,/blog/category/interview-prep,signup (practice the HR round),BlogPosting+FAQPage,P1,-
+/about,new,about,jobhunter by supermia,who makes jobhunter,navigational,BOFU,-,-,signup,AboutPage+Organization,P1,B2 founding year (optional)
+/blog/final-round-ai-alternatives,new,alternatives roundup,final round ai alternatives,ai mock interview alternatives,commercial,BOFU,60,/blog/category/interview-prep,signup,BlogPosting+ItemList+FAQPage,P2,B6 human fact-check of competitor prices
+/blog/jobscan-alternatives,new,alternatives roundup,jobscan alternative,resume match tools,commercial,BOFU,60,/blog/category/resume,signup,BlogPosting+ItemList+FAQPage,P2,B6
+/tools/resume-match-checker,not building,free tool,free resume match checker,-,transactional,BOFU,50,-,signup,WebApplication,-,needs a public backend (product decision B7)
+/compare/jobhunter-vs-*,not building yet,comparison,jobhunter vs teal,-,commercial,BOFU,-,-,signup,-,-,no search demand for the brand yet; revisit when brand queries appear in GSC

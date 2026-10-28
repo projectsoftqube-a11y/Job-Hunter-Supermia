@@ -5,6 +5,7 @@ import FeaturesHubBody from '@/components/page/FeaturesHubBody';
 import { FEATURES_HUB } from '@/content/features-hub';
 import { PAGE_BY_SLUG } from '@/content/pages';
 import { graph, pageNode, breadcrumbNode, itemListNode } from '@/lib/schema';
+import { OG_BASE } from '@/content/site';
 
 const { path, seo, hero, tour, cta } = FEATURES_HUB;
 const TRAIL = [{ name: FEATURES_HUB.label, path }];
@@ -13,7 +14,7 @@ export const metadata = {
   title: { absolute: seo.title },
   description: seo.description,
   alternates: { canonical: path },
-  openGraph: { type: 'website', url: path, title: seo.title, description: seo.description },
+  openGraph: { ...OG_BASE, type: 'website', url: path, title: seo.title, description: seo.description },
   twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
 };
 

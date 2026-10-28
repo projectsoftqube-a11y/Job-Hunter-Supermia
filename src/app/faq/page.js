@@ -8,6 +8,7 @@ import FaqList from '@/components/page/FaqList';
 import CtaBand from '@/components/page/CtaBand';
 import { FAQ_PAGE } from '@/content/faq';
 import { graph, pageNode, breadcrumbNode, faqNode } from '@/lib/schema';
+import { OG_BASE } from '@/content/site';
 
 const { path, seo, groups } = FAQ_PAGE;
 const TRAIL = [{ name: 'FAQ', path }];
@@ -16,7 +17,7 @@ export const metadata = {
   title: { absolute: seo.title },
   description: seo.description,
   alternates: { canonical: path },
-  openGraph: { type: 'website', url: path, title: seo.title, description: seo.description },
+  openGraph: { ...OG_BASE, type: 'website', url: path, title: seo.title, description: seo.description },
   twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
 };
 
@@ -29,10 +30,7 @@ export default function FaqPage() {
   const schema = graph(
     pageNode({ path, name: seo.title, description: seo.description }),
     breadcrumbNode(path, TRAIL),
-    faqNode(
-      path,
-      all.map((f) => ({ q: f.q, text: f.a }))
-    )
+    faqNode(path, all)
   );
 
   return (

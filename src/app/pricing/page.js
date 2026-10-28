@@ -4,8 +4,8 @@ import PageHero from '@/components/page/PageHero';
 import CtaBand from '@/components/page/CtaBand';
 import FaqList from '@/components/page/FaqList';
 import { PricingPlans, PricingTable } from '@/sections/Pricing';
-import { OFFER, PRICING } from '@/content/site';
-import { graph, pageNode, breadcrumbNode } from '@/lib/schema';
+import { OFFER, PRICING, OG_BASE } from '@/content/site';
+import { graph, pageNode, breadcrumbNode, faqNode, offerCatalogNode } from '@/lib/schema';
 
 const { path } = PRICING;
 const { title: TITLE, description: DESCRIPTION } = PRICING.seo;
@@ -15,16 +15,22 @@ export const metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: path },
-  openGraph: { type: 'website', url: path, title: TITLE, description: DESCRIPTION },
+  openGraph: { ...OG_BASE, type: 'website', url: path, title: TITLE, description: DESCRIPTION },
   twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION },
 };
 
 /*
  * /pricing: the three plans as cards, then every monthly limit side by side. The offers themselves are
- * on the sitewide SoftwareApplication node, built from the same PRICING data.
+ * on the sitewide SoftwareApplication node; the page's OfferCatalog and FAQPage come from the same
+ * PRICING data the cards and FAQ render.
  */
 export default function PricingPage() {
-  const schema = graph(pageNode({ path, name: TITLE, description: DESCRIPTION }), breadcrumbNode(path, TRAIL));
+  const schema = graph(
+    pageNode({ path, name: TITLE, description: DESCRIPTION, extra: { mainEntity: { '@id': offerCatalogNode()['@id'] } } }),
+    breadcrumbNode(path, TRAIL),
+    offerCatalogNode(),
+    faqNode(path, PRICING.faqs)
+  );
   const [free, starter, pro] = PRICING.plans;
 
   return (

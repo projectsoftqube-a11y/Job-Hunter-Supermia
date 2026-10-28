@@ -5,7 +5,7 @@ export const FEATURES_HUB = {
   seo: {
     title: 'JobHunter Features: Job Search, Resume Match, Interviews',
     description:
-      'Every JobHunter feature in one place: one search across LinkedIn, Indeed and Dice, a resume match score, application email drafts and live AI mock interviews.',
+      'Every JobHunter feature in one place: one search across LinkedIn, Indeed and Dice, a resume match score, email drafts and live AI mock interviews.',
   },
   hero: {
     eyebrow: '4 features · one plan',

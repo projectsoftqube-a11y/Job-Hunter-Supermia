@@ -12,13 +12,16 @@ import Cover from '@/components/blog/Cover';
 import PostCard from '@/components/blog/PostCard';
 import Toc from '@/components/blog/Toc';
 import { POSTS, POST_BY_SLUG, CATEGORY_BY_SLUG, AUTHOR } from '@/content/blog';
-import { OFFER, SIGNUP_URL } from '@/content/site';
-import { abs, graph, pageNode, breadcrumbNode, articleNode } from '@/lib/schema';
+import { OFFER, SIGNUP_URL, OG_BASE } from '@/content/site';
+import { abs, graph, pageNode, breadcrumbNode, articleNode, faqNode, speakable } from '@/lib/schema';
 import { countWords, longDate, readingMinutes } from '@/lib/text';
 
 // Every page here is prerendered from generateStaticParams and unknown slugs are a 404, so the dev-only
 // instant-navigation check (which can't render notFound()) is switched off for this segment.
 export const instant = false;
+// An unknown slug must answer 404 on its first request too. Without this, the prerendered App Shell is
+// sent with a 200 before notFound() runs (a soft 404 for crawlers).
+export const ensureStatic = 'navigation';
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
@@ -34,6 +37,7 @@ export async function generateMetadata({ params }) {
     alternates: { canonical: post.path },
     authors: [AUTHOR],
     openGraph: {
+      ...OG_BASE,
       type: 'article',
       url: post.path,
       title: post.seo.title,
@@ -63,9 +67,10 @@ export default async function PostPage({ params }) {
   const related = (post.related || []).map((s) => POST_BY_SLUG[s]).filter(Boolean).slice(0, 3);
 
   const schema = graph(
-    pageNode({ path: post.path, name: post.seo.title, description: post.seo.description, about: null, updated: post.updated, extra: { mainEntity: { '@id': `${abs(post.path)}#article` } } }),
+    pageNode({ path: post.path, name: post.seo.title, description: post.seo.description, about: null, updated: post.updated, extra: { mainEntity: { '@id': `${abs(post.path)}#article` }, speakable } }),
     breadcrumbNode(post.path, trail),
-    articleNode({ path: post.path, headline: post.title, description: post.seo.description, published: post.published, updated: post.updated, image: `${post.path}/opengraph-image`, section: cat.name, words: countWords(visible) })
+    articleNode({ path: post.path, headline: post.title, description: post.seo.description, published: post.published, updated: post.updated, image: `${post.path}/opengraph-image`, section: cat.name, words: countWords(visible) }),
+    faqNode(post.path, post.faqs)
   );
 
   return (
@@ -128,7 +133,7 @@ export default async function PostPage({ params }) {
 
             <article className="mx-auto w-full min-w-0 max-w-[880px]">
               {/* Quick answer */}
-              <section aria-label="Quick answer" className="relative overflow-hidden rounded-[26px] border border-brand-200 bg-gradient-to-br from-brand-50 to-white p-6 sm:p-8">
+              <section aria-label="Quick answer" data-speakable className="relative overflow-hidden rounded-[26px] border border-brand-200 bg-gradient-to-br from-brand-50 to-white p-6 sm:p-8">
                 <p className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.16em] text-brand-600">
                   <Icon name="bolt" className="h-4 w-4" />
                   Quick answer
@@ -139,7 +144,7 @@ export default async function PostPage({ params }) {
               </section>
 
               {post.takeaways?.length > 0 && (
-                <section aria-label="Key takeaways" className="mt-6 rounded-[26px] bg-brand-950 p-6 text-white sm:p-8">
+                <section aria-label="Key takeaways" data-speakable className="mt-6 rounded-[26px] bg-brand-950 p-6 text-white sm:p-8">
                   <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-gold-300">Key takeaways</p>
                   <ul className="mt-4 space-y-3">
                     {post.takeaways.map((t) => (

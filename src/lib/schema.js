@@ -1,11 +1,14 @@
 import { SITE_URL, PARENT_URL, APP_URL, BRAND, SEO, DEMO, PRICING } from '@/content/site';
+import { FAQ_PAGE } from '@/content/faq';
+import { plain } from '@/lib/text';
 
 /*
  * Structured data (schema.org JSON-LD), per the SEO Audit section 9.
  * - The Organization, WebSite and SoftwareApplication nodes are output sitewide from the root layout, so
  *   every page's @id references resolve. The Organization @id matches supermia.ai so Google merges them.
- * - FAQPage lives on /faq only. Offers come from the confirmed pricing. No Review or AggregateRating
- *   until real, consented reviews exist.
+ * - FAQPage is built from the exact strings each page renders. A question also answered on /faq is
+ *   marked up there only, so no question is claimed by two pages. Offers come from the confirmed
+ *   pricing. No Review or AggregateRating until real, consented reviews exist.
  */
 
 export const ORG_ID = `${PARENT_URL}/#organization`;
@@ -14,6 +17,10 @@ export const APP_ID = `${SITE_URL}/#software`;
 const VIDEO_ID = `${SITE_URL}/#demo-video`;
 
 export const abs = (path = '/') => (path.startsWith('http') ? path : `${SITE_URL}${path === '/' ? '/' : path}`);
+// Each plan's Offer has a stable @id so the /pricing OfferCatalog can point at it
+const planId = (p) => `${abs(PRICING.path)}#plan-${p.id}`;
+// Every page has its own 1200x630 share card at <path>/opengraph-image
+const shareImage = (path) => ({ '@type': 'ImageObject', url: abs(path === '/' ? '/opengraph-image' : `${path}/opengraph-image`), width: 1200, height: 630 });
 
 const organization = {
   '@type': 'Organization',
@@ -31,7 +38,8 @@ const organization = {
     postalCode: BRAND.address.postalCode,
     addressCountry: BRAND.address.country,
   },
-  sameAs: BRAND.sameAs,
+  // Only real profile URLs ship: no empty, "#" or placeholder entries
+  sameAs: BRAND.sameAs.filter((u) => /^https:\/\/[^#\s]+$/.test(u)),
   knowsAbout: ['Conversational AI', 'AI agents', 'AI job search', 'Resume matching', 'AI mock interviews', 'Interview practice'],
 };
 
@@ -75,6 +83,7 @@ const software = {
   installUrl: APP_URL,
   offers: PRICING.plans.map((p) => ({
     '@type': 'Offer',
+    '@id': planId(p),
     name: `${BRAND.name} ${p.name}`,
     price: String(p.price),
     priceCurrency: PRICING.currency,
@@ -112,6 +121,7 @@ export function pageNode({ path, name, description, type = 'WebPage', about = AP
     publisher: { '@id': ORG_ID },
     ...(breadcrumb ? { breadcrumb: { '@id': `${abs(path)}#breadcrumb` } } : {}),
     dateModified: updated,
+    primaryImageOfPage: shareImage(path),
     ...extra,
   };
 }
@@ -127,7 +137,6 @@ export const homeSchema = graph(
     breadcrumb: false,
     extra: {
       mainEntity: { '@id': APP_ID },
-      primaryImageOfPage: { '@type': 'ImageObject', url: abs('/opengraph-image'), width: 1200, height: 630 },
       video: { '@id': VIDEO_ID },
     },
   }),
@@ -152,14 +161,34 @@ export const homeSchema = graph(
   }
 );
 
-/** FAQPage node (used on /faq only). */
-export function faqNode(path, items) {
+const FAQ_HUB_QUESTIONS = new Set(FAQ_PAGE.groups.flatMap((g) => g.items.map((f) => f.q)));
+
+/**
+ * FAQPage node from the rendered { q, a } items; answers lose their inline markup so the text matches
+ * what readers see. Off /faq, questions that /faq also answers are left out. Returns null when no
+ * question is left, so graph() drops it.
+ */
+export function faqNode(path, items = []) {
+  const own = path === FAQ_PAGE.path ? items : items.filter((f) => !FAQ_HUB_QUESTIONS.has(f.q));
+  if (own.length === 0) return null;
   return {
     '@type': 'FAQPage',
     '@id': `${abs(path)}#faq`,
-    mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.text } })),
+    isPartOf: { '@id': `${abs(path)}#webpage` },
+    mainEntity: own.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: plain(f.a) } })),
   };
 }
+
+/** OfferCatalog of the published plans, pointing at the Offers on the SoftwareApplication node. */
+export const offerCatalogNode = () => ({
+  '@type': 'OfferCatalog',
+  '@id': `${abs(PRICING.path)}#plans`,
+  name: `${BRAND.name} plans`,
+  itemListElement: PRICING.plans.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@id': planId(p) } })),
+});
+
+/** Points voice assistants at the page's answer blocks (elements marked data-speakable). */
+export const speakable = { '@type': 'SpeakableSpecification', cssSelector: ['[data-speakable]'] };
 
 /** BlogPosting node for an article. */
 export function articleNode({ path, headline, description, published, updated, image, section, words }) {
