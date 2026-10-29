@@ -32,7 +32,7 @@ Nothing yet (see `research/ai-visibility.md`). The brand name "Job Hunter" is sh
 ## 9 quickest wins (ordered by expected leads)
 
 1. Deploy the current fixes; in Search Console, **Validate fix** on 404s and **Request indexing** for the 4 "crawled, not indexed" pages.
-2. GA4 is installed (G-9B18R75HTF). In GA4, mark `lead_click` as a key event and register `lead_type`, `link_location` and `ai_source` as custom dimensions.
+2. GA4 is installed (G-DC7KCBY4XD). In GA4, mark `lead_click` as a key event and register `lead_type`, `link_location` and `ai_source` as custom dimensions.
 3. Fire a sign-up-completed event inside the app (app.jobhunter.supermia.ai), reading the `utm_*` params the site now passes.
 4. Submit JobHunter to Product Hunt, There's An AI For That, AlternativeTo and Futurepedia as "JobHunter by SuperMIA".
 5. Ask the authors of 3–5 "best AI job search / mock interview tools" listicles to review JobHunter (free account for them).

@@ -13,7 +13,7 @@ Started 2026-10-27, last updated 2026-10-28.
 | CP1 Strategy | Done | `strategy.md` |
 | 3 Page plan | Done | `page-plan.csv`, `briefs/` |
 | CP2 Page plan | Done | 4 new pages planned, none built yet (batch 1 below). |
-| 4 Conversion | Done | GA4 `G-9B18R75HTF` (root layout, production only). `LeadTracking.jsx` sends `lead_click` and `ai_referral` events + UTM/AI-source carry-over. |
+| 4 Conversion | Done | GA4 `G-DC7KCBY4XD` (root layout, production only). `LeadTracking.jsx` sends `lead_click` and `ai_referral` events + UTM/AI-source carry-over. |
 | 5 Technical | Done | soft-404 fix, manifest, apple icon, robots directives, OG_BASE, env-overridable origin |
 | 6 Schema | Done | `schema-graph.md`. FAQPage (deduplicated), OfferCatalog, primaryImageOfPage, speakable, sameAs |
 | CP3 Schema | Done | |

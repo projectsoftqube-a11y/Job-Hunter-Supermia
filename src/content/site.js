@@ -16,7 +16,7 @@ export const PARENT_URL = 'https://supermia.ai';
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://jobhunter.supermia.ai').replace(/\/$/, '');
 export const BROCHURE_URL = '/brochure/job-hunter-brochure.pdf';
 // Google Analytics 4 measurement ID (public by design: it ships in every page's HTML)
-export const GA_ID = 'G-9B18R75HTF';
+export const GA_ID = 'G-DC7KCBY4XD';
 // Google Tag Manager container (public). GA4 stays on gtag.js above, so the container must not also hold a
 // GA4 Google tag for GA_ID, or every page view is counted twice.
 export const GTM_ID = 'GTM-PCMC5P48';

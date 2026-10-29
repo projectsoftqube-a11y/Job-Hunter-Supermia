@@ -8,7 +8,7 @@
    - Sitemaps → resubmit `https://jobhunter.supermia.ai/sitemap.xml`.
 2. **Bing Webmaster Tools**: add the site ("Import from Google Search Console" is fastest) and submit the same sitemap. Bing also feeds Copilot and ChatGPT search.
 3. **Analytics**:
-   - GA4 is installed (G-9B18R75HTF). After deploy, check Reports → Realtime while you click a sign-up button.
+   - GA4 is installed (G-DC7KCBY4XD). After deploy, check Reports → Realtime while you click a sign-up button.
    - In GA4, mark `lead_click` with `lead_type = signup` as a **key event**.
    - Create an "AI referrals" segment: session source matches `chatgpt|perplexity|claude|gemini|copilot`.
 4. **In the app**: when an account is created, fire `sign_up` to the same GA4 property and save the `utm_source` / `utm_medium` from the sign-up URL.

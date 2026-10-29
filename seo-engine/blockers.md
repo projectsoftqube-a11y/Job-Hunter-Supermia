@@ -15,6 +15,6 @@ Each has my best guess, so you can just answer "yes" or correct it. Nothing here
 - B1 Blog author: **not needed**; posts stay credited to the JobHunter team at SuperMIA (Organization author).
 - B3 G2 + Capterra: **confirmed**, added to `BRAND.sameAs`.
 - B4 Credit card: **required at sign-up, not shown on the site.** Never write "no credit card".
-- B5 Analytics: **GA4 `G-9B18R75HTF` added 2026-10-29** (gtag.js via `@next/third-parties`, production builds only). Lead events go straight to GA4.
+- B5 Analytics: **GA4 `G-DC7KCBY4XD` added 2026-10-29** (gtag.js via `@next/third-parties`, production builds only). Lead events go straight to GA4.
 
 Note: Semrush returned **no_api_units**. Add units at https://www.semrush.com/mcp-access to get real search volumes into `research/keywords.csv`.
