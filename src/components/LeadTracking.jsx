@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { APP_URL, BROCHURE_URL } from '@/content/site';
 
 /*
- * Lead events for GA4 (the gtag.js tag is added in the root layout):
+ * Lead events for GA4 and Google Tag Manager (both tags are added in the root layout):
  * - lead_click: sign-up, log-in, brochure and email clicks, with the page and where the link sits.
  * - ai_referral: a visit that arrives from an AI assistant (ChatGPT, Perplexity, Claude, Gemini, Copilot).
  * The landing page's UTM tags (or the AI source) are kept for the session and added to the sign-up URL,
@@ -24,11 +24,19 @@ const AI_SOURCES = {
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 const STORE = 'jh-attribution';
 
-// Sends a GA4 event. gtag.js loads after hydration, so an event raised before it exists (the AI referral
-// on landing) waits for it, for up to 10 seconds. Nothing is sent where GA isn't loaded (development).
-function send(name, params, tries = 0) {
+// GA4 gets the event through gtag; gtag.js loads after hydration, so an event raised before it exists
+// (the AI referral on landing) waits for it, for up to 10 seconds. Nothing is sent where GA isn't loaded.
+function toGa(name, params, tries = 0) {
   if (typeof window.gtag === 'function') window.gtag('event', name, params);
-  else if (tries < 50) setTimeout(() => send(name, params, tries + 1), 200);
+  else if (tries < 50) setTimeout(() => toGa(name, params, tries + 1), 200);
+}
+
+// GTM triggers read `{ event: name }` pushes (gtag calls don't fire them); GTM replays the queue when it
+// loads. A GTM tag on these events must not send them to GA4 again, or GA4 counts each one twice.
+function send(name, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: name, ...params });
+  toGa(name, params);
 }
 
 function aiSource(referrer) {
