@@ -1,4 +1,5 @@
 import { Inter, Lexend } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import 'lenis/dist/lenis.css';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -8,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 import LeadTracking from '@/components/LeadTracking';
 import { siteSchema } from '@/lib/schema';
 import { getBillingPlans } from '@/lib/billing';
-import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO, OG_BASE } from '@/content/site';
+import { SITE_URL, PARENT_URL, BRAND, SEO, DEMO, OG_BASE, GA_ID } from '@/content/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const lexend = Lexend({ subsets: ['latin'], variable: '--font-lexend', display: 'swap' });
@@ -59,6 +60,8 @@ export default function RootLayout({ children }) {
         <SiteSchema />
         <LeadTracking />
       </body>
+      {/* GA4 loads after hydration, in production builds only, so local development never shows up in the reports */}
+      {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={GA_ID} />}
     </html>
   );
 }

@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 import { APP_URL, BROCHURE_URL } from '@/content/site';
 
 /*
- * Lead tracking without a tag of its own: events go to window.dataLayer, which Google Tag Manager (or
- * GA4 via gtag) reads once it is installed. Until then nothing leaves the browser.
+ * Lead events for GA4 (the gtag.js tag is added in the root layout):
  * - lead_click: sign-up, log-in, brochure and email clicks, with the page and where the link sits.
  * - ai_referral: a visit that arrives from an AI assistant (ChatGPT, Perplexity, Claude, Gemini, Copilot).
  * The landing page's UTM tags (or the AI source) are kept for the session and added to the sign-up URL,
@@ -25,10 +24,12 @@ const AI_SOURCES = {
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 const STORE = 'jh-attribution';
 
-const push = (data) => {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(data);
-};
+// Sends a GA4 event. gtag.js loads after hydration, so an event raised before it exists (the AI referral
+// on landing) waits for it, for up to 10 seconds. Nothing is sent where GA isn't loaded (development).
+function send(name, params, tries = 0) {
+  if (typeof window.gtag === 'function') window.gtag('event', name, params);
+  else if (tries < 50) setTimeout(() => send(name, params, tries + 1), 200);
+}
 
 function aiSource(referrer) {
   try {
@@ -52,7 +53,7 @@ function readAttribution() {
   try {
     sessionStorage.setItem(STORE, JSON.stringify(found));
   } catch {}
-  if (ai) push({ event: 'ai_referral', ai_source: ai, page_path: window.location.pathname });
+  if (ai) send('ai_referral', { ai_source: ai, page_path: window.location.pathname });
   return found;
 }
 
@@ -85,8 +86,7 @@ export default function LeadTracking() {
         for (const [k, v] of Object.entries(attribution)) if (!url.searchParams.has(k)) url.searchParams.set(k, v);
         a.href = url.toString();
       }
-      push({
-        event: 'lead_click',
+      send('lead_click', {
         lead_type: kind,
         link_text: a.textContent.trim().slice(0, 80),
         link_location: locationOf(a),

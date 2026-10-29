@@ -13,7 +13,7 @@ Started 2026-10-27, last updated 2026-10-28.
 | CP1 Strategy | Done | `strategy.md` |
 | 3 Page plan | Done | `page-plan.csv`, `briefs/` |
 | CP2 Page plan | Done | 4 new pages planned, none built yet (batch 1 below). |
-| 4 Conversion | Done (code) | `LeadTracking.jsx`: dataLayer events + UTM/AI-source carry-over. GTM/GA4 skipped by owner for now. |
+| 4 Conversion | Done | GA4 `G-9B18R75HTF` (root layout, production only). `LeadTracking.jsx` sends `lead_click` and `ai_referral` events + UTM/AI-source carry-over. |
 | 5 Technical | Done | soft-404 fix, manifest, apple icon, robots directives, OG_BASE, env-overridable origin |
 | 6 Schema | Done | `schema-graph.md`. FAQPage (deduplicated), OfferCatalog, primaryImageOfPage, speakable, sameAs |
 | CP3 Schema | Done | |
@@ -30,7 +30,7 @@ Started 2026-10-27, last updated 2026-10-28.
 - 2026-10-27 **No HowTo markup**: Google retired HowTo rich results, and the steps are already plain HTML lists.
 - 2026-10-28 **Blog author stays the organisation**: owner says no named author is needed.
 - 2026-10-28 **No visible "Last updated" on feature/audience pages**: three feature pages are frozen by the owner. Dates stay in schema and the sitemap only.
-- 2026-10-28 **Tracking via dataLayer only**: no analytics exists, and the rule is "don't add a second stack". Owner skipped GTM/GA4 for now.
+- 2026-10-29 **GA4 via gtag.js** (`@next/third-parties/google`, the Next.js docs' recommendation), measurement ID from the owner. No GTM, so there is one analytics stack. GA4 enhanced measurement records page views on client-side navigation.
 - 2026-10-28 **Credit card**: sign-up asks for one; owner wants it not mentioned. No "no credit card" copy anywhere.
 - 2026-10-28 **G2 + Capterra** confirmed by owner and added to `sameAs`.
 - 2026-10-28 **Comparison/alternative pages are planned, not built**: they need dated, sourced competitor facts checked by a person (rules 3 and 5).

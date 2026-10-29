@@ -15,6 +15,8 @@ export const PARENT_URL = 'https://supermia.ai';
 // Canonical origin. A staging or preview host sets NEXT_PUBLIC_SITE_URL so it never emits production canonicals.
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://jobhunter.supermia.ai').replace(/\/$/, '');
 export const BROCHURE_URL = '/brochure/job-hunter-brochure.pdf';
+// Google Analytics 4 measurement ID (public by design: it ships in every page's HTML)
+export const GA_ID = 'G-9B18R75HTF';
 
 // How search engines should name the product and its publisher
 export const BRAND = {
