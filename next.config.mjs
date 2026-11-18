@@ -4,6 +4,9 @@ const nextConfig = {
   cacheComponents: true,
   // Serve every optimised image at quality 90 (the default 75 looked soft on the photos)
   images: {
+    // Serve /public images as they are: Vercel image optimisation is a paid allowance on the Hobby plan
+    // and answers 402 once it is used up, which leaves every next/image blank.
+    unoptimized: true,
     qualities: [90],
   },
   partialPrefetching: true,
